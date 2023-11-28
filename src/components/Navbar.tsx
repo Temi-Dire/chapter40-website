@@ -2,6 +2,7 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -43,11 +44,20 @@ const Navbar = () => {
           }`}
         >
           <ul className="flex space-x-24 text-base font-normal">
-            {navLinks.map((link) => (
+            {/* {navLinks.map((link) => (
               <li key={link.id}>
-                <a href="">{link.title}</a>
+                <Link to={link.title == 'about' && '/aboutus'}>{link.title}</Link>
               </li>
-            ))}
+            ))} */}
+            <li>
+              <Link to={"/about"}>About</Link>
+            </li>
+            <li>
+              <Link to={"/shop"}>Shop</Link>
+            </li>
+            <li>
+              <Link to={"/categories"}>Categories</Link>
+            </li>
           </ul>
           <span className="text-4xl font-medium">Chapter40</span>
           <div className="flex justify-between items-center space-x-24 text-base font-normal">
