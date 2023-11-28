@@ -5,7 +5,8 @@ export default {
     extend: {},
     fontFamily: {
       montserrat: ["Montserrat", "sans-serif"],
-      playfair: ["Playfair Display", "sans-serif"]
+      playfair: ["Playfair Display", "sans-serif"],
+      roboto: ["Roboto", "sans-serif"],
     },
   },
   plugins: [],
