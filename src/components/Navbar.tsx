@@ -59,18 +59,24 @@ const Navbar = () => {
               <Link to={"/categories"}>Categories</Link>
             </li>
           </ul>
-          <span className="text-4xl font-medium">Chapter40</span>
+          <Link to={"/"} className="text-4xl font-medium">
+            Chapter40
+          </Link>
           <div className="flex justify-between items-center space-x-24 text-base font-normal">
             <a href="#">Contact Us</a>
             <ul className="space-x-5 flex">
               <li>
-                <PersonOutlineOutlinedIcon style={iconSize} />
+                <Link to={"/account/details"}>
+                  <PersonOutlineOutlinedIcon style={iconSize} />
+                </Link>
               </li>
               <li>
                 <FavoriteBorderOutlinedIcon />
               </li>
               <li>
-                <ShoppingCartOutlinedIcon style={iconSize} />
+                <Link to={"/checkout"}>
+                  <ShoppingCartOutlinedIcon style={iconSize} />
+                </Link>
               </li>
             </ul>
           </div>

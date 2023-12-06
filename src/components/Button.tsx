@@ -3,6 +3,7 @@ interface ButtonProps {
   paddingX?: String;
   bgColor?: String;
   textColor?: String;
+  width?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -10,9 +11,12 @@ const Button: React.FC<ButtonProps> = ({
   paddingX = "px-8",
   bgColor = "bg-[#36254B]",
   text = "",
+  width = "",
 }) => {
   return (
-    <button className={`${paddingX} py-4 ${textColor} ${bgColor} font-roboto`}>
+    <button
+      className={`${paddingX} ${width} py-4 ${textColor} ${bgColor} font-roboto text-lg border border-[#4E4D93]`}
+    >
       {text}
     </button>
   );

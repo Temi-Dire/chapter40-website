@@ -1,4 +1,3 @@
-import Button from "../../components/Button";
 import Footer from "../../components/Footer/Footer";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -35,7 +34,8 @@ const FooterSection = () => {
   const currentYear = new Date();
   return (
     <>
-      <div className=" px-20 py-14 grid grid-cols-[1fr,1fr,1fr,auto] gap-4">
+      <div className="w-full h-[1px] bg-[#CAC6DA] mt-36 " />
+      <div className=" px-20 py-14 grid grid-cols-[1fr,1fr,1fr,auto] gap-4 ">
         <div>
           <Footer header={"Menu"} items={menu} />
         </div>
@@ -47,7 +47,7 @@ const FooterSection = () => {
         </div>
         <div>
           <p className="font-playfair">Join our mailing list</p>
-          <div className="flex">
+          <div className="flex mt-4">
             <input
               className="w-80 outline-none py-4 px-8 bg-[#F9F9F9] font-montserrat"
               type="text"

@@ -1,13 +1,36 @@
 import FavoriteBorderOutlined from "@mui/icons-material/FavoriteBorderOutlined";
 import Star from "./Star";
 import Button from "./Button";
+import { useReducer } from "react";
 
 interface CardProps {
   name: String;
   price: String;
 }
 
+// const ITEMS = {
+//   ADDTONASKET: 'ADD TO BASKET',
+//   REMOVEFROMBASKET: 'REMOVE FROM BASKET'
+// }
+
+// type
+
+// function reducer(state, action) {
+//   switch (action.type) {
+//     case ITEMS.ADDTONASKET:
+//       return {}
+//       break;
+
+//     default:
+//       break;
+//   }
+// }
+
 const Card: React.FC<CardProps> = ({ name, price }) => {
+  // const [state, dispatch] = useReducer(reducer, [])
+  // function addToBasket() {
+  //   dispatch({type: 'ADD_TO_BASKET', payload: {name, price}})
+  // }
   return (
     <>
       <div className="w-60">
