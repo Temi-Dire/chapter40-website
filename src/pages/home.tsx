@@ -22,7 +22,7 @@ const Home = () => {
       <Hero />
       <Newarrivals />
       <section className="grid grid-cols-2 px-[74.5px] mb-10 gap-7 mt-[123px]">
-        <div className="w-full h-full relative flex justify-center items-center">
+        <div className="w-full h-full relative flex justify-center items-center -z-10">
           <img src="/assets/images/dress3.png" alt="" />
           <div className="absolute bottom-4 ">
             <Button
@@ -33,7 +33,7 @@ const Home = () => {
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-7">
+        <div className="grid grid-cols-2 gap-7 -z-10">
           <div className="relative flex justify-center">
             <img src="/assets/images/bag1.png" alt="" />
             <div className="absolute bottom-4 ">
@@ -45,7 +45,7 @@ const Home = () => {
               />
             </div>
           </div>
-          <div className="relative flex justify-center">
+          <div className="relative flex justify-center -z-10">
             <img src="/assets/images/bag2.png" alt="" />
             <div className="absolute bottom-4 ">
               <Button
@@ -56,7 +56,7 @@ const Home = () => {
               />
             </div>
           </div>
-          <div className="relative flex justify-center">
+          <div className="relative flex justify-center -z-10">
             <img src="/assets/images/bag3.png" alt="" />
             <div className="absolute bottom-4 ">
               <Button
@@ -67,7 +67,7 @@ const Home = () => {
               />
             </div>
           </div>
-          <div className="relative flex justify-center">
+          <div className="relative flex justify-center -z-10">
             <img src="/assets/images/bag4.png" alt="" />
             <div className="absolute bottom-4 ">
               <Button

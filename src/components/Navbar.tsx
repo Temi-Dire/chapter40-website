@@ -92,7 +92,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      {open && <CheckoutModal />}
+      {open && <CheckoutModal onClick={() => setOpen(false)} />}
     </>
   );
 };

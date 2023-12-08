@@ -1,9 +1,12 @@
 import CloseIcon from "@mui/icons-material/Close";
 import CheckoutProduct from "./CheckoutProduct";
 import Button from "./Button";
-import { Link } from "react-router-dom";
 
-const CheckoutModal = () => {
+interface CheckoutModalProps {
+  onClick: () => void;
+}
+
+const CheckoutModal: React.FC<CheckoutModalProps> = ({ onClick }) => {
   const products = [
     {
       desc: "Privé Contrast Collar cooperate Dress",
@@ -35,10 +38,10 @@ const CheckoutModal = () => {
   };
   return (
     <>
-      <div className=" h-screen overflow-y-scroll px-4 max-w-[500px] flex flex-col items-center bg-white">
+      <div className=" h-screen overflow-y-scroll px-4 max-w-[500px] flex flex-col items-center bg-white fixed right-0">
         <div className="flex justify-between py-4 font-playfair text-2xl sticky top-0 bg-white w-full">
           <div>Cart</div>
-          <CloseIcon />
+          <CloseIcon onClick={onClick} className="cursor-pointer" />
         </div>
         <div>
           {products.map((product) => (
