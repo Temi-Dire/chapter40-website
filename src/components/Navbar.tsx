@@ -2,10 +2,19 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import CheckoutModal from "./CheckoutModal";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  if (open) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "visible";
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +48,7 @@ const Navbar = () => {
     <>
       <nav className="">
         <div
-          className={`w-full flex justify-between items-center px-[82px] py-[28px] fixed z-10 font-montserrat ${
+          className={`w-full flex justify-between items-center px-[82px] py-[28px] fixed font-montserrat  ${
             !scrolled ? "bg-inherit" : "bg-white"
           }`}
         >
@@ -74,14 +83,16 @@ const Navbar = () => {
                 <FavoriteBorderOutlinedIcon />
               </li>
               <li>
-                <Link to={"/checkout"}>
-                  <ShoppingCartOutlinedIcon style={iconSize} />
-                </Link>
+                <ShoppingCartOutlinedIcon
+                  style={iconSize}
+                  onClick={() => setOpen(true)}
+                />
               </li>
             </ul>
           </div>
         </div>
       </nav>
+      {open && <CheckoutModal />}
     </>
   );
 };
