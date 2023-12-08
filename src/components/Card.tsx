@@ -33,7 +33,7 @@ const Card: React.FC<CardProps> = ({ name, price }) => {
   // }
   return (
     <>
-      <div className="w-60">
+      <div className="w-60 -z-10">
         <div className="relative ">
           <FavoriteBorderOutlined className="absolute right-6 top-6" />
           <img
