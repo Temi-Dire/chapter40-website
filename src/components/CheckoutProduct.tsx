@@ -32,7 +32,7 @@ const CheckoutProduct: React.FC<CheckoutProductProps> = ({ desc, price }) => {
   const [state, dispatch] = useReducer(reducer, { count: 0 });
 
   return (
-    <div className="grid grid-cols-[auto,1fr] gap-5 w-[459px] border border-[#CAC6DA] px-3 py-2">
+    <div className="grid grid-cols-[auto,1fr] gap-5  border border-[#CAC6DA] px-3 py-2 mb-4">
       <img
         className="h-[140px] object-cover"
         src="/assets/images/checkoutproduct.png"
@@ -40,9 +40,9 @@ const CheckoutProduct: React.FC<CheckoutProductProps> = ({ desc, price }) => {
       />
       <div className="flex flex-col justify-between">
         <div>
-          <div className="font-playfair text-lg">{desc}</div>
+          <div className="font-playfair text-base">{desc}</div>
           <div className="flex justify-between">
-            <div className="font-montserrat text-xl">{"₦" + price}</div>
+            <div className="font-montserrat text-lg">{"₦" + price}</div>
             <div>⭐⭐⭐⭐⭐</div>
           </div>
         </div>
