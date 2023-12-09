@@ -3,6 +3,7 @@ import Person4OutlinedIcon from "@mui/icons-material/Person4Outlined";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
+import MyCart from "../components/MyCart";
 
 const Information = () => {
   const location = useLocation();
@@ -50,7 +51,7 @@ const Information = () => {
             <p className="text-[20px]">Contact</p>
             <div className="space-x-2 flex font-montserrat text-[16px] font-normal">
               <p className="text-[#0C0C0C]">have an account?</p>
-              <p className="hover:text-[#634D93] text-[#0C0C0C]"> login</p>
+              <Link to='/' className="hover:text-[#634D93] text-[#0C0C0C] cursor-pointer"> login</Link>
             </div>
           </div>
           <div className="flex border items-center border-[#606060] px-[16px] py-2 space-x-[4px]">
@@ -59,6 +60,7 @@ const Information = () => {
               <input
                 type="email"
                 placeholder="Email"
+                required
                 className="font-montserrat outline-none w-full text-[#606060]"
               />
             </div>
@@ -78,6 +80,7 @@ const Information = () => {
                 <input
                   type="text"
                   placeholder="Country/region"
+                  required
                   className="outline-none w-full text-[#606060]"
                 />
               </div>
@@ -93,6 +96,7 @@ const Information = () => {
                 <input
                   type="text"
                   placeholder="first name"
+                  required
                   className="outline-none w-full"
                 />
               </div>
@@ -100,6 +104,7 @@ const Information = () => {
                 <input
                   type="text"
                   placeholder="last name"
+                  required
                   className="outline-none w-full"
                 />
               </div>
@@ -115,6 +120,7 @@ const Information = () => {
               <input
                 type="text"
                 placeholder="Address"
+                required
                 className="outline-none w-full"
               />
             </div>
@@ -130,6 +136,7 @@ const Information = () => {
                 <input
                   type="text"
                   placeholder="postal code"
+                  required
                   className="outline-none w-full"
                 />
               </div>
@@ -137,6 +144,7 @@ const Information = () => {
                 <input
                   type="text"
                   placeholder="city"
+                  required
                   className="outline-none w-full"
                 />
               </div>
@@ -146,6 +154,7 @@ const Information = () => {
                 <input
                   type="text"
                   placeholder="phone"
+                  required
                   className="outline-none w-full text-[#606060]"
                 />
               </div>
@@ -167,11 +176,13 @@ const Information = () => {
             </button>
             <div className="flex space-x-2 font-montserrat text-[#634D93] text-[16px]">
               <ArrowBackIosNewOutlinedIcon />
-              <Link to="/cart">return to Cart</Link>
+              <Link to="/cart" className="hover:text-darkPrimary">return to Cart</Link>
             </div>
           </div>
         </div>
-        <div className="lg:w-1/2 bg-[#F3E9FA] h-full"></div>
+        <div className="lg:w-1/2 bg-[#F3E9FA] h-full">
+          <MyCart />
+        </div>
       </div>
     </>
   );
