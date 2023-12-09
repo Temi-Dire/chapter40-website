@@ -1,6 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import Person4OutlinedIcon from "@mui/icons-material/Person4Outlined";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
+import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 
 const Information = () => {
   const location = useLocation();
@@ -9,7 +11,7 @@ const Information = () => {
       <div className="lg:flex h-screen">
         <div className="lg:pl-[108px] pt-[32px] pr-[65px] lg:w-1/2 font-playfair">
           <header className="text-4xl mb-[29px] text-black">Chapter40</header>
-          <div className="p-[16px] font-montserrat text-borderDark text-xl space-x-[20px]">
+          <div className="p-[16px] font-montserrat text-borderDark text-[20px] space-x-[20px] mb-[26px]">
             <Link
               to="/cart"
               className={location.pathname === "/cart" ? "text-[#36254B]" : ""}
@@ -45,14 +47,14 @@ const Information = () => {
             </Link>
           </div>
           <div className="flex justify-between mb-2">
-            <p className="text-2xl">Contact</p>
-            <div className="space-x-2 flex font-montserrat text-xl font-normal">
+            <p className="text-[20px]">Contact</p>
+            <div className="space-x-2 flex font-montserrat text-[16px] font-normal">
               <p className="text-[#0C0C0C]">have an account?</p>
               <p className="hover:text-[#634D93] text-[#0C0C0C]"> login</p>
             </div>
           </div>
           <div className="flex border border-[#606060] px-[16px] py-2 space-x-[4px]">
-            <Person4OutlinedIcon className="w-[16px] h-[16px] text-[#606060]" />
+            <Person4OutlinedIcon className="text-[#606060]" />
             <div className="flex-1">
               <input
                 type="email"
@@ -62,34 +64,110 @@ const Information = () => {
             </div>
           </div>
           <div className="flex space-x-1 mt-1 mb-[28px]">
-            <input type="checkbox" />
-            <p className="font-montserrat text-[#0C0C0C]">
+            <input type="checkbox" className="rounded-none" />
+            <p className="font-montserrat text-[#0C0C0C] text-[14px]">
               email me with news and offers
             </p>
           </div>
-          <header className="text-playfair text-2xl font-normal mb-[20px]">
+          <header className="text-playfair text-[20px] font-normal mb-[20px]">
             Shipping Address
           </header>
-          <div className="space-y-[8px]">
+          <div className="space-y-[8px] font-montserrat">
             <div className="flex justify-between border border-[#606060] px-[16px] py-2 space-x-[4px]">
               <div className="flex-1">
                 <input
                   type="text"
                   placeholder="Country/region"
-                  className="font-montserrat outline-none w-full text-[#606060]"
+                  className="outline-none w-full text-[#606060]"
                 />
               </div>
               <button>
-                <CloseOutlinedIcon className="w-[16px] h-[16px] text-[#606060]" />
+                <CloseOutlinedIcon
+                  fontSize="small"
+                  className="w-[16px] h-[16px] text-[#606060]"
+                />
               </button>
             </div>
             <div className="flex space-x-[24px] font-montserrat">
               <div className="w-1/2 flex justify-between border border-[#606060] px-[16px] py-2">
-                <input type="text" placeholder="first name" />
+                <input
+                  type="text"
+                  placeholder="first name"
+                  className="outline-none w-full"
+                />
               </div>
               <div className="w-1/2 flex justify-between border border-[#606060] px-[16px] py-2">
-                <input type="text" placeholder="last name" />
+                <input
+                  type="text"
+                  placeholder="last name"
+                  className="outline-none w-full"
+                />
               </div>
+            </div>
+            <div className="flex justify-between border border-[#606060] px-[16px] py-2">
+              <input
+                type="text"
+                placeholder="Company(Optional)"
+                className="outline-none w-full"
+              />
+            </div>
+            <div className="flex justify-between border border-[#606060] px-[16px] py-2">
+              <input
+                type="text"
+                placeholder="Address"
+                className="outline-none w-full"
+              />
+            </div>
+            <div className="flex justify-between border border-[#606060] px-[16px] py-2">
+              <input
+                type="text"
+                placeholder="apartment,suite,etc.(optional)"
+                className="outline-none w-full"
+              />
+            </div>
+            <div className="flex space-x-[24px] font-montserrat">
+              <div className="w-1/2 flex justify-between border border-[#606060] px-[16px] py-2">
+                <input
+                  type="text"
+                  placeholder="postal code"
+                  className="outline-none w-full"
+                />
+              </div>
+              <div className="w-1/2 flex justify-between border border-[#606060] px-[16px] py-2">
+                <input
+                  type="text"
+                  placeholder="city"
+                  className="outline-none w-full"
+                />
+              </div>
+            </div>
+            <div className="flex justify-between border border-[#606060] px-[16px] py-2 space-x-[4px]">
+              <div className="flex-1">
+                <input
+                  type="text"
+                  placeholder="phone"
+                  className="outline-none w-full text-[#606060]"
+                />
+              </div>
+              <PhoneIphoneOutlinedIcon
+                fontSize="small"
+                className=" text-[#606060]"
+              />
+            </div>
+          </div>
+          <div className="flex space-x-1 mt-1 mb-[80px]">
+            <input type="checkbox" className="rounded-none" />
+            <p className="font-montserrat text-[#0C0C0C] text-[14px]">
+              save this information for next time
+            </p>
+          </div>
+          <div className="flex flex-row-reverse justify-between items-center">
+            <button className="bg-darkPrimary px-[32px] py-[16px] text-white font-roboto">
+              <Link to="/shipping">Continue to Shipping</Link>
+            </button>
+            <div className="flex space-x-2 font-montserrat text-[#634D93] text-[16px]">
+              <ArrowBackIosNewOutlinedIcon />
+              <Link to="/cart">return to Cart</Link>
             </div>
           </div>
         </div>
