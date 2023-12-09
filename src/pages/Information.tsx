@@ -53,8 +53,8 @@ const Information = () => {
               <p className="hover:text-[#634D93] text-[#0C0C0C]"> login</p>
             </div>
           </div>
-          <div className="flex border border-[#606060] px-[16px] py-2 space-x-[4px]">
-            <Person4OutlinedIcon className="text-[#606060]" />
+          <div className="flex border items-center border-[#606060] px-[16px] py-2 space-x-[4px]">
+            <Person4OutlinedIcon fontSize="small" className="text-[#606060]" />
             <div className="flex-1">
               <input
                 type="email"
