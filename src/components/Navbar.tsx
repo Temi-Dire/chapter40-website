@@ -84,6 +84,7 @@ const Navbar = () => {
               </li>
               <li>
                 <ShoppingCartOutlinedIcon
+                  className="cursor-pointer"
                   style={iconSize}
                   onClick={() => setOpen(true)}
                 />
