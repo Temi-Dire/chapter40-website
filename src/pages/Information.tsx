@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Person4OutlinedIcon from "@mui/icons-material/Person4Outlined";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
@@ -7,6 +8,7 @@ import MyCart from "../components/MyCart";
 
 const Information = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   return (
     <>
       <div className="lg:flex h-screen">
@@ -171,7 +173,7 @@ const Information = () => {
             </p>
           </div>
           <div className="flex flex-row-reverse justify-between items-center">
-            <button className="bg-darkPrimary px-[32px] py-[16px] text-white font-roboto">
+            <button onClick={()=> navigate('/shipping')} className="bg-darkPrimary px-[32px] py-[16px] text-white font-roboto">
               <Link to="/shipping">Continue to Shipping</Link>
             </button>
             <div className="flex space-x-2 font-montserrat text-[#634D93] text-[16px]">
