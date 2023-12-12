@@ -27,9 +27,10 @@ function App() {
             <Route path="/account/details" element={<Details />} />
             <Route path="/account/editaddress" element={<Editaccount />} />
             <Route path="/savedproduct" element={<SavedProduct />} />
-            <Route path="/shipping" element={<Shipping />} />
-            <Route path="/navigation-page" element={<NavigationPage />} />
-            <Route path="/navigation-page/info" element={<Information/>} />
+            <Route path="navigation-page" element={<NavigationPage />}>
+              <Route path="info" element={<Information />} />
+              <Route path="shipping" element={<Shipping />} />
+            </Route>
 
             {/* <Route
               path="/checkoutproduct"

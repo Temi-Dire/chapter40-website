@@ -7,8 +7,6 @@ import NavigateComponent from "../components/NavigateComponent";
 
 const Information = () => {
   
-
-  
   return (
     <>
       <div>
