@@ -22,15 +22,22 @@ const Shipping = () => {
           </p>
           <p className=" font-roboto text-[16px] text-[#0C0C0C]">Free</p>
         </div>
-            <p className=" font-roboto text-[#606060] text-[16px]">3 to 4 Business Days</p>
-            
-
+        <p className=" font-roboto text-[#606060] text-[16px] mb-[24px]">
+          3 to 4 Business Days
+        </p>
+        <div className="flex justify-between">
+          <p>Expected Date:</p>
+          <div className="flex items-center space-x-1">
+            <div className=" border border-[#A2B39F] rounded-lg h-[16px] w-[16px]" />
+            <p className=" font-montserrat text-[16px] text-[#202020]">
+              Monday, August 14
+            </p>
+          </div>
+        </div>
+        <div className="border bg-[#DFDFDF] my-[30px]" />
 
         <NavigateComponent label="Payment" continueToPath={"/payment"} />
-        </div>
-        
-
-        
+      </div>
     );
 };
 

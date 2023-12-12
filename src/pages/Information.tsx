@@ -139,7 +139,7 @@ const Information = () => {
             save this information for next time
           </p>
         </div>
-        <NavigateComponent label="Shipping" continueToPath={"/shipping"} />
+        <NavigateComponent label="Shipping" continueToPath={"/navigation-page/shipping"} />
       </div>
     </>
   );

@@ -18,10 +18,10 @@ const NavigateComponent = ({ continueToPath, label }: Props) => {
         <Link to="continueToPath">Continue to {label}</Link>
       </button>
       <div className="flex space-x-2 font-montserrat text-[#634D93] text-[16px]">
-        <button onClick={() => navigate(continueToPath)}>
+        <button onClick={() => navigate('/cart')}>
           <ArrowBackIosNewOutlinedIcon />
         </button>
-        <Link to={continueToPath} className="hover:text-darkPrimary">
+        <Link to="/cart" className="hover:text-darkPrimary">
           return to Cart
         </Link>
       </div>
