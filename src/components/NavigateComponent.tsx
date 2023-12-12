@@ -3,10 +3,10 @@ import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutl
 
 interface Props {
   continueToPath: string;
-  path: string;
+  label: string;
 }
 
-const NavigateComponent = ({ continueToPath, path }: Props) => {
+const NavigateComponent = ({ continueToPath, label }: Props) => {
   const navigate = useNavigate();
 
   return (
@@ -15,7 +15,7 @@ const NavigateComponent = ({ continueToPath, path }: Props) => {
         onClick={() => navigate(continueToPath)}
         className="bg-darkPrimary px-[32px] py-[16px] text-white font-roboto"
       >
-        <Link to="continueToPath">Continue to {path}</Link>
+        <Link to="continueToPath">Continue to {label}</Link>
       </button>
       <div className="flex space-x-2 font-montserrat text-[#634D93] text-[16px]">
         <button onClick={() => navigate(continueToPath)}>
