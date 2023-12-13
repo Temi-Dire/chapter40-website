@@ -4,6 +4,7 @@ import CheckoutProduct from "../components/CheckoutProduct";
 import Navbar from "../components/Navbar";
 import FooterSection from "../sections/footer";
 import Newarrivals from "../sections/newarrivals";
+import useStore from "../State";
 
 const Checkout = () => {
   const products = [
@@ -20,6 +21,9 @@ const Checkout = () => {
       price: 30000,
     },
   ];
+
+  const store = useStore();
+
   return (
     <>
       <Navbar />
@@ -27,9 +31,15 @@ const Checkout = () => {
         <div className="mb-16 ">Home/Shop/Checkout</div>
         <div className="grid grid-cols-2 gap-36 ">
           <div className="">
-            {products.map((product) => (
+            {/* {products.map((product) => (
               <CheckoutProduct desc={product.desc} price={product.price} />
+            ))} */}
+            {store.basket.map((item, index) => (
+              <CheckoutProduct desc={item.desc} price={item.price} />
             ))}
+            {/* {store.desc.map((desc, index) => (
+              <CheckoutProduct desc={desc} price={store.price[index]} />
+            ))} */}
           </div>
           <div className="border border-[#CAC6DA] px-6 py-5 space-y-6 h-[400px]">
             <h1 className="text-2xl font-playfair">Order Summary</h1>

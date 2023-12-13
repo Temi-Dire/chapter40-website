@@ -1,39 +1,25 @@
 import FavoriteBorderOutlined from "@mui/icons-material/FavoriteBorderOutlined";
 import Star from "./Star";
-import Button from "./Button";
-import { useReducer } from "react";
+import useStore from "../State";
+import { useState } from "react";
 
 interface CardProps {
-  name: String;
-  price: String;
+  desc: string;
+  price: number;
 }
 
-// const ITEMS = {
-//   ADDTONASKET: 'ADD TO BASKET',
-//   REMOVEFROMBASKET: 'REMOVE FROM BASKET'
-// }
+const Card: React.FC<CardProps> = ({ desc, price }) => {
+  const store = useStore();
+  const addToBasket = store.addToBasket;
+  const [isHovered, setIsHovered] = useState(false);
 
-// type
-
-// function reducer(state, action) {
-//   switch (action.type) {
-//     case ITEMS.ADDTONASKET:
-//       return {}
-//       break;
-
-//     default:
-//       break;
-//   }
-// }
-
-const Card: React.FC<CardProps> = ({ name, price }) => {
-  // const [state, dispatch] = useReducer(reducer, [])
-  // function addToBasket() {
-  //   dispatch({type: 'ADD_TO_BASKET', payload: {name, price}})
-  // }
   return (
     <>
-      <div className="w-60 -z-10">
+      <div
+        className="w-60"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <div className="relative ">
           <FavoriteBorderOutlined className="absolute right-6 top-6" />
           <img
@@ -41,16 +27,21 @@ const Card: React.FC<CardProps> = ({ name, price }) => {
             src="/assets/images/dress1.png"
           />
           <div className="absolute bottom-4 flex justify-center items-center w-full">
-            <Button
-              text={"Add to cart"}
-              paddingX={"px-12"}
-              bgColor={"bg-[#36254B]"}
-              textColor={"text-white"}
-            />
+            {isHovered && (
+              <button
+                className="px-12 bg-[#36254B] text-white font-roboto text-lg border border-[#4E4D93] py-4 cursor-pointer"
+                onClick={() => {
+                  addToBasket({ desc, price });
+                  console.log(store.basket);
+                }}
+              >
+                Add to Cart
+              </button>
+            )}
           </div>
         </div>
         <div>
-          <p className="font-playfair text-xl">{name}</p>
+          <p className="font-playfair text-xl">{desc}</p>
           <p className="font-montserrat">{"₦" + price}</p>
           <Star filled />
         </div>

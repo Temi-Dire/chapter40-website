@@ -48,7 +48,7 @@ const Navbar = () => {
     <>
       <nav className="">
         <div
-          className={`w-full flex justify-between items-center px-[82px] py-[28px] fixed font-montserrat  ${
+          className={`w-full flex justify-between items-center px-[82px] py-[28px] fixed font-montserrat z-10 ${
             !scrolled ? "bg-inherit" : "bg-white"
           }`}
         >

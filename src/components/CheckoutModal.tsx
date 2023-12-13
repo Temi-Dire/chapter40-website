@@ -44,7 +44,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ onClick }) => {
       initial={{ y: "-100vh" }}
       animate={{ y: "0" }}
       transition={{ type: "spring", stiffness: 200, damping: 20 }}
-      className=" h-screen overflow-y-scroll px-4 max-w-[500px] flex flex-col items-center bg-white fixed right-0 border-l border-[#CAC6DA]"
+      className=" h-screen overflow-y-scroll px-4 max-w-[500px] flex flex-col items-center bg-white fixed right-0 border-l border-[#CAC6DA] z-50"
     >
       <div className="flex justify-between py-4 font-playfair text-2xl sticky top-0 bg-white w-full">
         <div>Cart</div>
