@@ -9,13 +9,10 @@ import Signup from "./pages/auth/signup";
 import Details from "./pages/account/details";
 import Editaccount from "./pages/account/editaccount";
 import SavedProduct from "./components/SavedProduct";
-<<<<<<< HEAD
-=======
 import Information from "./pages/Information";
 import Shipping from "./pages/Shipping";
 import NavigationPage from "./pages/NavigationPage";
 
->>>>>>> Information
 function App() {
   return (
     <>
