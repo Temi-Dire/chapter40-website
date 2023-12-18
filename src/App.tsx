@@ -9,6 +9,11 @@ import Signup from "./pages/auth/signup";
 import Details from "./pages/account/details";
 import Editaccount from "./pages/account/editaccount";
 import SavedProduct from "./components/SavedProduct";
+
+import Information from "./pages/Information";
+import Shipping from "./pages/Shipping";
+import NavigationPage from "./pages/NavigationPage";
+
 function App() {
   return (
     <>
@@ -23,6 +28,11 @@ function App() {
             <Route path="/account/details" element={<Details />} />
             <Route path="/account/editaddress" element={<Editaccount />} />
             <Route path="/savedproduct" element={<SavedProduct />} />
+            <Route path="navigation-page" element={<NavigationPage />}>
+              <Route path="info" element={<Information />} />
+              <Route path="shipping" element={<Shipping />} />
+            </Route>
+
             {/* <Route
               path="/checkoutproduct"
               element={
