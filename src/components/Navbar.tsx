@@ -2,11 +2,11 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
+import useStore from "../State";
 
 const Navbar = () => {
-  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -27,23 +27,22 @@ const Navbar = () => {
     };
   }, []);
 
-  const navLinks = [
-    {
-      id: "about",
-      title: "About Us",
-    },
-    {
-      id: "shop",
-      title: "Shop",
-    },
-    {
-      id: "categories",
-      title: "Categories",
-    },
-  ];
   const iconSize = {
     fontSize: 30,
   };
+
+  const store = useStore();
+
+  const basket = store.basket;
+
+  const totalItemsInBasket = () => {
+    let sum = 0;
+    for (let i = 0; i < basket.length; i++) {
+      sum += basket[i].quantity;
+    }
+    return sum;
+  };
+
   return (
     <>
       <nav className="">
@@ -53,11 +52,6 @@ const Navbar = () => {
           }`}
         >
           <ul className="flex space-x-24 text-base font-normal">
-            {/* {navLinks.map((link) => (
-              <li key={link.id}>
-                <Link to={link.title == 'about' && '/aboutus'}>{link.title}</Link>
-              </li>
-            ))} */}
             <li>
               <Link to={"/about"}>About</Link>
             </li>
@@ -82,12 +76,14 @@ const Navbar = () => {
               <li>
                 <FavoriteBorderOutlinedIcon />
               </li>
-              <li>
+              <li className="relative" onClick={() => setOpen(true)}>
                 <ShoppingCartOutlinedIcon
                   className="cursor-pointer"
                   style={iconSize}
-                  onClick={() => setOpen(true)}
                 />
+                <span className="bg-black text-white p-1 px-2 rounded-[50%] absolute bottom-[-8px] text-xs right-[-10px]">
+                  {totalItemsInBasket()}
+                </span>
               </li>
             </ul>
           </div>
