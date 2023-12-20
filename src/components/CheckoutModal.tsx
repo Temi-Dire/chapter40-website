@@ -11,28 +11,6 @@ interface CheckoutModalProps {
 
 const CheckoutModal: React.FC<CheckoutModalProps> = ({ onClick }) => {
   const navigate = useNavigate();
-  const products = [
-    {
-      desc: "Privé Contrast Collar cooperate Dress",
-      price: 30000,
-    },
-    {
-      desc: "Privé Contrast Collar cooperate Dress",
-      price: 30000,
-    },
-    {
-      desc: "Privé Contrast Collar cooperate Dress",
-      price: 30000,
-    },
-    {
-      desc: "Privé Contrast Collar cooperate Dress",
-      price: 30000,
-    },
-    {
-      desc: "Privé Contrast Collar cooperate Dress",
-      price: 30000,
-    },
-  ];
 
   const store = useStore();
   const basket = store.basket;
