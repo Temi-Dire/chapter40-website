@@ -4,7 +4,7 @@ interface BasketDataType {
   desc: string;
   price: number;
   id: number;
-  quantity?: number;
+  quantity: number;
 }
 
 interface AddToBasketDataType {
