@@ -13,6 +13,7 @@ const Card: React.FC<CardProps> = ({ desc, price, id }) => {
   const store = useStore();
   const addToBasket = store.addToBasket;
   const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   return (
     <>
@@ -22,7 +23,12 @@ const Card: React.FC<CardProps> = ({ desc, price, id }) => {
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="relative ">
-          <FavoriteBorderOutlined className="absolute right-6 top-6" />
+          <FavoriteBorderOutlined
+            className={`absolute right-6 top-6 cursor-pointer ${
+              isClicked && "text-red-600"
+            }`}
+            onClick={() => setIsClicked(!isClicked)}
+          />
           <img
             className="w-full object-cover"
             src="/assets/images/dress1.png"

@@ -39,8 +39,8 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ onClick }) => {
 
   const getTotal = () => {
     let sum: number = 0;
-    for (let i = 0; i < products.length; i++) {
-      sum += products[i].price;
+    for (let i = 0; i < basket.length; i++) {
+      sum += basket[i].price * basket[i].quantity;
     }
     return sum;
   };
