@@ -7,22 +7,15 @@ import Newarrivals from "../sections/newarrivals";
 import useStore from "../State";
 
 const Checkout = () => {
-  const products = [
-    {
-      desc: "Privé Contrast Collar cooperate Dress",
-      price: 30000,
-    },
-    {
-      desc: "Privé Contrast Collar cooperate Dress",
-      price: 30000,
-    },
-    {
-      desc: "Privé Contrast Collar cooperate Dress",
-      price: 30000,
-    },
-  ];
-
   const store = useStore();
+
+  const getTotal = () => {
+    let total = 0;
+    for (let i = 0; i < store.basket.length; i++) {
+      total = total + store.basket[i].price;
+    }
+    return total;
+  };
 
   return (
     <>
@@ -31,22 +24,29 @@ const Checkout = () => {
         <div className="mb-16 ">Home/Shop/Checkout</div>
         <div className="grid grid-cols-2 gap-36 ">
           <div className="">
-            {/* {products.map((product) => (
-              <CheckoutProduct desc={product.desc} price={product.price} />
-            ))} */}
-            {store.basket.map((item, index) => (
-              <CheckoutProduct desc={item.desc} price={item.price} />
-            ))}
-            {/* {store.desc.map((desc, index) => (
-              <CheckoutProduct desc={desc} price={store.price[index]} />
-            ))} */}
+            {store.basket.length !== 0 ? (
+              <div>
+                {store.basket.map((item, index) => (
+                  <CheckoutProduct
+                    desc={item.desc}
+                    price={item.price}
+                    id={item.id}
+                    quantity={item.quantity}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="w-full h-full flex items-center justify-center">
+                No items have been added yet!
+              </div>
+            )}
           </div>
           <div className="border border-[#CAC6DA] px-6 py-5 space-y-6 h-[400px]">
             <h1 className="text-2xl font-playfair">Order Summary</h1>
             <div className="space-y-5">
               <div className="flex justify-between font-montserrat text-lg text-[#666666]">
                 <div>Subtotal</div>
-                <div>$565</div>
+                <div>{"$" + getTotal()}</div>
               </div>
               <div className="flex justify-between font-montserrat text-lg text-[#FF3333]">
                 <div>Discount</div>

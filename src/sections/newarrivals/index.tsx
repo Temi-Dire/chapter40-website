@@ -13,22 +13,22 @@ const Newarrivals: React.FC<NewarrivalsProps> = ({
     {
       desc: "Red ankara gown sumami crimison",
       price: 30000,
-      color: "bg-red-700",
+      id: 1,
     },
     {
       desc: "Pink ankara gown sumami crimison",
       price: 30000,
-      color: "bg-red-100",
+      id: 2,
     },
     {
       desc: "Green ankara gown sumami crimison",
       price: 30000,
-      color: "bg-[green]",
+      id: 3,
     },
     {
       desc: "Yellow ankara gown sumami crimison",
       price: 30000,
-      color: "bg-[yellow]",
+      id: 4,
     },
   ];
 
@@ -40,7 +40,7 @@ const Newarrivals: React.FC<NewarrivalsProps> = ({
       </div>
       <div className="flex justify-between">
         {items.map((item) => (
-          <Card desc={item.desc} price={item.price} />
+          <Card desc={item.desc} price={item.price} id={item.id} />
         ))}
       </div>
     </section>

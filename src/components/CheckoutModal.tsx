@@ -3,6 +3,7 @@ import CheckoutProduct from "./CheckoutProduct";
 import Button from "./Button";
 import { AnimatePresence, motion as m } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import useStore from "../State";
 
 interface CheckoutModalProps {
   onClick: () => void;
@@ -32,6 +33,10 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ onClick }) => {
       price: 30000,
     },
   ];
+
+  const store = useStore();
+  const basket = store.basket;
+
   const getTotal = () => {
     let sum: number = 0;
     for (let i = 0; i < products.length; i++) {
@@ -50,11 +55,22 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ onClick }) => {
         <div>Cart</div>
         <CloseIcon onClick={onClick} className="cursor-pointer" />
       </div>
-      <div>
-        {products.map((product) => (
-          <CheckoutProduct desc={product.desc} price={product.price} />
-        ))}
-      </div>
+      {basket.length !== 0 ? (
+        <div>
+          {basket.map((item) => (
+            <CheckoutProduct
+              desc={item.desc}
+              price={item.price}
+              id={item.id}
+              quantity={item.quantity}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="w-[400px] h-full flex items-center justify-center">
+          No items have been added yet!
+        </div>
+      )}
       <div
         className="sticky bottom-0 bg-white w-full flex justify-center py-4 border-t border-[#F1F1F1]"
         onClick={() => navigate("/checkout")}

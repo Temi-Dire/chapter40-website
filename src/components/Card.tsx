@@ -6,9 +6,10 @@ import { useState } from "react";
 interface CardProps {
   desc: string;
   price: number;
+  id: number;
 }
 
-const Card: React.FC<CardProps> = ({ desc, price }) => {
+const Card: React.FC<CardProps> = ({ desc, price, id }) => {
   const store = useStore();
   const addToBasket = store.addToBasket;
   const [isHovered, setIsHovered] = useState(false);
@@ -31,7 +32,7 @@ const Card: React.FC<CardProps> = ({ desc, price }) => {
               <button
                 className="px-12 bg-[#36254B] text-white font-roboto text-lg border border-[#4E4D93] py-4 cursor-pointer"
                 onClick={() => {
-                  addToBasket({ desc, price });
+                  addToBasket({ desc, price, id });
                   console.log(store.basket);
                 }}
               >
