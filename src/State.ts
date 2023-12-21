@@ -14,10 +14,13 @@ interface AddToBasketDataType {
   quantity?: number;
 }
 
+//add a property, (a boolean value), that stores either
+
 interface FavoritesDataType {
   desc: string;
   price: number;
   id: number;
+  isClicked: boolean;
 }
 
 interface BasketStore {
@@ -27,7 +30,7 @@ interface BasketStore {
   decrement: (id: number) => void;
   increment: (id: number) => void;
   removeFromBasket: (id: number) => void;
-  addToFavorites: (data: AddToBasketDataType) => void;
+  addToFavorites: (data: FavoritesDataType) => void;
   removeFromFavorites: (id: number) => void;
 }
 

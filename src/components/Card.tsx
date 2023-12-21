@@ -14,6 +14,7 @@ const Card: React.FC<CardProps> = ({ desc, price, id }) => {
   const addToBasket = store.addToBasket;
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const addToFavorites = store.addToFavorites;
 
   return (
     <>
@@ -27,7 +28,9 @@ const Card: React.FC<CardProps> = ({ desc, price, id }) => {
             className={`absolute right-6 top-6 cursor-pointer ${
               isClicked && "text-red-600"
             }`}
-            onClick={() => setIsClicked(!isClicked)}
+            onClick={() => {
+              setIsClicked(!isClicked);
+            }}
           />
           <img
             className="w-full object-cover"
