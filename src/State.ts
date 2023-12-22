@@ -55,6 +55,9 @@ const useStore = create<BasketStore>()((set: any) => ({
         (item: { id: number }) => item.id === id
       );
       //create an if statement, so that the quantity of the product doesn't go beyond 1
+      if (state.basket[selectedProduct].quantity === 1) {
+        return { basket: [...state.basket] };
+      }
       const updatedBasket = [...state.basket];
       updatedBasket[selectedProduct].quantity -= 1;
       return { basket: [...updatedBasket] };
