@@ -1,12 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import CheckoutProduct from "../components/CheckoutProduct";
 import Navbar from "../components/Navbar";
 import FooterSection from "../sections/footer";
 import Newarrivals from "../sections/newarrivals";
 import useStore from "../State";
+import { useEffect } from "react";
 
 const Checkout = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const navigate = useNavigate();
+
   const store = useStore();
   const basket = store.basket;
 
@@ -69,7 +76,11 @@ const Checkout = () => {
                 />
                 <Button text={"Apply"} />
               </div>
-              <Button text={"Go to Checkout"} width={"w-full"} />
+              <Button
+                text={"Go to Checkout"}
+                width={"w-full"}
+                onClick={() => navigate("/navigation-page/info")}
+              />
             </div>
           </div>
         </section>
