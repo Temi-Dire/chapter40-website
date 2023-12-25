@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import MyCart from "../components/MyCart";
-import NavigationMenu from "../components/NavigationMenu";
+import NavigationMenu from "../components/navigationmenu/NavigationMenu";
 import { navigationItems } from "../components/constants/navigationItems";
 
 const NavigationPage = () => {

@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import "./NavigationMenu.css"
 
 interface NavigateItem {
   path: string;
@@ -27,13 +28,12 @@ const NavigationMenu = ({ navigationItems }: Props) => {
       <div className="p-[16px] font-montserrat text-borderDark text-[20px] space-x-[20px] mb-[26px]">
         {navigationItems.map((item, index) => (
           <React.Fragment key={item.path}>
-            <Link
+            <NavLink
               to={item.path}
-              className={currentPath === item.path ? "text-[#36254B]" : ""}
               onClick={() => setCurrentPath(item.path)}
             >
               {item.label}
-            </Link>
+            </NavLink>
             {index < navigationItems.length - 1 && (
               <span className="ml-[20px] text-[#606060]">/</span>
             )}
