@@ -10,10 +10,10 @@ const NavigateComponent = ({ continueToPath, label }: Props) => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-row-reverse justify-between items-center">
+    <div className="flex flex-col space-y-4 lg:flex-row-reverse lg:justify-between items-center">
       <button
         onClick={() => navigate(continueToPath)}
-        className="bg-darkPrimary px-[32px] py-[16px] text-white font-roboto"
+        className="bg-darkPrimary w-full lg:w-auto px-[32px] py-[16px] text-white font-roboto"
       >
         <Link to="continueToPath">Continue to {label}</Link>
       </button>

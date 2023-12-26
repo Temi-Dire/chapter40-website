@@ -7,11 +7,11 @@ const NavigationPage = () => {
   return (
     <>
       <div className="lg:flex min-h-screen">
-        <div className="lg:pl-[108px] py-[32px] pr-[65px] lg:w-1/2 font-playfair">
+        <div className="px-[50px] lg:pl-[108px] py-[40px] lg:py-[32px] pr-[65px] lg:w-1/2 font-playfair">
           <NavigationMenu navigationItems={navigationItems} />
           <Outlet />
         </div>
-        <div className="lg:w-1/2 bg-[#F3E9FA] min-h-[screen]">
+        <div className="hidden lg:block lg:w-1/2 bg-[#F3E9FA] min-h-[screen]">
           <MyCart />
         </div>
       </div>

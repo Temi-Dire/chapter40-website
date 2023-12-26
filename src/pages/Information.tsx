@@ -6,17 +6,20 @@ import NavigateComponent from "../components/NavigateComponent";
 
 
 const Information = () => {
-  
+    const inputContainerStyles = {
+      base: "lg:w-1/2 border border-[#606060] px-[16px] py-2",
+      input: "outline-none w-full",
+    };
   return (
     <>
       <div>
         <div className="flex justify-between mb-2">
-          <p className="text-[20px]">Contact</p>
-          <div className="space-x-2 flex font-montserrat text-[16px] font-normal">
+          <p className="text-[14px] lg:text-[20px]">Contact</p>
+          <div className="space-x-2 flex font-montserrat text-[12px] lg:text-[16px] font-normal">
             <p className="text-[#0C0C0C]">have an account?</p>
             <Link
               to="/"
-              className="hover:text-[#634D93] text-[#0C0C0C] cursor-pointer"
+              className="hover:text-[#634D93] text-[#5A6D57] lg:text-[#0C0C0C] cursor-pointer"
             >
               {" "}
               login
@@ -40,7 +43,7 @@ const Information = () => {
             email me with news and offers
           </p>
         </div>
-        <header className="text-playfair text-[20px] font-normal mb-[20px]">
+        <header className=" font-montserrat lg:font-playfair text-[20px] font-normal mb-[20px]">
           Shipping Address
         </header>
         <div className="space-y-[8px] font-montserrat">
@@ -60,21 +63,21 @@ const Information = () => {
               />
             </button>
           </div>
-          <div className="flex space-x-[24px] font-montserrat">
-            <div className="w-1/2 flex justify-between border border-[#606060] px-[16px] py-2">
+          <div className="space-y-[8px] lg:space-y-0 lg:flex lg:space-x-[24px] font-montserrat">
+            <div className={inputContainerStyles.base}>
               <input
                 type="text"
                 placeholder="first name"
                 required
-                className="outline-none w-full"
+                className={inputContainerStyles.input}
               />
             </div>
-            <div className="w-1/2 flex justify-between border border-[#606060] px-[16px] py-2">
+            <div className={inputContainerStyles.base}>
               <input
                 type="text"
                 placeholder="last name"
                 required
-                className="outline-none w-full"
+                className={inputContainerStyles.input}
               />
             </div>
           </div>
@@ -100,21 +103,21 @@ const Information = () => {
               className="outline-none w-full"
             />
           </div>
-          <div className="flex space-x-[24px] font-montserrat">
-            <div className="w-1/2 flex justify-between border border-[#606060] px-[16px] py-2">
+          <div className="space-y-[8px] lg:space-y-0 lg:flex lg:space-x-[24px] font-montserrat">
+            <div className={inputContainerStyles.base}>
               <input
                 type="text"
                 placeholder="postal code"
                 required
-                className="outline-none w-full"
+                className={inputContainerStyles.input}
               />
             </div>
-            <div className="w-1/2 flex justify-between border border-[#606060] px-[16px] py-2">
+            <div className={inputContainerStyles.base}>
               <input
                 type="text"
                 placeholder="city"
                 required
-                className="outline-none w-full"
+                className={inputContainerStyles.input}
               />
             </div>
           </div>
@@ -139,7 +142,10 @@ const Information = () => {
             save this information for next time
           </p>
         </div>
-        <NavigateComponent label="Shipping" continueToPath={"/navigation-page/shipping"} />
+        <NavigateComponent
+          label="Shipping"
+          continueToPath={"/navigation-page/shipping"}
+        />
       </div>
     </>
   );
