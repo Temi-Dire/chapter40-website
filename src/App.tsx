@@ -29,7 +29,7 @@ function App() {
             <Route path="/account/editaddress" element={<Editaccount />} />
             <Route path="/savedproduct" element={<SavedProduct />} />
             <Route path="navigation-page" element={<NavigationPage />}>
-              <Route path="info" element={<Information />} />
+              <Route path="info" element={<Information onSubmit={(data)=> console.log(data)} />} />
               <Route path="shipping" element={<Shipping />} />
             </Route>
 
