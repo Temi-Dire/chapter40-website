@@ -1,6 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import useLogin from "../../hooks/useLogin";
+import { Puff, TailSpin, Triangle } from "react-loader-spinner";
 
 const Login = () => {
   const schema = z.object({
@@ -17,6 +19,8 @@ const Login = () => {
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
+
+  const { error } = useLogin();
 
   return (
     <div className="h-screen flex flex-col justify-center items-center">
@@ -41,8 +45,9 @@ const Login = () => {
           placeholder="Password"
           type="text"
         />
-        <button className="bg-[#634D93] text-white text-xl py-4 px-10 w-full max-w-md ">
-          Login
+        <button className="bg-[#634D93] text-white text-xl py-4 px-10 w-full max-w-md flex justify-center items-center ">
+          <Triangle height="20" width="20" color="#ffffff" />
+          <p className="ml-3 font-montserrat">Login</p>
         </button>
       </form>
     </div>
