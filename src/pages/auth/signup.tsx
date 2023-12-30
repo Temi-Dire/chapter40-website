@@ -3,21 +3,18 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-// import { ToastContainer, toast } from "react-toastify";
+import useRegister from "../../hooks/useRegister";
+import { Triangle } from "react-loader-spinner";
 
 const Signup = () => {
   const schema = z.object({
-    name: z
+    username: z
       .string()
       .min(4, { message: "Name should be atleast 4 characters long" }),
     email: z.string().email({ message: "Please enter a valid email" }),
     password: z
       .string()
-      .refine(
-        (value) => passwordPattern.test(value),
-        "Password must contain at least one letter, one number, one special character, and be at least 8 characters long"
-      ),
+      .min(5, { message: "Password should be atleast 5 characters long" }),
   });
 
   type FormData = z.infer<typeof schema>;
@@ -30,11 +27,26 @@ const Signup = () => {
     resolver: zodResolver(schema),
   });
 
-  const passwordPattern =
-    /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[@#$%^&+=!])(?=\S+$).{8,}$/;
+  // const passwordPattern =
+  //   /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[@#$%^&+=!])(?=\S+$).{8,}$/;
 
-  const notify = () => {
+  const { mutate, isPending } = useRegister();
+
+  const successnotification = () => {
     toast.success("Sign Up Successful", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
+  const errornotification = (err: any) => {
+    toast.error(err, {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -52,58 +64,70 @@ const Signup = () => {
         CREATE AN ACCOUNT
       </div>
       <form
-        className="flex flex-col justify-center items-center mx-8 lg:mx-40"
-        onSubmit={handleSubmit((data) => console.log(data))}
+        className="flex flex-col items-center mx-auto w-full max-w-xl p-7"
+        onSubmit={handleSubmit((data) => {
+          if (isValid) {
+            mutate(data, {
+              onSuccess: () => {
+                setTimeout(() => {
+                  successnotification();
+                }, 100);
+              },
+              onError: () =>
+                setTimeout(() => {
+                  errornotification("something is wrong");
+                }, 100),
+            });
+          }
+        })}
       >
         <input
-          {...register("name")}
-          className={`w-full outline-none px-5 py-3 border  ${
-            errors.name ? "border-red-600 mb-1" : "mb-6"
+          {...register("username")}
+          className={`w-full outline-none px-5 py-3 border-2 mb-6 rounded-lg ${
+            errors.username ? "border-red-600" : "border-[#CAC6DA]"
           }`}
           type="text"
           placeholder="NAME"
         />
-        {errors.name && (
-          <p className="text-red-800 mb-3 text-sm text-left">
-            {errors.name.message}
-          </p>
-        )}
         <input
           {...register("email")}
-          className={`w-full outline-none px-5 py-3 border ${
-            errors.email ? "border-red-600 mb-1" : "mb-6"
+          className={`w-full outline-none px-5 py-3 border-2 mb-6 rounded-lg ${
+            errors.email ? "border-red-600" : "border-[#CAC6DA]"
           }`}
           type="text"
           placeholder="EMAIL"
         />
-        {errors.email && (
-          <p className="text-red-800 mb-3 text-sm text-left">
-            {errors.email.message}
-          </p>
-        )}
         <input
           {...register("password")}
-          className={`w-full outline-none px-5 py-3 border ${
-            errors.password ? "border-red-600 mb-1" : "mb-6"
-          } `}
-          type="password"
+          className={`w-full outline-none px-5 py-3 border-2 mb-6 rounded-lg ${
+            errors.password ? "border-red-600" : "border-[#CAC6DA]"
+          }`}
           placeholder="PASSWORD"
-        />
-        {errors.password && (
-          <p className="text-red-800 mb-3 text-sm">{errors.password.message}</p>
-        )}
-        <input
-          className="w-full outline-none px-5 py-3 border border-[#CAC6DA] mb-3"
           type="password"
-          placeholder="RE-ENTER PASSWORD"
         />
+        {/* <input
+          {...register("re-entered password")}
+          className={`w-full outline-none px-5 py-3 border mb-6 ${
+            errors["re-entered password"]
+              ? "border-red-600"
+              : "border-[#CAC6DA]"
+          }`}
+          placeholder="RE-ENTER PASSWORD"
+          type="text"
+        /> */}
         <button
-          className="bg-[#36254B] text-white px-4 py-2 font-roboto"
-          disabled={!isValid}
+          className="bg-[#634D93] text-white text-xl py-4 px-10 w-full max-w-md flex justify-center"
+          // disabled={!isValid}
           type="submit"
-          onClick={notify}
+          onClick={() => {
+            if (errors.username) errornotification(errors.username.message);
+            else if (errors.email) errornotification(errors.email.message);
+            else if (errors.password)
+              errornotification(errors.password.message);
+          }}
         >
-          Create Account
+          {isPending && <Triangle height="20" width="20" color="#ffffff" />}
+          <p className="ml-3 font-montserrat">create account</p>
         </button>
       </form>
       {/* <div className="flex justify-center flex-col space-y-6">
