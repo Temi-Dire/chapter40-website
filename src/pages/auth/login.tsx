@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import useLogin from "../../hooks/useLogin";
-import { Puff, TailSpin, Triangle } from "react-loader-spinner";
+import { Triangle } from "react-loader-spinner";
 
 const Login = () => {
   const schema = z.object({
