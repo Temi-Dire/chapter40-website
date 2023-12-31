@@ -9,13 +9,6 @@ import sectionImage from "/assets/images/elegance.png";
 // import Minicard from "../components/Minicard"
 
 const Home = () => {
-  const menu = [
-    "New Arrivals",
-    "Best Sellers",
-    "Recently Viewed",
-    "Popular This Week",
-    "All products",
-  ];
   return (
     <>
       <Navbar />
@@ -107,7 +100,7 @@ const Home = () => {
         <Button text={"Load More"} />
       </div>
       {/* <Footer items={menu} /> */}
-      <FooterSection />
+      {/* <FooterSection /> */}
     </>
   );
 };
