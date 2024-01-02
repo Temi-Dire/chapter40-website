@@ -48,9 +48,10 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`w-full flex justify-between justify-items-center items-center px-4 sm:px-10 lg:px-16 py-3 lg:py-6 fixed font-montserrat z-10 max-w-7xl ${
-          !scrolled ? "bg-inherit" : "bg-white"
-        }`}
+        className={`w-full flex justify-between justify-items-center items-center px-4 sm:px-10 lg:px-16 py-3 lg:py-6 sticky top-0 font-montserrat z-10 max-w-7xl `}
+        style={{
+          background: "linear-gradient(to right, white 50%, purple 50%)",
+        }}
       >
         <ul className="text-base font-normal hidden lg:flex ">
           <li className="mr-8">
@@ -63,7 +64,6 @@ const Navbar = () => {
             <Link to={"/categories"}>Categories</Link>
           </li>
         </ul>
-        {/* <MenuIcon /> */}
         <m.div
           className="cursor-pointer items-center flex flex-col justify-center lg:hidden"
           onClick={() => setIsOpen(!isOpen)}
@@ -91,7 +91,7 @@ const Navbar = () => {
             transition={{ ease: "easeInOut", duration: 0.3 }}
           />
         </m.div>
-        <Link to={"/"} className="text-2xl md:text-4xl font-bold font-playfair">
+        <Link to={"/"} className="text-2xl md:text-4xl  font-playfair">
           Chapter40
         </Link>
         <div className="flex justify-between items-center  text-base font-normal">
