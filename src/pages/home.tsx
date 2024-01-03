@@ -14,7 +14,7 @@ const Home = () => {
       <Navbar />
       <Hero />
       <Newarrivals />
-      <section className="grid grid-cols-2 px-[74.5px] mb-10 gap-7 mt-[123px]">
+      {/* <section className="grid grid-cols-2 px-[74.5px] mb-10 gap-7 mt-[123px]">
         <div className="w-full h-full relative flex justify-center items-center -z-10">
           <img src="/assets/images/dress3.png" alt="" />
           <div className="absolute bottom-4 ">
@@ -72,9 +72,9 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <section
-        className="bg-cover bg-center w-full px-[74.5px] grid grid-cols-2 h-[905px]"
+        className="bg-cover bg-center w-full px-10 lg:px-[74.5px] mt-20 flex justify-center items-center lg:grid grid-cols-2 py-20 lg:h-[905px]"
         style={{ backgroundImage: `url(${sectionImage})` }}
       >
         <div></div>
