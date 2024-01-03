@@ -19,7 +19,7 @@ const Card: React.FC<CardProps> = ({ desc, price, id }) => {
   return (
     <>
       <div
-        className="w-60"
+        className="w-[205px] md:w-[250px] flex-shrink-0"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
