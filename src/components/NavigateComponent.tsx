@@ -4,21 +4,29 @@ import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutl
 interface Props {
   continueToPath: string;
   label: string;
+  onSubmit: () => void;
+  isValid: boolean;
 }
 
-const NavigateComponent = ({ continueToPath, label }: Props) => {
+const NavigateComponent = ({ continueToPath, label, onSubmit, isValid }: Props) => {
   const navigate = useNavigate();
 
+  const handleContinueClick = () => {
+    onSubmit();
+    navigate(continueToPath);
+  };
+
   return (
-    <div className="flex flex-row-reverse justify-between items-center">
+    <div className="flex flex-col space-y-4 lg:flex-row-reverse lg:justify-between items-center">
       <button
-        onClick={() => navigate(continueToPath)}
-        className="bg-darkPrimary px-[32px] py-[16px] text-white font-roboto"
+        type="submit"
+        onClick={handleContinueClick}
+        className="bg-darkPrimary w-full lg:w-auto px-[32px] py-[16px] text-white font-roboto"
       >
-        <Link to="continueToPath">Continue to {label}</Link>
+        <p>Continue to {label}</p>
       </button>
       <div className="flex space-x-2 font-montserrat text-[#634D93] text-[16px]">
-        <button onClick={() => navigate('/cart')}>
+        <button onClick={() => navigate("/cart")}>
           <ArrowBackIosNewOutlinedIcon />
         </button>
         <Link to="/cart" className="hover:text-darkPrimary">

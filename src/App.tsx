@@ -33,7 +33,7 @@ function App() {
             <Route path="/savedproduct" element={<SavedProduct />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="navigation-page" element={<NavigationPage />}>
-              <Route path="info" element={<Information />} />
+              <Route path="info" element={<Information onSubmit={(data)=> console.log(data)} />} />
               <Route path="shipping" element={<Shipping />} />
             </Route>
 
