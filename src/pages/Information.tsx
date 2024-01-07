@@ -19,9 +19,9 @@ const schema = z.object({
   company: z.string(),
   address: z.string(),
   apartment: z.string(),
-  postalCode: z.string(),
+  postalCode: z.number(),
   city: z.string(),
-  phone: z.string(),
+  phone: z.number(),
 });
 
 type FormData = z.infer<typeof schema>;
