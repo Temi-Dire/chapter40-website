@@ -1,6 +1,7 @@
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import { motion as m } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
@@ -9,6 +10,7 @@ import useStore from "../State";
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   if (open) {
     document.body.style.overflow = "hidden";
@@ -45,50 +47,79 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="">
-        <div
-          className={`w-full flex justify-between items-center px-[82px] py-[28px] fixed font-montserrat z-10 ${
-            !scrolled ? "bg-inherit" : "bg-white"
-          }`}
+      <nav
+        className={`w-full flex justify-between justify-items-center items-center px-4 sm:px-10 lg:px-16 py-3 lg:py-6 sticky top-0 font-montserrat z-10 max-w-7xl `}
+        style={{
+          background: "linear-gradient(to right, white 50%, purple 50%)",
+        }}
+      >
+        <ul className="text-base font-normal hidden lg:flex ">
+          <li className="mr-8">
+            <Link to={"/about"}>About</Link>
+          </li>
+          <li className="mr-8">
+            <Link to={"/shop"}>Shop</Link>
+          </li>
+          <li>
+            <Link to={"/categories"}>Categories</Link>
+          </li>
+        </ul>
+        <m.div
+          className="cursor-pointer items-center flex flex-col justify-center lg:hidden"
+          onClick={() => setIsOpen(!isOpen)}
+          initial={{ rotate: 0, opacity: 1 }}
+          animate={{ rotate: 0, opacity: 1 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ ease: "easeInOut", duration: 0.3 }}
         >
-          <ul className="flex space-x-24 text-base font-normal">
-            <li>
-              <Link to={"/about"}>About</Link>
+          <m.div
+            className="h-[3.5px]  w-6 bg-black mb-1"
+            initial={{ y: 0, rotate: 0 }}
+            animate={isOpen ? { y: 8, rotate: 45 } : { y: 0, rotate: 0 }}
+            transition={{ ease: "easeInOut", duration: 0.3 }}
+          />
+          <m.div
+            className="h-[3.5px] w-6 bg-black mb-1"
+            initial={{ opacity: 1 }}
+            animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+            transition={{ ease: "easeInOut", duration: 0.3 }}
+          />
+          <m.div
+            className="h-[3.5px] w-6 bg-black"
+            initial={{ y: 0, rotate: 0 }}
+            animate={isOpen ? { y: -7, rotate: -45 } : { y: 0, rotate: 0 }}
+            transition={{ ease: "easeInOut", duration: 0.3 }}
+          />
+        </m.div>
+        <Link to={"/"} className="text-2xl md:text-4xl  font-playfair">
+          Chapter40
+        </Link>
+        <div className="flex justify-between items-center  text-base font-normal">
+          <a href="#" className="mr-8 hidden lg:inline">
+            Contact Us
+          </a>
+          <ul className=" justify-between flex">
+            <li className="mr-4">
+              <Link to={"/account/details"}>
+                <PersonOutlineOutlinedIcon style={iconSize} />
+              </Link>
             </li>
-            <li>
-              <Link to={"/shop"}>Shop</Link>
+            <li className="mr-4 hidden lg:list-item">
+              <FavoriteBorderOutlinedIcon />
             </li>
-            <li>
-              <Link to={"/categories"}>Categories</Link>
+            <li className="relative" onClick={() => setOpen(true)}>
+              <ShoppingCartOutlinedIcon
+                className="cursor-pointer"
+                style={iconSize}
+              />
+              <span className="bg-black text-white p-1 px-2 rounded-[50%] absolute bottom-[-8px] text-xs right-[-10px]">
+                {totalItemsInBasket()}
+              </span>
             </li>
           </ul>
-          <Link to={"/"} className="text-4xl font-medium">
-            Chapter40
-          </Link>
-          <div className="flex justify-between items-center space-x-24 text-base font-normal">
-            <a href="#">Contact Us</a>
-            <ul className="space-x-5 flex">
-              <li>
-                <Link to={"/account/details"}>
-                  <PersonOutlineOutlinedIcon style={iconSize} />
-                </Link>
-              </li>
-              <li>
-                <FavoriteBorderOutlinedIcon />
-              </li>
-              <li className="relative" onClick={() => setOpen(true)}>
-                <ShoppingCartOutlinedIcon
-                  className="cursor-pointer"
-                  style={iconSize}
-                />
-                <span className="bg-black text-white p-1 px-2 rounded-[50%] absolute bottom-[-8px] text-xs right-[-10px]">
-                  {totalItemsInBasket()}
-                </span>
-              </li>
-            </ul>
-          </div>
         </div>
       </nav>
+
       {open && <CheckoutModal onClick={() => setOpen(false)} />}
     </>
   );
