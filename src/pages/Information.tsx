@@ -6,6 +6,7 @@ import NavigateComponent from "../components/NavigateComponent";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { KeyboardEventHandler } from "react";
 
 interface Props {
   onSubmit: (data: FormData) => void;
@@ -19,9 +20,9 @@ const schema = z.object({
   company: z.string(),
   address: z.string(),
   apartment: z.string(),
-  postalCode: z.number(),
+  postalCode: z.number().min(6).max(6),
   city: z.string(),
-  phone: z.number(),
+  phone: z.number().min(5),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -36,6 +37,25 @@ const Information = ({ onSubmit }: Props) => {
   const inputContainerStyles = {
     base: "lg:w-1/2 border border-[#606060] px-[16px] py-2",
     input: "outline-none w-full",
+  };
+  const allowOnlyNumbers: KeyboardEventHandler<HTMLInputElement> = (evt) => {
+    const keysAllowed: string[] = [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+    ];
+    const keyPressed: string = evt.key;
+
+    if (!keysAllowed.includes(keyPressed)) {
+      evt.preventDefault();
+    }
   };
   return (
     <>
@@ -154,6 +174,7 @@ const Information = ({ onSubmit }: Props) => {
                   placeholder="postal code"
                   required
                   className={inputContainerStyles.input}
+                  onKeyDown={allowOnlyNumbers}
                 />
               </div>
               <div className={inputContainerStyles.base}>
@@ -174,6 +195,7 @@ const Information = ({ onSubmit }: Props) => {
                   placeholder="phone"
                   required
                   className="outline-none w-full text-[#606060]"
+                  onKeyDown={allowOnlyNumbers}
                 />
               </div>
               <PhoneIphoneOutlinedIcon

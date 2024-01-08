@@ -98,7 +98,7 @@ const Home = () => {
         <Button text={"Load More"} />
       </div>
       {/* <Footer items={menu} /> */}
-      {/* <FooterSection /> */}
+      <FooterSection />
     </>
   );
 };
