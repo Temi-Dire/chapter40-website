@@ -25,9 +25,8 @@ const Card: React.FC<CardProps> = ({ desc, price, id }) => {
       >
         <div className="relative ">
           <FavoriteIcon
-            className={`absolute right-6 top-6 cursor-pointer ${
-              isClicked && "text-red-600"
-            }`}
+            style={{ color: isClicked ? "red" : 'white'}}
+            className={`absolute right-6 top-6 cursor-pointer`}
             onClick={() => {
               setIsClicked(!isClicked);
             }}

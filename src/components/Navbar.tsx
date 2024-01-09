@@ -41,7 +41,7 @@ const Navbar = () => {
     <>
       <div className="sticky w-full top-0 z-10">
         <nav
-          className={`w-full flex justify-between justify-items-center items-center px-4 sm:px-10 lg:px-16 py-3 lg:py-6ont-montserrat  max-w-7xl `}
+          className={`w-full flex justify-between justify-items-center items-center px-4 sm:px-10 lg:px-16 py-3 lg:py-6ont-montserrat `}
           style={{
             background: "linear-gradient(to right, white 50%, purple 50%)",
           }}
