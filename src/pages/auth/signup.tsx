@@ -5,8 +5,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useRegister from "../../hooks/useRegister";
 import { Triangle } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const schema = z.object({
     username: z
       .string()
@@ -31,6 +34,8 @@ const Signup = () => {
   //   /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[@#$%^&+=!])(?=\S+$).{8,}$/;
 
   const { mutate, isPending } = useRegister();
+
+  localStorage.setItem("user", "fred");
 
   const successnotification = () => {
     toast.success("Sign Up Successful", {
@@ -130,13 +135,17 @@ const Signup = () => {
           <p className="ml-3 font-montserrat">create account</p>
         </button>
       </form>
-      {/* <div className="flex justify-center flex-col space-y-6">
-        <Button text={"create account"} />
-        <div className="text-xl font-montserrat">
+      <div className="flex justify-center px-7">
+        <div className="font-montserrat">
           Already have an account?{" "}
-          <span className="text-[#634D93] cursor-pointer">Log in</span>
+          <span
+            className="text-[#634D93] cursor-pointer"
+            onClick={() => navigate("/auth/login")}
+          >
+            Log in
+          </span>
         </div>
-      </div> */}
+      </div>
       <ToastContainer />
     </div>
   );

@@ -1,4 +1,4 @@
-import FavoriteBorderOutlined from "@mui/icons-material/FavoriteBorderOutlined";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import Star from "./Star";
 import useStore from "../State";
 import { useState } from "react";
@@ -24,7 +24,7 @@ const Card: React.FC<CardProps> = ({ desc, price, id }) => {
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="relative ">
-          <FavoriteBorderOutlined
+          <FavoriteIcon
             className={`absolute right-6 top-6 cursor-pointer ${
               isClicked && "text-red-600"
             }`}

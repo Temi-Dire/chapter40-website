@@ -16,13 +16,13 @@ const Newarrivals: React.FC<NewarrivalsProps> = ({
     const handleScroll = () => {
       if (containerRef.current) {
         const container = containerRef.current;
-        if (container.scrollLeft > 0) {
+        if (container.scrollLeft > 10) {
           container.style.marginLeft = "0";
-          container.style.marginRight = "10px";
+          // container.style.marginRight = "10px";
           container.style.position = "sticky";
           container.style.left = "0";
         } else {
-          container.style.marginLeft = "10px"; // Adjust the initial margin as needed
+          container.style.marginLeft = "20px"; // Adjust the initial margin as needed
           container.style.position = "relative";
           container.style.left = "unset";
         }
@@ -84,31 +84,3 @@ const Newarrivals: React.FC<NewarrivalsProps> = ({
 };
 
 export default Newarrivals;
-
-// import React from "react";
-// import Card from "../../components/Card";
-
-// const Newarrivals = () => {
-
-//   return (
-//     <div className="flex overflow-x-auto p-4">
-//       <div className=" mr-2 flex-shrink-0">
-//         <img className="w-[500px]" src="/assets/images/dress1.png" alt="" />
-//       </div>
-//       <div className=" mr-2 flex-shrink-0">
-//         <img className="w-[500px]" src="/assets/images/dress1.png" alt="" />
-//       </div>
-//       <div className=" mr-2 flex-shrink-0">
-//         <img className="w-[500px]" src="/assets/images/dress1.png" alt="" />
-//       </div>
-//       <div className=" mr-2 flex-shrink-0">
-//         <img className="w-[500px]" src="/assets/images/dress1.png" alt="" />
-//       </div>
-//       <div className=" mr-2 flex-shrink-0">
-//         <img className="w-[500px]" src="/assets/images/dress1.png" alt="" />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Newarrivals;
