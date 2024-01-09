@@ -35,8 +35,6 @@ const Signup = () => {
 
   const { mutate, isPending } = useRegister();
 
-  localStorage.setItem("user", "fred");
-
   const successnotification = () => {
     toast.success("Sign Up Successful", {
       position: "top-right",
