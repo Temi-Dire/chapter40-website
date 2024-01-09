@@ -3,6 +3,10 @@ import axios from "axios";
 interface Details {
   identifier: string;
   password: string;
+  user?: {
+    email?: string;
+    username?: string;
+  };
 }
 
 const useLogin = () => {
