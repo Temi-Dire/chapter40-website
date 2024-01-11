@@ -1,12 +1,21 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useRegister from "../../hooks/useRegister";
 import { Triangle } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
+import { errornotification } from "../../hooks/useLogin";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { useState } from "react";
 
 const Signup = () => {
+  const navigate = useNavigate();
+
+  const [showPassword, setShowPassword] = useState(false);
+
   const schema = z.object({
     username: z
       .string()
@@ -27,36 +36,7 @@ const Signup = () => {
     resolver: zodResolver(schema),
   });
 
-  // const passwordPattern =
-  //   /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[@#$%^&+=!])(?=\S+$).{8,}$/;
-
   const { mutate, isPending } = useRegister();
-
-  const successnotification = () => {
-    toast.success("Sign Up Successful", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  };
-
-  const errornotification = (err: any) => {
-    toast.error(err, {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  };
 
   return (
     <div className="h-screen flex flex-col justify-center">
@@ -67,17 +47,7 @@ const Signup = () => {
         className="flex flex-col items-center mx-auto w-full max-w-xl p-7"
         onSubmit={handleSubmit((data) => {
           if (isValid) {
-            mutate(data, {
-              onSuccess: () => {
-                setTimeout(() => {
-                  successnotification();
-                }, 100);
-              },
-              onError: () =>
-                setTimeout(() => {
-                  errornotification("something is wrong");
-                }, 100),
-            });
+            mutate(data);
           }
         })}
       >
@@ -97,27 +67,27 @@ const Signup = () => {
           type="text"
           placeholder="EMAIL"
         />
-        <input
-          {...register("password")}
-          className={`w-full outline-none px-5 py-3 border-2 mb-6 rounded-lg ${
+        <div
+          className={`w-full flex px-5 py-3 border-2 mb-6 rounded-lg ${
             errors.password ? "border-red-600" : "border-[#CAC6DA]"
           }`}
-          placeholder="PASSWORD"
-          type="password"
-        />
-        {/* <input
-          {...register("re-entered password")}
-          className={`w-full outline-none px-5 py-3 border mb-6 ${
-            errors["re-entered password"]
-              ? "border-red-600"
-              : "border-[#CAC6DA]"
-          }`}
-          placeholder="RE-ENTER PASSWORD"
-          type="text"
-        /> */}
+        >
+          <input
+            {...register("password")}
+            className="w-full outline-none"
+            placeholder="PASSWORD"
+            type={showPassword ? "text" : "password"}
+          />
+          <div className="ml-4" onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? (
+              <VisibilityIcon className="text-[#CAC6DA]" />
+            ) : (
+              <VisibilityOffIcon className="text-[#CAC6DA]" />
+            )}
+          </div>
+        </div>
         <button
           className="bg-[#634D93] text-white text-xl py-4 px-10 w-full max-w-md flex justify-center"
-          // disabled={!isValid}
           type="submit"
           onClick={() => {
             if (errors.username) errornotification(errors.username.message);
@@ -130,13 +100,17 @@ const Signup = () => {
           <p className="ml-3 font-montserrat">create account</p>
         </button>
       </form>
-      {/* <div className="flex justify-center flex-col space-y-6">
-        <Button text={"create account"} />
-        <div className="text-xl font-montserrat">
+      <div className="flex justify-center px-7">
+        <div className="font-montserrat">
           Already have an account?{" "}
-          <span className="text-[#634D93] cursor-pointer">Log in</span>
+          <span
+            className="text-[#634D93] cursor-pointer"
+            onClick={() => navigate("/auth/login")}
+          >
+            Log in
+          </span>
         </div>
-      </div> */}
+      </div>
       <ToastContainer />
     </div>
   );

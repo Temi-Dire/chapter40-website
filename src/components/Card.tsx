@@ -1,4 +1,4 @@
-import FavoriteBorderOutlined from "@mui/icons-material/FavoriteBorderOutlined";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import Star from "./Star";
 import useStore from "../State";
 import { useState } from "react";
@@ -19,15 +19,14 @@ const Card: React.FC<CardProps> = ({ desc, price, id }) => {
   return (
     <>
       <div
-        className="w-[205px] md:w-[250px] flex-shrink-0"
+        className="w-[205px] md:w-[220px] flex-shrink-0"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="relative ">
-          <FavoriteBorderOutlined
-            className={`absolute right-6 top-6 cursor-pointer ${
-              isClicked && "text-red-600"
-            }`}
+          <FavoriteIcon
+            style={{ color: isClicked ? "red" : "white" }}
+            className={`absolute right-6 top-6 cursor-pointer`}
             onClick={() => {
               setIsClicked(!isClicked);
             }}
@@ -37,9 +36,8 @@ const Card: React.FC<CardProps> = ({ desc, price, id }) => {
             src="/assets/images/dress1.png"
           />
           <div className="absolute bottom-4 flex justify-center items-center w-full">
-            {isHovered && (
               <button
-                className="px-12 bg-[#36254B] text-white font-roboto text-lg border border-[#4E4D93] py-4 cursor-pointer"
+                className="px-8 bg-[#684b8b] text-white font-roboto text-lg border border-[#4E4D93] py-2 cursor-pointer"
                 onClick={() => {
                   addToBasket({ desc, price, id });
                   console.log(store.basket);
@@ -47,7 +45,6 @@ const Card: React.FC<CardProps> = ({ desc, price, id }) => {
               >
                 Add to Cart
               </button>
-            )}
           </div>
         </div>
         <div>

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import Footer from "../components/Footer/Footer";
 import FooterItem from "../components/Footer/FooterItem";
@@ -9,6 +10,7 @@ import sectionImage from "/assets/images/elegance.png";
 // import Minicard from "../components/Minicard"
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Navbar />
@@ -92,15 +94,15 @@ const Home = () => {
             bgColor={"bg-white"}
             textColor={"text-black"}
             paddingX={"px-8"}
+            onClick={() => {
+              navigate("/shop");
+            }}
           />
         </div>
       </section>
       <Newarrivals />
-      <div className="flex justify-center items-center mt-[50px] mb-[80px]">
-        <Button text={"Load More"} />
-      </div>
       {/* <Footer items={menu} /> */}
-      {/* <FooterSection /> */}
+      <FooterSection />
     </>
   );
 };

@@ -36,8 +36,8 @@ const FooterSection = () => {
     <>
       <div className="w-full h-[1px] bg-[#CAC6DA] mt-36 " />
       <div className="px-14 py-14 lg:px-20">
-        <div className="w-full lg:py-14 grid grid-cols-2 grid-rows-3 lg:grid-rows-none  lg:grid-cols-[1fr,1fr,1fr,auto] lg:gap-4 ">
-          <div className="">
+        <div className="w-full lg:py-14 grid grid-cols-1 md:grid-cols-2 grid-rows-3 lg:grid-rows-none  lg:grid-cols-[1fr,1fr,1fr,auto] lg:gap-4 ">
+          <div className="mr-[12px] ">
             <Footer header={"Menu"} items={menu} />
           </div>
           <div>

@@ -5,7 +5,7 @@ const About = () => {
   return (
     <>
       <Navbar />
-      <div className=" px-8 md:px-16 mt-4">
+      <div className=" px-8 md:px-16 mt-4 ">
         <h1 className="font-playfair text-4xl pb-6">About Us</h1>
         <section className="md:grid grid-cols-2 gap-9 font-montserrat">
           <div className="mb-6 md:mb-0">

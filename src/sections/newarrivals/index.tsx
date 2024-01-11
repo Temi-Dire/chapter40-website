@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import Card from "../../components/Card";
 
 interface NewarrivalsProps {
@@ -10,35 +9,6 @@ const Newarrivals: React.FC<NewarrivalsProps> = ({
   header = "New Arrivals",
   desc = "Looking for the latest trends in clothing, shoes and accessories? Browse our new arrivals.",
 }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (containerRef.current) {
-        const container = containerRef.current;
-        if (container.scrollLeft > 0) {
-          container.style.marginLeft = "0";
-          container.style.marginRight = "10px";
-          container.style.position = "sticky";
-          container.style.left = "0";
-        } else {
-          container.style.marginLeft = "10px"; // Adjust the initial margin as needed
-          container.style.position = "relative";
-          container.style.left = "unset";
-        }
-      }
-    };
-
-    if (containerRef.current) {
-      containerRef.current.addEventListener("scroll", handleScroll);
-    }
-
-    return () => {
-      if (containerRef.current) {
-        containerRef.current.removeEventListener("scroll", handleScroll);
-      }
-    };
-  }, []);
 
   const items = [
     {
@@ -64,17 +34,14 @@ const Newarrivals: React.FC<NewarrivalsProps> = ({
   ];
 
   return (
-    <div className=" lg:px-16 mt-20">
+    <div className="px-8 lg:px-16 mt-20">
       <div className=" px-5 w-full flex flex-col justify-center items-center gap-2 mb-6">
         <h1 className="sm:text-4xl text-2xl font-playfair">{header}</h1>
         <p className="font-montserrat text-[#7C7C7C] text-sm sm:text-base">
           {desc}
         </p>
       </div>
-      <div
-        ref={containerRef}
-        className="flex justify-between overflow-x-auto space-x-10"
-      >
+      <div className="flex justify-between overflow-x-auto space-x-10 card__container">
         {items.map((item) => (
           <Card desc={item.desc} price={item.price} id={item.id} />
         ))}
@@ -84,31 +51,3 @@ const Newarrivals: React.FC<NewarrivalsProps> = ({
 };
 
 export default Newarrivals;
-
-// import React from "react";
-// import Card from "../../components/Card";
-
-// const Newarrivals = () => {
-
-//   return (
-//     <div className="flex overflow-x-auto p-4">
-//       <div className=" mr-2 flex-shrink-0">
-//         <img className="w-[500px]" src="/assets/images/dress1.png" alt="" />
-//       </div>
-//       <div className=" mr-2 flex-shrink-0">
-//         <img className="w-[500px]" src="/assets/images/dress1.png" alt="" />
-//       </div>
-//       <div className=" mr-2 flex-shrink-0">
-//         <img className="w-[500px]" src="/assets/images/dress1.png" alt="" />
-//       </div>
-//       <div className=" mr-2 flex-shrink-0">
-//         <img className="w-[500px]" src="/assets/images/dress1.png" alt="" />
-//       </div>
-//       <div className=" mr-2 flex-shrink-0">
-//         <img className="w-[500px]" src="/assets/images/dress1.png" alt="" />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Newarrivals;

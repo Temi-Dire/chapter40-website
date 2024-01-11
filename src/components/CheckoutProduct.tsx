@@ -41,7 +41,9 @@ const CheckoutProduct: React.FC<CheckoutProductProps> = ({
               onClick={() => decrement(id)}
               className="cursor-pointer"
             /> */}
-            <p>-</p>
+            <p onClick={() => decrement(id)} className="cursor-pointer">
+              -
+            </p>
             <p className="lg:mx-4 mx-2">{quantity}</p>
             {/* <AddIcon onClick={() => increment(id)} className="cursor-pointer" /> */}
             <p onClick={() => increment(id)} className="cursor-pointer">

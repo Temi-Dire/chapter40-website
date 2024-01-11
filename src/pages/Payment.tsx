@@ -16,7 +16,7 @@ const Payment = () => {
   const paystackButtonProps = {
     email,
     publicKey,
-    amount: 100,
+    amount,
     text: "PAY NOW",
     onSuccess: () => {
       console.log("works");
