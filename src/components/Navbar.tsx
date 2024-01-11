@@ -35,8 +35,6 @@ const Navbar = () => {
     return sum;
   };
 
-  const [color, setColor] = useState("");
-
   const { user } = useStore();
 
   useEffect(() => {
