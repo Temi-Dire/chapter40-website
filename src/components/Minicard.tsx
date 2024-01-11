@@ -1,5 +1,4 @@
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import Star from "./Star";
 import useStore from "../State";
 
 interface CardProps {
