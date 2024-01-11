@@ -99,7 +99,7 @@ const Checkout = () => {
       )}
 
       <Newarrivals header="YOU MIGHT LIKE" />
-      {/* <FooterSection /> */}
+      <FooterSection />
     </>
   );
 };
