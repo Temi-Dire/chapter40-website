@@ -1,56 +1,54 @@
-import FavoriteBorderOutlined from "@mui/icons-material/FavoriteBorderOutlined";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import Star from "./Star";
-import Button from "./Button";
-import { useReducer } from "react";
+import useStore from "../State";
+import { useState } from "react";
 
 interface CardProps {
-  name: String;
-  price: String;
+  desc: string;
+  price: number;
+  id: number;
 }
 
-// const ITEMS = {
-//   ADDTONASKET: 'ADD TO BASKET',
-//   REMOVEFROMBASKET: 'REMOVE FROM BASKET'
-// }
+const Card: React.FC<CardProps> = ({ desc, price, id }) => {
+  const store = useStore();
+  const addToBasket = store.addToBasket;
+  const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const addToFavorites = store.addToFavorites;
 
-// type
-
-// function reducer(state, action) {
-//   switch (action.type) {
-//     case ITEMS.ADDTONASKET:
-//       return {}
-//       break;
-
-//     default:
-//       break;
-//   }
-// }
-
-const Card: React.FC<CardProps> = ({ name, price }) => {
-  // const [state, dispatch] = useReducer(reducer, [])
-  // function addToBasket() {
-  //   dispatch({type: 'ADD_TO_BASKET', payload: {name, price}})
-  // }
   return (
     <>
-      <div className="w-60 -z-10">
+      <div
+        className="w-[205px] md:w-[220px] flex-shrink-0"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <div className="relative ">
-          <FavoriteBorderOutlined className="absolute right-6 top-6" />
+          <FavoriteIcon
+            style={{ color: isClicked ? "red" : "white" }}
+            className={`absolute right-6 top-6 cursor-pointer`}
+            onClick={() => {
+              setIsClicked(!isClicked);
+            }}
+          />
           <img
             className="w-full object-cover"
             src="/assets/images/dress1.png"
           />
           <div className="absolute bottom-4 flex justify-center items-center w-full">
-            <Button
-              text={"Add to cart"}
-              paddingX={"px-12"}
-              bgColor={"bg-[#36254B]"}
-              textColor={"text-white"}
-            />
+              <button
+                className="px-8 bg-[#684b8b] text-white font-roboto text-lg border border-[#4E4D93] py-2 cursor-pointer"
+                onClick={() => {
+                  addToBasket({ desc, price, id });
+                  console.log(store.basket);
+                }}
+              >
+                Add to Cart
+              </button>
           </div>
         </div>
         <div>
-          <p className="font-playfair text-xl">{name}</p>
+          <p className="font-playfair text-xl">{desc}</p>
           <p className="font-montserrat">{"₦" + price}</p>
           <Star filled />
         </div>

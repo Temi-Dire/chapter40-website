@@ -1,38 +1,27 @@
-import { useState, useReducer } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import useStore from "../State";
 
 interface CheckoutProductProps {
   desc: string;
   price: number;
+  id: number;
+  quantity: number;
 }
 
-// interface counterState {
-//   count: number;
-// }
-
-// type counterType = { type: "INCREMENT" } | { type: "DECREMENT" };
-
-// function reducer(state: counterState, dispatch: counterType): counterState {
-//   switch (dispatch.type) {
-//     case "INCREMENT":
-//       return { count: state.count + 1 };
-//       break;
-//     case "DECREMENT":
-//       return { count: state.count - 1 };
-//       break;
-
-//     default:
-//       return state;
-//       break;
-//   }
-// }
-
-const CheckoutProduct: React.FC<CheckoutProductProps> = ({ desc, price }) => {
-  // const [state, dispatch] = useReducer(reducer, { count: 0 });
-
+const CheckoutProduct: React.FC<CheckoutProductProps> = ({
+  desc,
+  price,
+  id,
+  quantity,
+}) => {
+  const store = useStore();
+  // const basket = store.basket;
+  const decrement = store.decrement;
+  const increment = store.increment;
+  const removeFromBasket = store.removeFromBasket;
   return (
-    <div className="grid grid-cols-[auto,1fr] gap-5  border border-[#CAC6DA] px-3 py-2 mb-4">
+    <div className="grid grid-cols-[auto,1fr] gap-5  border border-[#CAC6DA] px-3 py-2 mb-4 bg-white max-w-md flex-shrink-0 ">
       <img
         className="h-[140px] object-cover"
         src="/assets/images/checkoutproduct.png"
@@ -40,19 +29,33 @@ const CheckoutProduct: React.FC<CheckoutProductProps> = ({ desc, price }) => {
       />
       <div className="flex flex-col justify-between">
         <div>
-          <div className="font-playfair text-base">{desc}</div>
-          <div className="flex justify-between">
-            <div className="font-montserrat text-lg">{"₦" + price}</div>
-            <div>⭐⭐⭐⭐⭐</div>
+          <div className="font-playfair text-base ">{desc}</div>
+          <div className="flex justify-between mt-3">
+            <div className="font-montserrat text-md">{"₦" + price}</div>
+            {/* <div>⭐⭐⭐⭐⭐</div> */}
           </div>
         </div>
         <div className="flex justify-between items-center">
-          <div className="border border-black flex w-[124px] h-[44px] justify-between px-2 items-center">
-            {/* <RemoveIcon onClick={() => dispatch({ type: "DECREMENT" })} /> */}
-            <p>0</p>
-            {/* <AddIcon onClick={() => dispatch({ type: "INCREMENT" })} /> */}
+          <div className="border border-black flex justify-between lg:py-1 px-2 sm:px-4 items-center">
+            {/* <RemoveIcon
+              onClick={() => decrement(id)}
+              className="cursor-pointer"
+            /> */}
+            <p onClick={() => decrement(id)} className="cursor-pointer">
+              -
+            </p>
+            <p className="lg:mx-4 mx-2">{quantity}</p>
+            {/* <AddIcon onClick={() => increment(id)} className="cursor-pointer" /> */}
+            <p onClick={() => increment(id)} className="cursor-pointer">
+              +
+            </p>
           </div>
-          <button className="underline text-md">Remove</button>
+          <button
+            className="underline text-sm"
+            onClick={() => removeFromBasket(id)}
+          >
+            Remove
+          </button>
         </div>
       </div>
     </div>

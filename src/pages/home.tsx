@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import Footer from "../components/Footer/Footer";
 import FooterItem from "../components/Footer/FooterItem";
@@ -9,19 +10,13 @@ import sectionImage from "/assets/images/elegance.png";
 // import Minicard from "../components/Minicard"
 
 const Home = () => {
-  const menu = [
-    "New Arrivals",
-    "Best Sellers",
-    "Recently Viewed",
-    "Popular This Week",
-    "All products",
-  ];
+  const navigate = useNavigate();
   return (
     <>
       <Navbar />
       <Hero />
       <Newarrivals />
-      <section className="grid grid-cols-2 px-[74.5px] mb-10 gap-7 mt-[123px]">
+      {/* <section className="grid grid-cols-2 px-[74.5px] mb-10 gap-7 mt-[123px]">
         <div className="w-full h-full relative flex justify-center items-center -z-10">
           <img src="/assets/images/dress3.png" alt="" />
           <div className="absolute bottom-4 ">
@@ -79,9 +74,9 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <section
-        className="bg-cover bg-center w-full px-[74.5px] grid grid-cols-2 h-[905px]"
+        className="bg-cover bg-center w-full px-10 lg:px-[74.5px] mt-20 flex justify-center items-center lg:grid grid-cols-2 py-20 lg:h-[905px]"
         style={{ backgroundImage: `url(${sectionImage})` }}
       >
         <div></div>
@@ -99,13 +94,13 @@ const Home = () => {
             bgColor={"bg-white"}
             textColor={"text-black"}
             paddingX={"px-8"}
+            onClick={() => {
+              navigate("/shop");
+            }}
           />
         </div>
       </section>
       <Newarrivals />
-      <div className="flex justify-center items-center mt-[50px] mb-[80px]">
-        <Button text={"Load More"} />
-      </div>
       {/* <Footer items={menu} /> */}
       <FooterSection />
     </>
