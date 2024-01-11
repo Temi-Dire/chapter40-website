@@ -9,7 +9,6 @@ const Newarrivals: React.FC<NewarrivalsProps> = ({
   header = "New Arrivals",
   desc = "Looking for the latest trends in clothing, shoes and accessories? Browse our new arrivals.",
 }) => {
-
   const items = [
     {
       desc: "Red ankara gown sumami crimison",
@@ -34,7 +33,7 @@ const Newarrivals: React.FC<NewarrivalsProps> = ({
   ];
 
   return (
-    <div className="px-8 lg:px-16 mt-20">
+    <div className="px-8 lg:px-16 mt-5 sm:mt-20">
       <div className=" px-5 w-full flex flex-col justify-center items-center gap-2 mb-6">
         <h1 className="sm:text-4xl text-2xl font-playfair">{header}</h1>
         <p className="font-montserrat text-[#7C7C7C] text-sm sm:text-base">

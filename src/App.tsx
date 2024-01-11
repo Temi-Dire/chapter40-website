@@ -3,7 +3,6 @@ import "./App.css";
 import Home from "./pages/home";
 import About from "./pages/about";
 import Shop from "./pages/shop";
-// import CheckoutProduct from "./components/CheckoutProduct";
 import Checkout from "./pages/checkout";
 import Signup from "./pages/auth/signup";
 import Details from "./pages/account/details";
@@ -19,7 +18,6 @@ function App() {
   return (
     <>
       <Router>
-        <div>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -35,19 +33,7 @@ function App() {
               <Route path="info" element={<Information />} />
               <Route path="shipping" element={<Shipping />} />
             </Route>
-
-            {/* <Route
-              path="/checkoutproduct"
-              element={
-                <CheckoutProduct
-                  desc="Privé Contrast Collar
- cooperate Dress"
-                  price={30000}
-                />
-              }
-            /> */}
           </Routes>
-        </div>
       </Router>
     </>
   );

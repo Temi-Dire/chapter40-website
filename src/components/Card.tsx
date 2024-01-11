@@ -10,11 +10,10 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ desc, price, id }) => {
-  const store = useStore();
-  const addToBasket = store.addToBasket;
+  const { favorites, addToBasket, addToFavorites, removeFromFavorites } =
+    useStore();
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  const addToFavorites = store.addToFavorites;
 
   return (
     <>
@@ -29,6 +28,12 @@ const Card: React.FC<CardProps> = ({ desc, price, id }) => {
             className={`absolute right-6 top-6 cursor-pointer`}
             onClick={() => {
               setIsClicked(!isClicked);
+              if (!isClicked) {
+                addToFavorites({ desc, price, id });
+                console.log(favorites);
+              } else {
+                removeFromFavorites(id);
+              }
             }}
           />
           <img
@@ -36,15 +41,14 @@ const Card: React.FC<CardProps> = ({ desc, price, id }) => {
             src="/assets/images/dress1.png"
           />
           <div className="absolute bottom-4 flex justify-center items-center w-full">
-              <button
-                className="px-8 bg-[#684b8b] text-white font-roboto text-lg border border-[#4E4D93] py-2 cursor-pointer"
-                onClick={() => {
-                  addToBasket({ desc, price, id });
-                  console.log(store.basket);
-                }}
-              >
-                Add to Cart
-              </button>
+            <button
+              className="px-8 bg-[#684b8b] text-white font-roboto text-lg border border-[#4E4D93] py-2 cursor-pointer"
+              onClick={() => {
+                addToBasket({ desc, price, id });
+              }}
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
         <div>

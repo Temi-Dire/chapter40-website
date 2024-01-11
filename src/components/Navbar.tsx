@@ -1,7 +1,7 @@
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { motion as m } from "framer-motion";
+import { motion as m, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
@@ -48,10 +48,10 @@ const Navbar = () => {
     <>
       <div className="sticky w-full top-0 z-10">
         <nav
-          className={`w-full flex justify-between justify-items-center items-center px-4 sm:px-10 lg:px-16 py-3 lg:py-6ont-montserrat ${color}`}
-          // style={{
-          //   background: "linear-gradient(to right, white 50%, purple 50%)",
-          // }}
+          className={`w-full flex justify-between justify-items-center items-center px-4 sm:px-10 lg:px-16 py-3 lg:py-6ont-montserrat `}
+          style={{
+            background: "linear-gradient(to right, white 50%, purple 50%)",
+          }}
         >
           <ul className="text-lg font-normal hidden lg:flex ">
             <li className="mr-11">
@@ -118,26 +118,49 @@ const Navbar = () => {
             </ul>
           </div>
         </nav>
-        <m.div
-          initial={{ y: -500 }}
-          animate={{ y: isOpen === "1" ? 0 : -500 }}
-          transition={{ ease: "easeInOut", duration: 0.3 }}
-          className={`pt-5 space-y-3 bg-[#fff] absolute text-[#333333] w-1/2 h-screen flex flex-col  items-center lg:hidden ${
-            isOpen === "1" ? "block" : "hidden"
-          }`}
-        >
-          <ul>
-            <li className="text-2xl mb-5 first-letter:">Shop</li>
-            <li className="text-2xl mb-5" onClick={() => navigate("/about")}>
-              About Us
-            </li>
-            <li className="text-2xl mb-5">Contact us</li>
-            <li className="text-2xl mb-5">Categories</li>
-          </ul>
-        </m.div>
+        <AnimatePresence>
+          {isOpen === "1" && (
+            <m.div
+              initial={{ y: 500 }}
+              animate={{ y: 0 }}
+              exit={{ y: 500 }}
+              transition={{ ease: "easeInOut", duration: 0.3 }}
+              className={`pt-5 mx-3 mt-3 space-y-3 bg-[#fff] absolute text-[#333333] flex flex-col  items-center lg:hidden rounded`}
+            >
+              <ul className="text-xl">
+                <m.li
+                  className="cursor-pointer mb-1 py-2 px-5"
+                  whileHover={{ backgroundColor: "#ccc", color: "white" }}
+                >
+                  Shop
+                </m.li>
+                <m.li
+                  className="cursor-pointer mb-1 py-2 px-5"
+                  whileHover={{ backgroundColor: "#ccc", color: "white" }}
+                  onClick={() => navigate("/about")}
+                >
+                  About Us
+                </m.li>
+                <m.li
+                  className="cursor-pointer mb-1 py-2 px-5"
+                  whileHover={{ backgroundColor: "#ccc", color: "white" }}
+                >
+                  Contact us
+                </m.li>
+                <m.li
+                  className="cursor-pointer mb-1 py-2 px-5"
+                  whileHover={{ backgroundColor: "#ccc", color: "white" }}
+                >
+                  Categories
+                </m.li>
+              </ul>
+            </m.div>
+          )}
+        </AnimatePresence>
       </div>
-
-      {open && <CheckoutModal onClick={() => setOpen(false)} />}
+      <AnimatePresence>
+        {open && <CheckoutModal onClick={() => setOpen(false)} />}
+      </AnimatePresence>
     </>
   );
 };

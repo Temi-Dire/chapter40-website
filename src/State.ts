@@ -25,7 +25,6 @@ interface FavoritesDataType {
   desc: string;
   price: number;
   id: number;
-  isClicked: boolean;
 }
 
 interface BasketStore {

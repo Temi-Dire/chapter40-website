@@ -59,7 +59,10 @@ const Login = () => {
             placeholder="Password"
             type={showPassword ? "text" : "password"}
           />
-          <div className="ml-4" onClick={() => setShowPassword(!showPassword)}>
+          <div
+            className="ml-4 cursor-pointer"
+            onClick={() => setShowPassword(!showPassword)}
+          >
             {showPassword ? (
               <VisibilityIcon className="text-[#CAC6DA]" />
             ) : (
