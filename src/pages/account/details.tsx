@@ -35,7 +35,7 @@ const Details = () => {
   return (
     <>
       <Navbar />
-      <section className="md:grid grid-cols-[auto,1fr] pt-10 px-4 md:px-6 lg:px-28 gap-x-16">
+      <section className="md:grid grid-cols-[auto,1fr] pt-10 px-4 md:px-6 lg:px-28 gap-x-16 ">
         <div className="md:hidden my-5 border border-[#DFDFDF] px-4 py-2 ">
           <select
             className="w-full text-2xl outline-none"
@@ -95,7 +95,7 @@ const Details = () => {
           )}
           {section === 3 && <div></div>}
           {section === 4 && (
-            <div className="h-full overflow-y-scroll container">
+            <div className="h-full  container">
               <SavedProduct />
               <SavedProduct />
               <SavedProduct />
@@ -114,12 +114,12 @@ const Details = () => {
         <div
           className={`${
             value !== "Saved Product" ? " border border-black px-4 py-6" : ""
-          } text-[#242424] md:hidden`}
+          } text-[#242424] px-5 md:hidden`}
         >
           {value === "Account" && (
             <div className="space-y-6">
-              <div className="text-2xl">Username: Ikeowku Somto</div>
-              <div className="text-2xl">Email: temidireowoeye@gmail.com</div>
+              <div className="text-2xl">Username: {user?.username}</div>
+              <div className="text-2xl">Email: {user?.email}</div>
               <div className="flex justify-between items-end">
                 <div className="text-2xl">Password: ******</div>
                 <div className="underline text-sm">Reset Password</div>
@@ -139,7 +139,7 @@ const Details = () => {
             </div>
           )}
           {value === "Saved Product" && (
-            <div className="h-full overflow-y-scroll container">
+            <div className="h-full  container">
               <SavedProduct />
               <SavedProduct />
               <SavedProduct />

@@ -6,10 +6,10 @@ const Hero = () => {
 
   return (
     <section
-      className="sm:px-10 pt-10 bg-white"
-      // style={{
-      //   background: "linear-gradient(to right, white 50%, purple 50%)",
-      // }}
+      className="sm:px-10 pt-10 bg-white hidden sm:block"
+      style={{
+        background: "linear-gradient(to right, white 50%, purple 50%)",
+      }}
     >
       <Minicard
         desc="Red ankara gown sumami crimison black"

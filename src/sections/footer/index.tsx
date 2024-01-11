@@ -61,7 +61,7 @@ const FooterSection = () => {
           </div>
         </div>
         <div className="flex flex-col-reverse items-center gap-[30px] lg:space-y-0 lg:flex-row lg:justify-between">
-          <div>Copyright {currentYear.getFullYear()} Avion LTD</div>
+          <div>Copyright {currentYear.getFullYear()} Chapter40 Fashion</div>
           <div className="space-x-6 lg:space-x-4">
             <LinkedInIcon />
             <TwitterIcon />
