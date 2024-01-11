@@ -37,11 +37,6 @@ const Navbar = () => {
 
   const { user } = useStore();
 
-  useEffect(() => {
-    if (window.scrollY > 0) setColor("bg-white");
-    else setColor("bg-[#fbfbfb]");
-  }, []);
-
   return (
     <>
       <div className="sticky w-full top-0 z-10">
