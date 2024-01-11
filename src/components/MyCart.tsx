@@ -10,7 +10,7 @@ const MyCart = () => {
       <p className=" font-playfair text-[32px] text-[#242424] text-center mb-[51px]">
         Your Cart
       </p>
-      {basket.map((item, i) => (
+      {basket.map((item) => (
         <CheckoutProduct
           desc={item.desc}
           id={item.id}
