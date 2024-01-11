@@ -30,7 +30,7 @@ const Details = () => {
     },
   ];
 
-  const { user, addUser } = useStore();
+  const { user } = useStore();
 
   return (
     <>
