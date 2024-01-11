@@ -2,7 +2,7 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { motion as m } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
 import useStore from "../State";
@@ -35,26 +35,33 @@ const Navbar = () => {
     return sum;
   };
 
+  const [color, setColor] = useState("");
+
   const { user } = useStore();
+
+  useEffect(() => {
+    if (window.scrollY > 0) setColor("bg-white");
+    else setColor("bg-[#fbfbfb]");
+  }, []);
 
   return (
     <>
       <div className="sticky w-full top-0 z-10">
         <nav
-          className={`w-full flex justify-between justify-items-center items-center px-4 sm:px-10 lg:px-16 py-3 lg:py-6ont-montserrat `}
-          style={{
-            background: "linear-gradient(to right, white 50%, purple 50%)",
-          }}
+          className={`w-full flex justify-between justify-items-center items-center px-4 sm:px-10 lg:px-16 py-3 lg:py-6ont-montserrat ${color}`}
+          // style={{
+          //   background: "linear-gradient(to right, white 50%, purple 50%)",
+          // }}
         >
-          <ul className="text-base font-normal hidden lg:flex ">
-            <li className="mr-8">
+          <ul className="text-lg font-normal hidden lg:flex ">
+            <li className="mr-11">
               <Link to={"/about"}>About</Link>
             </li>
-            <li className="mr-8">
+            <li className="mr-11">
               <Link to={"/shop"}>Shop</Link>
             </li>
             <li>
-              <Link to={"/categories"}>Categories</Link>
+              <Link to={"/categories"}>Contact Us</Link>
             </li>
           </ul>
           <m.div
@@ -90,16 +97,13 @@ const Navbar = () => {
             Chapter40
           </Link>
           <div className="flex justify-between items-center  text-base font-normal">
-            <a href="#" className="mr-8 hidden lg:inline">
-              Contact Us
-            </a>
             <ul className=" justify-between flex">
-              <li className="mr-4">
+              <li className="mr-11">
                 <Link to={user ? "/account/details" : "/auth/login"}>
                   <PersonOutlineOutlinedIcon style={iconSize} />
                 </Link>
               </li>
-              <li className="mr-4 hidden lg:list-item">
+              <li className="mr-11 hidden lg:list-item">
                 <FavoriteBorderOutlinedIcon />
               </li>
               <li className="relative" onClick={() => setOpen(true)}>

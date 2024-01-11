@@ -71,14 +71,7 @@ const Details = () => {
           {section === 1 && (
             <div className="flex flex-col h-full justify-between">
               <div className="space-y-6">
-                <div
-                  className="text-2xl"
-                  onClick={() => {
-                    addUser("slick", "animal");
-                  }}
-                >
-                  Username: {user?.username}
-                </div>
+                <div className="text-2xl">Username: {user?.username}</div>
                 <div className="text-2xl">Email: {user?.email}</div>
                 <div className="flex justify-between items-end">
                   <div className="text-2xl">Password: ******</div>
