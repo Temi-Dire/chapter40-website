@@ -1,33 +1,35 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Person4OutlinedIcon from "@mui/icons-material/Person4Outlined";
-import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
-import NavigateComponent from "../components/NavigateComponent";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { KeyboardEventHandler } from "react";
+import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
+import useStore from "../State";
 
 interface Props {
   onSubmit: (data: FormData) => void;
 }
 
 const schema = z.object({
-  email: z.string(),
-  country: z.string(),
+  state: z.string(),
+  identifier: z.string().min(5, "not up to 5 characters"),
   firstName: z.string(),
   lastName: z.string(),
   company: z.string(),
   address: z.string(),
   apartment: z.string(),
-  postalCode: z.number().min(6).max(6),
+  postalCode: z.string().min(6).max(6),
   city: z.string(),
-  phone: z.number().min(5),
+  phone: z.string().min(5),
 });
 
 type FormData = z.infer<typeof schema>;
 
 const Information = ({ onSubmit }: Props) => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -50,6 +52,7 @@ const Information = ({ onSubmit }: Props) => {
       "7",
       "8",
       "9",
+      "Backspace",
     ];
     const keyPressed: string = evt.key;
 
@@ -57,6 +60,9 @@ const Information = ({ onSubmit }: Props) => {
       evt.preventDefault();
     }
   };
+
+  const { user } = useStore();
+
   return (
     <>
       <div>
@@ -68,30 +74,34 @@ const Information = ({ onSubmit }: Props) => {
         >
           <div className="flex justify-between mb-2">
             <p className="text-[14px] lg:text-[20px]">Contact</p>
-            <div className="space-x-2 flex font-montserrat text-[12px] lg:text-[16px] font-normal">
-              <p className="text-[#0C0C0C]">have an account?</p>
-              <Link
-                to="/"
-                className="hover:text-[#634D93] text-[#5A6D57] lg:text-[#0C0C0C] cursor-pointer"
-              >
-                {" "}
-                login
-              </Link>
-            </div>
+            {!user && (
+              <div className="space-x-2 flex font-montserrat text-[12px] lg:text-[16px] font-normal">
+                <p className="text-[#0C0C0C]">have an account?</p>
+                <Link
+                  to="/auth/login"
+                  className="hover:text-[#634D93] text-[#5A6D57] lg:text-[#0C0C0C] cursor-pointer"
+                >
+                  {" "}
+                  login
+                </Link>
+              </div>
+            )}
           </div>
           <div className="flex border items-center border-[#606060] px-[16px] py-2 space-x-[4px]">
             <Person4OutlinedIcon fontSize="small" className="text-[#606060]" />
             <div className="flex-1">
               <input
-                {...register("email")}
+                {...register("identifier")}
                 type="email"
                 placeholder="Email"
                 required
-                className="font-montserrat outline-none w-full text-[#606060]"
+                className={`font-montserrat ${
+                  errors.identifier && "border-red-600"
+                } outline-none w-full text-[#606060]`}
               />
             </div>
-            {errors.email && (
-              <p className=" text-red-600">{errors.email.message}</p>
+            {errors.identifier && (
+              <p className=" text-red-600">{errors.identifier.message}</p>
             )}
           </div>
           <div className="flex space-x-1 mt-1 mb-[28px]">
@@ -105,21 +115,14 @@ const Information = ({ onSubmit }: Props) => {
           </header>
           <div className="space-y-[8px] font-montserrat">
             <div className="flex justify-between border border-[#606060] px-[16px] py-2 space-x-[4px]">
-              <div className="flex-1">
                 <input
-                  {...register("country")}
+                  {...register("state")}
                   type="text"
-                  placeholder="Country/region"
+                  placeholder="State"
                   required
                   className="outline-none w-full text-[#606060]"
                 />
-              </div>
-              <button>
-                <CloseOutlinedIcon
-                  fontSize="small"
-                  className="w-[16px] h-[16px] text-[#606060]"
-                />
-              </button>
+              
             </div>
             <div className="space-y-[8px] lg:space-y-0 lg:flex lg:space-x-[24px] font-montserrat">
               <div className={inputContainerStyles.base}>
@@ -211,15 +214,24 @@ const Information = ({ onSubmit }: Props) => {
             </p>
           </div>
 
-          <NavigateComponent
-            isValid={!isValid}
-            label="Shipping"
-            continueToPath={"/navigation-page/shipping"}
-            onSubmit={handleSubmit((data) => {
-              onSubmit(data);
-              reset(data);
-            })}
-          />
+          <div className="flex flex-col space-y-4 lg:flex-row-reverse lg:justify-between items-center">
+            <button
+              disabled={!isValid}
+              type="submit"
+              onClick={() => navigate("/navigation-page/shipping")}
+              className="bg-darkPrimary w-full lg:w-auto px-[32px] py-[16px] text-white font-roboto"
+            >
+              <p>Continue to Shipping</p>
+            </button>
+            <div className="flex space-x-2 font-montserrat text-[#634D93] text-[16px]">
+              <button onClick={() => navigate("/cart")}>
+                <ArrowBackIosNewOutlinedIcon />
+              </button>
+              <Link to="/cart" className="hover:text-darkPrimary">
+                return to Cart
+              </Link>
+            </div>
+          </div>
         </form>
       </div>
     </>
