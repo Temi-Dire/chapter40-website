@@ -30,7 +30,7 @@ interface FavoritesDataType {
 
 interface BasketStore {
   user: User | null;
-  addUser: (username: string | undefined, email: string | undefined) => void;
+  addUser: (user: User) => void;
   removeUser: () => void;
   basket: BasketDataType[];
   favorites: FavoritesDataType[];
@@ -45,10 +45,10 @@ interface BasketStore {
 
 const useStore = create<BasketStore>()((set, get) => ({
   user: null,
-  addUser: (username, email) => {
+  addUser: (user) => {
     {
       set(() => {
-        return { user: { username, email } };
+        return { user: user };
       });
     }
     localStorage.setItem("user", JSON.stringify(get().user));
