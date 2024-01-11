@@ -36,7 +36,7 @@ const Checkout = () => {
             <div className="">
               {store.basket.length !== 0 ? (
                 <div>
-                  {store.basket.map((item, index) => (
+                  {store.basket.map((item) => (
                     <CheckoutProduct
                       desc={item.desc}
                       price={item.price}
