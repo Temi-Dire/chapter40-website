@@ -12,16 +12,11 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ desc, price, id }) => {
   const { favorites, addToBasket, addToFavorites, removeFromFavorites } =
     useStore();
-  const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
   return (
     <>
-      <div
-        className="w-[205px] md:w-[220px] flex-shrink-0"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
+      <div className="w-[205px] md:w-[220px] flex-shrink-0">
         <div className="relative ">
           <FavoriteIcon
             style={{ color: isClicked ? "red" : "white" }}
