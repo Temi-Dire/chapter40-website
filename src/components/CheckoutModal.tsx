@@ -1,7 +1,7 @@
 import CloseIcon from "@mui/icons-material/Close";
 import CheckoutProduct from "./CheckoutProduct";
 import Button from "./Button";
-import { AnimatePresence, motion as m } from "framer-motion";
+import { motion as m } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import useStore from "../State";
 
