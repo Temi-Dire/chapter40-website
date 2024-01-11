@@ -14,7 +14,7 @@ interface Props {
 
 const schema = z.object({
   state: z.string(),
-  identifier: z.string().min(5, "not up to 5 characters"),
+  email: z.string().min(5, "not up to 5 characters"),
   firstName: z.string(),
   lastName: z.string(),
   company: z.string(),
@@ -35,7 +35,9 @@ const Information = ({ onSubmit }: Props) => {
     handleSubmit,
     reset,
     formState: { errors, isValid },
-  } = useForm<FormData>({ resolver: zodResolver(schema) });
+  } = useForm<FormData>({ resolver: zodResolver(schema), mode: "onBlur" });
+
+
   const inputContainerStyles = {
     base: "lg:w-1/2 border border-[#606060] px-[16px] py-2",
     input: "outline-none w-full",
@@ -68,7 +70,7 @@ const Information = ({ onSubmit }: Props) => {
       <div>
         <form
           onSubmit={handleSubmit((data) => {
-            onSubmit(data);
+            console.log(data);
             reset();
           })}
         >
@@ -87,23 +89,25 @@ const Information = ({ onSubmit }: Props) => {
               </div>
             )}
           </div>
-          <div className="flex border items-center border-[#606060] px-[16px] py-2 space-x-[4px]">
+          <div
+            className={`flex border items-center border-[#606060] px-[16px] ${
+              errors.email ? "border-red-600" : ""
+            } py-2 space-x-[4px]`}
+          >
             <Person4OutlinedIcon fontSize="small" className="text-[#606060]" />
             <div className="flex-1">
               <input
-                {...register("identifier")}
+                {...register("email")}
                 type="email"
                 placeholder="Email"
                 required
-                className={`font-montserrat ${
-                  errors.identifier && "border-red-600"
-                } outline-none w-full text-[#606060]`}
+                className={`font-montserrat  outline-none w-full text-[#606060]`}
               />
             </div>
-            {errors.identifier && (
-              <p className=" text-red-600">{errors.identifier.message}</p>
-            )}
           </div>
+              {errors.email && (
+                <p className="text-red-600">{errors.email.message}</p>
+              )}
           <div className="flex space-x-1 mt-1 mb-[28px]">
             <input type="checkbox" className="rounded-none" />
             <p className="font-montserrat text-[#0C0C0C] text-[14px]">
@@ -115,14 +119,13 @@ const Information = ({ onSubmit }: Props) => {
           </header>
           <div className="space-y-[8px] font-montserrat">
             <div className="flex justify-between border border-[#606060] px-[16px] py-2 space-x-[4px]">
-                <input
-                  {...register("state")}
-                  type="text"
-                  placeholder="State"
-                  required
-                  className="outline-none w-full text-[#606060]"
-                />
-              
+              <input
+                {...register("state")}
+                type="text"
+                placeholder="State"
+                required
+                className="outline-none w-full text-[#606060]"
+              />
             </div>
             <div className="space-y-[8px] lg:space-y-0 lg:flex lg:space-x-[24px] font-montserrat">
               <div className={inputContainerStyles.base}>
@@ -207,6 +210,8 @@ const Information = ({ onSubmit }: Props) => {
               />
             </div>
           </div>
+
+
           <div className="flex space-x-1 mt-1 mb-[80px]">
             <input type="checkbox" className="rounded-none" />
             <p className="font-montserrat text-[#0C0C0C] text-[14px]">
@@ -218,12 +223,17 @@ const Information = ({ onSubmit }: Props) => {
             <button
               disabled={!isValid}
               type="submit"
-              onClick={() => navigate("/navigation-page/shipping")}
-              className="bg-darkPrimary w-full lg:w-auto px-[32px] py-[16px] text-white font-roboto"
+              onClick={() => setTimeout(() => {
+                navigate("/navigation-page/shipping"), 3000
+        
+              })}
+              className="bg-darkPrimary w-full lg:w-auto px-[32px] hover:cursor-pointer py-[16px] text-white font-roboto"
             >
               <p>Continue to Shipping</p>
             </button>
             <div className="flex space-x-2 font-montserrat text-[#634D93] text-[16px]">
+
+
               <button onClick={() => navigate("/cart")}>
                 <ArrowBackIosNewOutlinedIcon />
               </button>
