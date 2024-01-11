@@ -26,6 +26,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ onClick }) => {
     <m.div
       initial={{ y: "-100vh" }}
       animate={{ y: "0" }}
+      exit={{ y: "100vh" }}
       transition={{ type: "spring", stiffness: 200, damping: 20 }}
       className=" max-h-[500px] overflow-y-scroll px-4 w-full max-w-[500px] flex flex-col items-center bg-white fixed right-0 border-l border-[#CAC6DA] z-50"
     >
