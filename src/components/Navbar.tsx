@@ -47,13 +47,13 @@ const Navbar = () => {
           }}
         >
           <ul className="text-lg font-normal hidden lg:flex ">
-            <li className="mr-11">
+            <li className="mr-11 cursor-pointer">
               <a onClick={() => navigate("/about")}>About</a>
             </li>
-            <li className="mr-11">
+            <li className="mr-11 cursor-pointer">
               <a onClick={() => navigate("/shop")}>Shop</a>
             </li>
-            <li>
+            <li className="cursor-pointer">
               <a href="#footer">Contact Us</a>
             </li>
           </ul>
