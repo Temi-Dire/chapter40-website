@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
-import Footer from "../components/Footer/Footer";
-import FooterItem from "../components/Footer/FooterItem";
 import Navbar from "../components/Navbar";
 import FooterSection from "../sections/footer";
 import Hero from "../sections/hero";
@@ -101,7 +99,6 @@ const Home = () => {
         </div>
       </section>
       <Newarrivals />
-      {/* <Footer items={menu} /> */}
       <FooterSection />
     </>
   );
