@@ -5,10 +5,9 @@ interface Props {
   continueToPath: string;
   label: string;
   onSubmit: () => void;
-  isValid: boolean;
 }
 
-const NavigateComponent = ({ continueToPath, label, onSubmit, isValid }: Props) => {
+const NavigateComponent = ({ continueToPath, label, onSubmit }: Props) => {
   const navigate = useNavigate();
 
   const handleContinueClick = () => {
