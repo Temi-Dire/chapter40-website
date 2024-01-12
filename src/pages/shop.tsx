@@ -1,5 +1,6 @@
 import Card from "../components/Card";
 import Navbar from "../components/Navbar";
+import FooterSection from "../sections/footer";
 
 const Shop = () => {
   const products = [
@@ -54,6 +55,7 @@ const Shop = () => {
           ))}
         </div>
       </div>
+      <FooterSection />
     </>
   );
 };
