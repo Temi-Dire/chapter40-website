@@ -1,6 +1,8 @@
-import NavigateComponent from "../components/NavigateComponent";
+import { Link, useNavigate } from "react-router-dom";
+import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 
 const Shipping = () => {
+  const navigate = useNavigate();
     return (
       <div>
         <div className="flex justify-between font-montserrat py-[16px]">
@@ -36,7 +38,23 @@ const Shipping = () => {
         </div>
         <div className="border bg-[#DFDFDF] my-[30px]" />
 
-        <NavigateComponent label="Payment" continueToPath={"/payment"} />
+        <div className="flex flex-col space-y-4 lg:flex-row-reverse lg:justify-between items-center">
+          <button
+            type="submit"
+            onClick= {() => navigate('/payment')}
+            className="bg-darkPrimary w-full lg:w-auto px-[32px] py-[16px] text-white font-roboto"
+          >
+            <p>Continue to Payment</p>
+          </button>
+          <div className="flex space-x-2 font-montserrat text-[#634D93] text-[16px]">
+            <button onClick={() => navigate("/cart")}>
+              <ArrowBackIosNewOutlinedIcon />
+            </button>
+            <Link to="/navigation-page/info" className="hover:text-darkPrimary">
+              return to info 
+            </Link>
+          </div>
+        </div>
       </div>
     );
 };
