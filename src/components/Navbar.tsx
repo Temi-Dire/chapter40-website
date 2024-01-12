@@ -48,10 +48,10 @@ const Navbar = () => {
         >
           <ul className="text-lg font-normal hidden lg:flex ">
             <li className="mr-11">
-              <Link to={"/about"}>About</Link>
+              <a onClick={() => navigate("/about")}>About</a>
             </li>
             <li className="mr-11">
-              <Link to={"/shop"}>Shop</Link>
+              <a onClick={() => navigate("/shop")}>Shop</a>
             </li>
             <li>
               <a href="#footer">Contact Us</a>
