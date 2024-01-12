@@ -54,7 +54,7 @@ const Navbar = () => {
               <Link to={"/shop"}>Shop</Link>
             </li>
             <li>
-              <Link to={"/categories"}>Contact Us</Link>
+              <a href="#footer">Contact Us</a>
             </li>
           </ul>
           <m.div
