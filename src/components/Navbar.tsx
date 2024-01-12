@@ -118,7 +118,7 @@ const Navbar = () => {
               animate={{ y: 0 }}
               exit={{ y: 500 }}
               transition={{ ease: "easeInOut", duration: 0.3 }}
-              className={`pt-5 mx-3 mt-3 space-y-3 bg-[#fff] absolute text-[#333333] flex flex-col  items-center lg:hidden rounded`}
+              className={`pt-5 mx-3 mt-3 space-y-3 bg-[#f2f1f1] absolute text-[#333333] flex flex-col  items-center lg:hidden rounded-lg`}
             >
               <ul className="text-xl">
                 <m.li
