@@ -247,7 +247,10 @@ const Information = ({ onSubmit }: Props) => {
                   navigate("/navigation-page/shipping"), 3000;
                 })
               }
-              className="bg-darkPrimary w-full lg:w-auto px-[32px] hover:cursor-pointer py-[16px] text-white font-roboto"
+              className={`bg-${
+                isValid ? "darkPrimary" : "darkPrimary hover:brightness-125"
+              }  w-full lg:w-auto px-[32px] py-[16px] text-white font-roboto`}
+              style={{ cursor: isValid ? "pointer" : "not-allowed" }}
             >
               <p>Continue to Shipping</p>
             </button>
