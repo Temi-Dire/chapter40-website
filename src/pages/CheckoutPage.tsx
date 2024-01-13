@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import MyCart from "../components/MyCart";
 
-const NavigationPage = () => {
+const CheckoutPage = () => {
   return (
     <>
       <div className="lg:flex min-h-screen">
@@ -19,4 +19,4 @@ const NavigationPage = () => {
   );
 };
 
-export default NavigationPage;
+export default CheckoutPage;
