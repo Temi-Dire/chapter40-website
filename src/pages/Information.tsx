@@ -258,7 +258,7 @@ const Information = ({ onSubmit }: Props) => {
               <button onClick={() => navigate("/cart")}>
                 <ArrowBackIosNewOutlinedIcon />
               </button>
-              <Link to="/cart" className="hover:text-darkPrimary">
+              <Link to="/checkout" className="hover:text-darkPrimary">
                 return to Cart
               </Link>
             </div>
