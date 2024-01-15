@@ -47,7 +47,7 @@ const Shipping = () => {
           <p>Continue to Payment</p>
         </button>
         <div className="flex space-x-2 font-montserrat text-[#634D93] text-[16px]">
-          <button onClick={() => navigate("/cart")}>
+          <button onClick={() => navigate("/Checkoutpage/info")}>
             <ArrowBackIosNewOutlinedIcon />
           </button>
           <Link to="/Checkoutpage/info" className="hover:text-darkPrimary">
