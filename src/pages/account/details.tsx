@@ -8,7 +8,7 @@ import FooterSection from "../../sections/footer";
 import useStore from "../../State";
 
 const Details = () => {
-  const [value, setValue] = useState<string>("Address");
+  const [value, setValue] = useState<string>("Account");
   const [section, setSection] = useState(1);
   const price = 500;
   const details = [
@@ -30,7 +30,7 @@ const Details = () => {
     },
   ];
 
-  const { user } = useStore();
+  const { user, removeUser, favorites } = useStore();
 
   return (
     <>
@@ -47,7 +47,6 @@ const Details = () => {
           >
             <option value=""></option>
             <option value="Account">Account</option>
-            <option value="Address">Address</option>
             <option value="Order Tracking">Order Tracking</option>
             <option value="Saved Product">Saved Products</option>
           </select>
@@ -73,12 +72,15 @@ const Details = () => {
               <div className="space-y-6">
                 <div className="text-2xl">Username: {user?.username}</div>
                 <div className="text-2xl">Email: {user?.email}</div>
-                <div className="flex justify-between items-end">
-                  <div className="text-2xl">Password: ******</div>
-                  <div className="underline text-sm">Reset Password</div>
-                </div>
               </div>
-              <div className="underline cursor-pointer">SIGN OUT</div>
+              <div className="flex justify-center">
+                <button
+                  className="bg-[#634D93] text-white text-xl py-2 px-4 rounded-lg"
+                  onClick={() => removeUser()}
+                >
+                  SIGN OUT
+                </button>
+              </div>
             </div>
           )}
           {section === 2 && (
@@ -94,13 +96,16 @@ const Details = () => {
             </div>
           )}
           {section === 3 && <div></div>}
-          {section === 4 && (
-            <div className="h-full  container">
-              <SavedProduct />
-              <SavedProduct />
-              <SavedProduct />
-            </div>
-          )}
+          {section === 4 &&
+            favorites.map((prod) => (
+              <div className="h-full  container">
+                <SavedProduct
+                  desc={prod.desc}
+                  price={prod.price}
+                  id={prod.id}
+                />
+              </div>
+            ))}
         </div>
         {section === 4 && (
           <div className="col-start-2 mt-4 mx-auto ">
@@ -120,31 +125,26 @@ const Details = () => {
             <div className="space-y-6">
               <div className="text-2xl">Username: {user?.username}</div>
               <div className="text-2xl">Email: {user?.email}</div>
-              <div className="flex justify-between items-end">
-                <div className="text-2xl">Password: ******</div>
-                <div className="underline text-sm">Reset Password</div>
+              <div className="flex justify-center">
+                <button
+                  className="bg-[#634D93] text-white text-xl py-2 px-4 rounded-lg"
+                  onClick={() => removeUser()}
+                >
+                  SIGN OUT
+                </button>
               </div>
             </div>
           )}
-          {value === "Address" && (
-            <div className="space-y-6 ">
-              <div className="flex justify-between items-end">
-                <div className="text-2xl">Default Address</div>
-                <Link to={"/account/editaddress"} className="underline text-sm">
-                  Reset Address
-                </Link>
+          {value === "Saved Product" &&
+            favorites.map((prod) => (
+              <div className="h-full  container">
+                <SavedProduct
+                  desc={prod.desc}
+                  price={prod.price}
+                  id={prod.id}
+                />
               </div>
-              <div className="text-2xl">Email: temidireowoeye@gmail.com</div>
-              <div className="text-2xl">Password: ******</div>
-            </div>
-          )}
-          {value === "Saved Product" && (
-            <div className="h-full  container">
-              <SavedProduct />
-              <SavedProduct />
-              <SavedProduct />
-            </div>
-          )}
+            ))}
         </div>
       </section>
       <FooterSection />

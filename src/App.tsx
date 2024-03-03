@@ -18,22 +18,22 @@ function App() {
   return (
     <>
       <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/auth/signup" element={<Signup />} />
-            <Route path="/auth/login" element={<Login />} />
-            <Route path="/account/details" element={<Details />} />
-            <Route path="/account/editaddress" element={<Editaccount />} />
-            <Route path="/savedproduct" element={<SavedProduct />} />
-            <Route path="/payment" element={<Payment />} />
-            <Route path="navigation-page" element={<NavigationPage />}>
-              <Route path="info" element={<Information />} />
-              <Route path="shipping" element={<Shipping />} />
-            </Route>
-          </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/cart" element={<Checkout />} />
+          <Route path="/auth/signup" element={<Signup />} />
+          <Route path="/auth/login" element={<Login />} />
+          <Route path="/account/details" element={<Details />} />
+          <Route path="/account/editaddress" element={<Editaccount />} />
+          {/* <Route path="/savedproduct" element={<SavedProduct />} /> */}
+          <Route path="/payment" element={<Payment />} />
+          <Route path="navigation-page" element={<NavigationPage />}>
+            <Route path="info" element={<Information />} />
+            <Route path="shipping" element={<Shipping />} />
+          </Route>
+        </Routes>
       </Router>
     </>
   );

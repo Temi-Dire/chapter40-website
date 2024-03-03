@@ -49,10 +49,18 @@ const Shop = () => {
           <div className="text-xl">37 products</div>
           <div className="border border-[#CAC6DA] p-2">Sort by: Featured</div>
         </div>
-        <div className="flex justify-between overflow-x-auto space-x-10 card__container">
+        {/* <div className="flex justify-between overflow-x-auto space-x-10 card__container">
           {products.map((prod) => (
             <Card desc={prod.desc} price={prod.price} id={prod.id} />
           ))}
+        </div> */}
+        <div className="grid grid-cols-[auto,auto,auto] lg:grid-cols-[auto,auto,auto,auto] justify-between gap-y-10 w-full">
+          <Card desc="Quality Products" price={3000} id={3}/>
+          <Card desc="Quality Products" price={3000} id={3}/>
+          <Card desc="Quality Products" price={3000} id={3}/>
+          <Card desc="Quality Products" price={3000} id={3}/>
+          <Card desc="Quality Products" price={3000} id={3}/>
+          <Card desc="Quality Products" price={3000} id={3}/>
         </div>
       </div>
       <FooterSection />
