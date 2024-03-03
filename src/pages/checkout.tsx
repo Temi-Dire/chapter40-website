@@ -79,7 +79,7 @@ const Checkout = () => {
               <Button
                 text={"Go to Checkout"}
                 width={"w-full"}
-                onClick={() => navigate("/Checkoutpage/info")}
+                onClick={() => navigate("/cart/info")}
               />
             </div>
           </div>
