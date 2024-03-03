@@ -10,7 +10,7 @@ import Editaccount from "./pages/account/editaccount";
 import SavedProduct from "./components/SavedProduct";
 import Information from "./pages/Information";
 import Shipping from "./pages/Shipping";
-import NavigationPage from "./pages/NavigationPage";
+import CheckoutPage from "./pages/CheckoutPage";
 import Payment from "./pages/Payment";
 import Login from "./pages/auth/login";
 
@@ -18,22 +18,38 @@ function App() {
   return (
     <>
       <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/cart" element={<Checkout />} />
-          <Route path="/auth/signup" element={<Signup />} />
-          <Route path="/auth/login" element={<Login />} />
-          <Route path="/account/details" element={<Details />} />
-          <Route path="/account/editaddress" element={<Editaccount />} />
-          {/* <Route path="/savedproduct" element={<SavedProduct />} /> */}
-          <Route path="/payment" element={<Payment />} />
-          <Route path="navigation-page" element={<NavigationPage />}>
-            <Route path="info" element={<Information />} />
-            <Route path="shipping" element={<Shipping />} />
-          </Route>
-        </Routes>
+        <div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/auth/signup" element={<Signup />} />
+            <Route path="/auth/login" element={<Login />} />
+            <Route path="/account/details" element={<Details />} />
+            <Route path="/account/editaddress" element={<Editaccount />} />
+            {/* <Route path="/savedproduct" element={<SavedProduct />} /> */}
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/Checkoutpage" element={<CheckoutPage />}>
+              <Route
+                path="info"
+                element={<Information onSubmit={(data) => console.log(data)} />}
+              />
+              <Route path="shipping" element={<Shipping />} />
+            </Route>
+
+            {/* <Route
+              path="/checkoutproduct"
+              element={
+                <CheckoutProduct
+                  desc="Privé Contrast Collar
+ cooperate Dress"
+                  price={30000}
+                />
+              }
+            /> */}
+          </Routes>
+        </div>
       </Router>
     </>
   );
