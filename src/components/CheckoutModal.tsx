@@ -46,7 +46,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ onClick }) => {
           ))}
           <div
             className="sticky bottom-0 bg-white w-full flex justify-center py-4 border-t border-[#F1F1F1]"
-            onClick={() => navigate("/cart/info")}
+            onClick={() => navigate("/checkout")}
           >
             <Button text={`CHECKOUT: ₦${getTotal()}`} />
           </div>
