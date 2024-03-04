@@ -35,8 +35,10 @@ const Shipping = () => {
           </div>
         </div>
         <div className="border bg-[#DFDFDF] my-[30px]" />
-
-        <NavigateComponent label="Payment" continueToPath={"/payment"} />
+        <NavigateComponent
+          label="Payment"
+          continueToPath={"/navigation-page/payment"}
+        />
       </div>
     );
 };

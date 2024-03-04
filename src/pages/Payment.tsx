@@ -1,64 +1,52 @@
-import { useState } from "react";
-import { PaystackButton } from "react-paystack";
-import { useNavigate } from "react-router-dom";
+import { ChangeEvent, useState } from "react";
+import OnlinePayment from "../components/OnlinePayment"; // Import your online payment form component
 
 const Payment = () => {
-  const navigate = useNavigate();
+  const [selectedPaymentOption, setSelectedPaymentOption] = useState<
+    string | null
+  >("");
 
-  const publicKey = "pk_test_bbaa5b02968054dc8332e5c2fc4b566c84d08f4e";
-
-  const amount = 10000;
-
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-
-  const paystackButtonProps = {
-    email,
-    publicKey,
-    amount,
-    text: "PAY NOW",
-    onSuccess: () => {
-      console.log("works");
-      console.log(email);
-    },
-    onClose: () => navigate("/"),
+  const handlePaymentOptionChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelectedPaymentOption(event.target.value);
   };
 
   return (
-    <div>
-      <div>name</div>
-      <input
-        className="border border-gray-700"
-        type="text"
-        value={name}
-        onChange={(e) => {
-          setName(e.target.value);
-          //   console.log(name);
-        }}
-      />
-      <div>email</div>
-      <input
-        className="border border-gray-700"
-        type="email"
-        value={email}
-        onChange={(e) => {
-          setEmail(e.target.value);
-          //   console.log(email);
-        }}
-      />
-      <div>phone</div>
-      <input
-        className="border border-gray-700"
-        type="text"
-        value={phone}
-        onChange={(e) => {
-          setPhone(e.target.value);
-          //   console.log(phone);
-        }}
-      />
-      <PaystackButton {...paystackButtonProps} />
-    </div>
+    <>
+      <h2 className="mb-4 font-montserrat">Payment Method</h2>
+      <div className="max-w-md p-4 border rounded-md font-montserrat">
+        <div className="payment-option mb-4">
+          <input
+            type="radio"
+            name="paymentMethod"
+            id="onlinePayment"
+            value="online"
+            className="mr-2"
+            onChange={handlePaymentOptionChange}
+          />
+          <label htmlFor="onlinePayment" className="text-gray-700">
+            Online Payment (Credit Card, etc.)
+          </label>
+        </div>
+
+        <hr className="my-4 border-t border-gray-300" />
+
+        <div className="payment-option">
+          <input
+            type="radio"
+            name="paymentMethod"
+            id="offlinePayment"
+            value="offline"
+            className="mr-2"
+            onChange={handlePaymentOptionChange}
+          />
+          <label htmlFor="offlinePayment" className="text-gray-700">
+            Offline Payment
+          </label>
+        </div>
+      </div>
+
+\      {selectedPaymentOption === "online" && <OnlinePayment />}
+    </>
   );
 };
 

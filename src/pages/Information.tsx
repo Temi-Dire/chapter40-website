@@ -1,12 +1,14 @@
-import { Link } from "react-router-dom";
-import Person4OutlinedIcon from "@mui/icons-material/Person4Outlined";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import Person4OutlinedIcon from "@mui/icons-material/Person4Outlined";
 import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
+import { Link } from "react-router-dom";
 import NavigateComponent from "../components/NavigateComponent";
-
+import useInformationStore from "../store/shippingInfo";
 
 const Information = () => {
-  
+  const { setEmail } = useInformationStore();
+
+
   return (
     <>
       <div>
@@ -30,6 +32,7 @@ const Information = () => {
               type="email"
               placeholder="Email"
               required
+              onChange={(e) => setEmail(e.target.value)}
               className="font-montserrat outline-none w-full text-[#606060]"
             />
           </div>
@@ -139,7 +142,10 @@ const Information = () => {
             save this information for next time
           </p>
         </div>
-        <NavigateComponent label="Shipping" continueToPath={"/navigation-page/shipping"} />
+        <NavigateComponent
+          label="Shipping"
+          continueToPath={"/navigation-page/shipping"}
+        />
       </div>
     </>
   );
