@@ -4,7 +4,7 @@ import useInformationStore from "../store/shippingInfo";
 
 const OnlinePayment = () => {
 
-  const publicKey: string = "YOUR_PAYSTACK_PUBLIC_KEY";
+  const publicKey: string = import.meta.env.VITE_PUBLIC_KEY;
 
   const onSuccess = (reference: string) => {
     console.log("Payment successful", reference);
