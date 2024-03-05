@@ -13,6 +13,7 @@ import Shipping from "./pages/Shipping";
 import CheckoutPage from "./pages/CheckoutPage";
 import Payment from "./pages/Payment";
 import Login from "./pages/auth/login";
+import Order from "./pages/order";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/account/editaddress" element={<Editaccount />} />
             {/* <Route path="/savedproduct" element={<SavedProduct />} /> */}
             <Route path="/payment" element={<Payment />} />
+            <Route path="/order" element={<Order />} />
             <Route path="/cart" element={<CheckoutPage />}>
               <Route
                 path="info"
