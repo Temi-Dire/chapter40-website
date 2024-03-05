@@ -6,9 +6,6 @@ import { KeyboardEventHandler } from "react";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import useStore from "../State";
 
-interface Props {
-  onSubmit: (data: FormData) => void;
-}
 
 const schema = z.object({
   state: z.string().min(3, { message: "State should be a least 3 characters" }),
@@ -28,7 +25,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const Information = ({ onSubmit }: Props) => {
+const Information = () => {
   const navigate = useNavigate();
 
   const {
