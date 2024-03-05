@@ -1,8 +1,8 @@
 interface ButtonProps {
-  text: String;
-  paddingX?: String;
-  bgColor?: String;
-  textColor?: String;
+  text: string;
+  paddingX?: string;
+  bgColor?: string;
+  textColor?: string;
   width?: string;
   onClick?: () => void;
 }
