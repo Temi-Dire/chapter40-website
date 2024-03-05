@@ -1,10 +1,10 @@
 interface SavedProductProps {
   desc: string,
   price: number,
-  id: number,
+  // id: number,
 }
 
-const SavedProduct: React.FC<SavedProductProps> = ({desc, price, id}) => {
+const SavedProduct: React.FC<SavedProductProps> = ({desc, price}) => {
   return (
     <>
       <div className="h-28 flex items-center mb-4">

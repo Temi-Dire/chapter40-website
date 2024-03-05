@@ -7,7 +7,7 @@ import Checkout from "./pages/checkout";
 import Signup from "./pages/auth/signup";
 import Details from "./pages/account/details";
 import Editaccount from "./pages/account/editaccount";
-import SavedProduct from "./components/SavedProduct";
+// import SavedProduct from "./components/SavedProduct";
 import Information from "./pages/Information";
 import Shipping from "./pages/Shipping";
 import CheckoutPage from "./pages/CheckoutPage";

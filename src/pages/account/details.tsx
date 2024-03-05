@@ -2,7 +2,7 @@ import Navbar from "../../components/Navbar";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import SavedProduct from "../../components/SavedProduct";
+// import SavedProduct from "../../components/SavedProduct";
 import Button from "../../components/Button";
 import FooterSection from "../../sections/footer";
 import useStore from "../../State";
@@ -96,7 +96,7 @@ const Details = () => {
             </div>
           )}
           {section === 3 && <div></div>}
-          {section === 4 &&
+          {/* {section === 4 &&
             favorites.map((prod) => (
               <div className="h-full  container">
                 <SavedProduct
@@ -105,7 +105,7 @@ const Details = () => {
                   id={prod.id}
                 />
               </div>
-            ))}
+            ))} */}
         </div>
         {section === 4 && (
           <div className="col-start-2 mt-4 mx-auto ">
@@ -135,7 +135,7 @@ const Details = () => {
               </div>
             </div>
           )}
-          {value === "Saved Product" &&
+          {/* {value === "Saved Product" &&
             favorites.map((prod) => (
               <div className="h-full  container">
                 <SavedProduct
@@ -144,7 +144,7 @@ const Details = () => {
                   id={prod.id}
                 />
               </div>
-            ))}
+            ))} */}
         </div>
       </section>
       <FooterSection />
