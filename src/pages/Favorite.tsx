@@ -1,5 +1,14 @@
+import Navbar from "../components/Navbar";
+import FooterSection from "../sections/footer";
+
 const Favorite = () => {
-  return <div>saved items</div>;
+  return (
+    <div>
+          <Navbar />
+          
+          <FooterSection/>
+    </div>
+  );
 };
 
 export default Favorite;
