@@ -244,7 +244,7 @@ const Information = ({ onSubmit }: Props) => {
               type="submit"
               onClick={() =>
                 setTimeout(() => {
-                  navigate("/Checkoutpage/shipping"), 3000;
+                  navigate("/cart/shipping"), 3000;
                 })
               }
               className={`bg-${

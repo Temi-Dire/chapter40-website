@@ -97,7 +97,9 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="mr-11 hidden lg:list-item">
-                <FavoriteBorderOutlinedIcon />
+                <Link to={!user ? "/wishlist" : "/auth/login"}>
+                  <FavoriteBorderOutlinedIcon />
+                </Link>
               </li>
               <li className="relative" onClick={() => setOpen(true)}>
                 <ShoppingCartOutlinedIcon

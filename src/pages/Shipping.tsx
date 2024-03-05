@@ -50,7 +50,7 @@ const Shipping = () => {
           <button onClick={() => navigate("/Checkoutpage/info")}>
             <ArrowBackIosNewOutlinedIcon />
           </button>
-          <Link to="/Checkoutpage/info" className="hover:text-darkPrimary">
+          <Link to="/cart/info" className="hover:text-darkPrimary">
             return to info
           </Link>
         </div>
