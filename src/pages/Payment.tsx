@@ -24,7 +24,7 @@ const Payment = () => {
             onChange={handlePaymentOptionChange}
           />
           <label htmlFor="onlinePayment" className="text-gray-700">
-            Online Payment (Credit Card, etc.)
+            Online Payment (Credit, Dedit Card, etc.)
           </label>
         </div>
 

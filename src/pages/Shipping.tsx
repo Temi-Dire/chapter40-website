@@ -41,7 +41,7 @@ const Shipping = () => {
       <div className="flex flex-col space-y-4 lg:flex-row-reverse lg:justify-between items-center">
         <button
           type="submit"
-          onClick={() => navigate("/payment")}
+          onClick={() => navigate("/cart/payment")}
           className="bg-darkPrimary w-full lg:w-auto px-[32px] py-[16px] text-white font-roboto"
         >
           <p>Continue to Payment</p>
