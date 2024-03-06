@@ -1,145 +1,266 @@
-import { Link } from "react-router-dom";
-import Person4OutlinedIcon from "@mui/icons-material/Person4Outlined";
-import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
-import NavigateComponent from "../components/NavigateComponent";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { KeyboardEventHandler } from "react";
+import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
+import useStore from "../State";
 
+
+const schema = z.object({
+  state: z.string().min(3, { message: "State should be a least 3 characters" }),
+  email: z
+    .string()
+    .min(5, "not up to 5 characters")
+    .email("The email format you entered is invalid"),
+  firstName: z.string().min(3, "Name should have at least 3 characters"),
+  lastName: z.string().min(3, "Name should have at least 3 characters"),
+  company: z.string(),
+  address: z.string().min(5, "Address should contain at least 5 characters"),
+  apartment: z.string(),
+  postalCode: z.string().min(6, "Postal code should be at least 6 digits"),
+  city: z.string().min(3),
+  phone: z.string().min(5, "Number should be at least 5 digits"),
+});
+
+type FormData = z.infer<typeof schema>;
 
 const Information = () => {
-  
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isValid },
+  } = useForm<FormData>({ resolver: zodResolver(schema), mode: "onBlur" });
+
+  const inputContainerStyles = {
+    base: "lg:w-1/2 border border-[#606060]",
+    input: "outline-none px-[16px] py-2 w-full",
+  };
+  const allowOnlyNumbers: KeyboardEventHandler<HTMLInputElement> = (evt) => {
+    const keysAllowed: string[] = [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "Backspace",
+    ];
+    const keyPressed: string = evt.key;
+
+    if (!keysAllowed.includes(keyPressed)) {
+      evt.preventDefault();
+    }
+  };
+
+  const { user } = useStore();
+
   return (
     <>
       <div>
-        <div className="flex justify-between mb-2">
-          <p className="text-[20px]">Contact</p>
-          <div className="space-x-2 flex font-montserrat text-[16px] font-normal">
-            <p className="text-[#0C0C0C]">have an account?</p>
-            <Link
-              to="/"
-              className="hover:text-[#634D93] text-[#0C0C0C] cursor-pointer"
+        <form
+          onSubmit={handleSubmit((data) => {
+            console.log(data);
+            reset();
+          })}
+        >
+          <div className="flex justify-between mb-2">
+            <p className="text-[14px] lg:text-[20px]">Contact</p>
+            {!user && (
+              <div className="space-x-2 flex font-montserrat text-[12px] lg:text-[16px] font-normal">
+                <p className="text-[#0C0C0C]">have an account?</p>
+                <Link
+                  to="/auth/login"
+                  className="hover:text-[#634D93] text-[#5A6D57] lg:text-[#0C0C0C] cursor-pointer"
+                >
+                  {" "}
+                  login
+                </Link>
+              </div>
+            )}
+          </div>
+          <div
+            className={`flex border items-center border-[#606060]  ${
+              errors.email ? "border-red-600" : ""
+            } `}
+          >
+            <div className="flex-1">
+              <input
+                {...register("email")}
+                type="email"
+                placeholder="Email"
+                required
+                className="font-montserrat py-2 px-[16px]  outline-none w-full text-[#606060]"
+              />
+            </div>
+          </div>
+          {errors.email && (
+            <p className="text-red-600">{errors.email.message}</p>
+          )}
+          <div className="flex space-x-1 mt-1 mb-[28px]">
+            <input type="checkbox" className="rounded-none" />
+            <p className="font-montserrat text-[#0C0C0C] text-[14px]">
+              email me with news and offers
+            </p>
+          </div>
+          <header className=" font-montserrat lg:font-playfair text-[20px] font-normal mb-[20px]">
+            Shipping Address
+          </header>
+          <div className="space-y-[8px] font-montserrat">
+            <div className="flex justify-between border border-[#606060]  space-x-[4px]">
+              <input
+                {...register("state")}
+                type="text"
+                placeholder="State"
+                required
+                className="outline-none px-[16px] py-2 w-full text-[#606060]"
+              />
+            </div>
+            {errors.state && (
+              <p className="text-red-600">{errors.state.message}</p>
+            )}
+            <div className="space-y-[8px] lg:space-y-0 lg:flex lg:space-x-[24px] font-montserrat">
+              <div
+                className={`${inputContainerStyles.base} ${
+                  errors.firstName ? "border-red-600" : ""
+                }`}
+              >
+                <input
+                  {...register("firstName")}
+                  type="text"
+                  placeholder="first name"
+                  required
+                  className={inputContainerStyles.input}
+                />
+              </div>
+
+              <div
+                className={`${inputContainerStyles.base} ${
+                  errors.lastName ? "border-red-600" : ""
+                }`}
+              >
+                <input
+                  {...register("lastName")}
+                  type="text"
+                  placeholder="last name"
+                  required
+                  className={inputContainerStyles.input}
+                />
+              </div>
+            </div>
+            <div className="flex justify-between border border-[#606060]">
+              <input
+                {...register("company")}
+                type="text"
+                placeholder="Company(Optional)"
+                className="outline-none px-[16px] py-2 w-full"
+              />
+            </div>
+            <div className="flex justify-between border border-[#606060] ">
+              <input
+                {...register("address")}
+                type="text"
+                placeholder="Address"
+                required
+                className="outline-none px-[16px] py-2 w-full"
+              />
+            </div>
+            <div className="flex justify-between border border-[#606060]">
+              <input
+                {...register("apartment")}
+                type="text"
+                placeholder="apartment,suite,etc.(optional)"
+                className="outline-none px-[16px] py-2 w-full"
+              />
+            </div>
+            <div className="space-y-[8px] lg:space-y-0 lg:flex lg:space-x-[24px] font-montserrat">
+              <div
+                className={`${inputContainerStyles.base} ${
+                  errors.postalCode ? "border-red-600" : ""
+                }`}
+              >
+                <input
+                  {...register("postalCode")}
+                  type="text"
+                  placeholder="postal code"
+                  required
+                  className={inputContainerStyles.input}
+                  onKeyDown={allowOnlyNumbers}
+                />
+              </div>
+              <div
+                className={`${inputContainerStyles.base} ${
+                  errors.city ? "border-red-600" : ""
+                }`}
+              >
+                <input
+                  {...register("city")}
+                  type="text"
+                  placeholder="city"
+                  required
+                  className={inputContainerStyles.input}
+                />
+              </div>
+            </div>
+            <div
+              className={`flex justify-between border ${
+                errors.phone ? "border-red-600" : ""
+              } border-[#606060] space-x-[4px]`}
             >
-              {" "}
-              login
-            </Link>
-          </div>
-        </div>
-        <div className="flex border items-center border-[#606060] px-[16px] py-2 space-x-[4px]">
-          <Person4OutlinedIcon fontSize="small" className="text-[#606060]" />
-          <div className="flex-1">
-            <input
-              type="email"
-              placeholder="Email"
-              required
-              className="font-montserrat outline-none w-full text-[#606060]"
-            />
-          </div>
-        </div>
-        <div className="flex space-x-1 mt-1 mb-[28px]">
-          <input type="checkbox" className="rounded-none" />
-          <p className="font-montserrat text-[#0C0C0C] text-[14px]">
-            email me with news and offers
-          </p>
-        </div>
-        <header className="text-playfair text-[20px] font-normal mb-[20px]">
-          Shipping Address
-        </header>
-        <div className="space-y-[8px] font-montserrat">
-          <div className="flex justify-between border border-[#606060] px-[16px] py-2 space-x-[4px]">
-            <div className="flex-1">
               <input
-                type="text"
-                placeholder="Country/region"
-                required
-                className="outline-none w-full text-[#606060]"
-              />
-            </div>
-            <button>
-              <CloseOutlinedIcon
-                fontSize="small"
-                className="w-[16px] h-[16px] text-[#606060]"
-              />
-            </button>
-          </div>
-          <div className="flex space-x-[24px] font-montserrat">
-            <div className="w-1/2 flex justify-between border border-[#606060] px-[16px] py-2">
-              <input
-                type="text"
-                placeholder="first name"
-                required
-                className="outline-none w-full"
-              />
-            </div>
-            <div className="w-1/2 flex justify-between border border-[#606060] px-[16px] py-2">
-              <input
-                type="text"
-                placeholder="last name"
-                required
-                className="outline-none w-full"
-              />
-            </div>
-          </div>
-          <div className="flex justify-between border border-[#606060] px-[16px] py-2">
-            <input
-              type="text"
-              placeholder="Company(Optional)"
-              className="outline-none w-full"
-            />
-          </div>
-          <div className="flex justify-between border border-[#606060] px-[16px] py-2">
-            <input
-              type="text"
-              placeholder="Address"
-              required
-              className="outline-none w-full"
-            />
-          </div>
-          <div className="flex justify-between border border-[#606060] px-[16px] py-2">
-            <input
-              type="text"
-              placeholder="apartment,suite,etc.(optional)"
-              className="outline-none w-full"
-            />
-          </div>
-          <div className="flex space-x-[24px] font-montserrat">
-            <div className="w-1/2 flex justify-between border border-[#606060] px-[16px] py-2">
-              <input
-                type="text"
-                placeholder="postal code"
-                required
-                className="outline-none w-full"
-              />
-            </div>
-            <div className="w-1/2 flex justify-between border border-[#606060] px-[16px] py-2">
-              <input
-                type="text"
-                placeholder="city"
-                required
-                className="outline-none w-full"
-              />
-            </div>
-          </div>
-          <div className="flex justify-between border border-[#606060] px-[16px] py-2 space-x-[4px]">
-            <div className="flex-1">
-              <input
+                {...register("phone")}
                 type="text"
                 placeholder="phone"
                 required
-                className="outline-none w-full text-[#606060]"
+                className="outline-none w-full px-[16px] py-2 text-[#606060]"
+                onKeyDown={allowOnlyNumbers}
               />
             </div>
-            <PhoneIphoneOutlinedIcon
-              fontSize="small"
-              className=" text-[#606060]"
-            />
+            {errors.phone && (
+              <p className="text-red-600">{errors.phone.message}</p>
+            )}
           </div>
-        </div>
-        <div className="flex space-x-1 mt-1 mb-[80px]">
-          <input type="checkbox" className="rounded-none" />
-          <p className="font-montserrat text-[#0C0C0C] text-[14px]">
-            save this information for next time
-          </p>
-        </div>
-        <NavigateComponent label="Shipping" continueToPath={"/navigation-page/shipping"} />
+
+          <div className="flex space-x-1 mt-1 mb-[80px]">
+            <input type="checkbox" className="rounded-none" />
+            <p className="font-montserrat text-[#0C0C0C] text-[14px]">
+              save this information for next time
+            </p>
+          </div>
+
+          <div className="flex flex-col space-y-4 lg:flex-row-reverse lg:justify-between items-center">
+            <button
+              disabled={!isValid}
+              type="submit"
+              onClick={() =>
+                setTimeout(() => {
+                  navigate("/Checkoutpage/shipping"), 3000;
+                })
+              }
+              className={`bg-${
+                isValid ? "darkPrimary" : "darkPrimary hover:brightness-125"
+              }  w-full lg:w-auto px-[32px] py-[16px] text-white font-roboto`}
+              style={{ cursor: isValid ? "pointer" : "not-allowed" }}
+            >
+              <p>Continue to Shipping</p>
+            </button>
+            <div className="flex space-x-2 font-montserrat text-[#634D93] text-[16px]">
+              <button onClick={() => navigate("/cart")}>
+                <ArrowBackIosNewOutlinedIcon />
+              </button>
+              <Link to="/checkout" className="hover:text-darkPrimary">
+                return to Cart
+              </Link>
+            </div>
+          </div>
+        </form>
       </div>
     </>
   );

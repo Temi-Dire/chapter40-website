@@ -7,10 +7,10 @@ import Checkout from "./pages/checkout";
 import Signup from "./pages/auth/signup";
 import Details from "./pages/account/details";
 import Editaccount from "./pages/account/editaccount";
-import SavedProduct from "./components/SavedProduct";
+// import SavedProduct from "./components/SavedProduct";
 import Information from "./pages/Information";
 import Shipping from "./pages/Shipping";
-import NavigationPage from "./pages/NavigationPage";
+// import CheckoutPage from "./pages/CheckoutPage";
 import Payment from "./pages/Payment";
 import Login from "./pages/auth/login";
 
@@ -18,6 +18,7 @@ function App() {
   return (
     <>
       <Router>
+        <div>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -27,14 +28,26 @@ function App() {
             <Route path="/auth/login" element={<Login />} />
             <Route path="/account/details" element={<Details />} />
             <Route path="/account/editaddress" element={<Editaccount />} />
-            <Route path="/savedproduct" element={<SavedProduct />} />
+            {/* <Route path="/savedproduct" element={<SavedProduct />} /> */}
             {/* <Route path="/payment" element={<Payment />} /> */}
-            <Route path="navigation-page" element={<NavigationPage />}>
+            {/* <Route path="navigation-page" element={<NavigationPage />}> */}
               <Route path="info" element={<Information />} />
               <Route path="shipping" element={<Shipping />} />
               <Route path="payment" element={<Payment/>}/>
-            </Route>
+            {/* </Route> */}
+
+            {/* <Route
+              path="/checkoutproduct"
+              element={
+                <CheckoutProduct
+                  desc="Privé Contrast Collar
+ cooperate Dress"
+                  price={30000}
+                />
+              }
+            /> */}
           </Routes>
+        </div>
       </Router>
     </>
   );
