@@ -39,7 +39,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="sticky w-full top-0 z-10">
+      <div className="sticky w-full top-0 z-50">
         <nav
           className={`w-full flex justify-between justify-items-center items-center px-4 sm:px-10 lg:px-16 py-3 lg:py-6ont-montserrat `}
           style={{
