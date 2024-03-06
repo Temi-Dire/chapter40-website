@@ -1,7 +1,7 @@
 import CloseIcon from "@mui/icons-material/Close";
 import CheckoutProduct from "./CheckoutProduct";
 import Button from "./Button";
-import { AnimatePresence, motion as m } from "framer-motion";
+import { motion as m } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import useStore from "../State";
 
@@ -28,7 +28,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ onClick }) => {
       animate={{ y: "0" }}
       exit={{ y: "100vh" }}
       transition={{ type: "spring", stiffness: 200, damping: 20 }}
-      className=" max-h-[500px] overflow-y-scroll px-4 w-full max-w-[500px] flex flex-col items-center bg-white fixed right-0 border-l border-[#CAC6DA] z-50"
+      className=" max-h-[500px] overflow-y-scroll px-4 w-full max-w-[500px] flex flex-col items-center bg-white fixed right-0 border-t-[0.3px] border-black-500 shadow-lg rounded-sm z-50"
     >
       <div className="flex justify-between py-4 font-playfair text-2xl sticky top-0 bg-white w-full">
         <div>Cart</div>

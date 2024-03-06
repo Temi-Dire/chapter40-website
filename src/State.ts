@@ -62,10 +62,10 @@ const useStore = create<BasketStore>()((set, get) => ({
   },
   basket: [],
   favorites: [],
-  init: () => {
+    init: () => {
     const storedBasket = localStorage.getItem("basket");
     const storedUser = localStorage.getItem("user");
-    if (storedBasket) {
+        if (storedBasket) {
       set(() => {
         return { basket: JSON.parse(storedBasket) };
       });
@@ -75,7 +75,7 @@ const useStore = create<BasketStore>()((set, get) => ({
         return { user: JSON.parse(storedUser) };
       });
     }
-  },
+      },
   addToBasket: (data) => {
     set((state: any) => {
       const existedProductIndex = state.basket.findIndex(

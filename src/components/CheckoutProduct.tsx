@@ -14,7 +14,6 @@ const CheckoutProduct: React.FC<CheckoutProductProps> = ({
   quantity,
 }) => {
   const store = useStore();
-  // const basket = store.basket;
   const decrement = store.decrement;
   const increment = store.increment;
   const removeFromBasket = store.removeFromBasket;

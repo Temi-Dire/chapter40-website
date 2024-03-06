@@ -45,7 +45,7 @@ const Payment = () => {
         </div>
       </div>
 
-\      {selectedPaymentOption === "online" && <OnlinePayment />}
+      {selectedPaymentOption === "online" && <OnlinePayment />}
     </>
   );
 };

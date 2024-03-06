@@ -2,7 +2,7 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { motion as m, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
 import useStore from "../State";
@@ -35,18 +35,11 @@ const Navbar = () => {
     return sum;
   };
 
-  const [color, setColor] = useState("");
-
   const { user } = useStore();
-
-  useEffect(() => {
-    if (window.scrollY > 0) setColor("bg-white");
-    else setColor("bg-[#fbfbfb]");
-  }, []);
 
   return (
     <>
-      <div className="sticky w-full top-0 z-10">
+      <div className="sticky w-full top-0 z-50">
         <nav
           className={`w-full flex justify-between justify-items-center items-center px-4 sm:px-10 lg:px-16 py-3 lg:py-6ont-montserrat `}
           style={{
@@ -54,14 +47,14 @@ const Navbar = () => {
           }}
         >
           <ul className="text-lg font-normal hidden lg:flex ">
-            <li className="mr-11">
-              <Link to={"/about"}>About</Link>
+            <li className="mr-11 cursor-pointer">
+              <a onClick={() => navigate("/about")}>About</a>
             </li>
-            <li className="mr-11">
-              <Link to={"/shop"}>Shop</Link>
+            <li className="mr-11 cursor-pointer">
+              <a onClick={() => navigate("/shop")}>Shop</a>
             </li>
-            <li>
-              <Link to={"/categories"}>Contact Us</Link>
+            <li className="cursor-pointer">
+              <a href="#footer">Contact Us</a>
             </li>
           </ul>
           <m.div
@@ -104,7 +97,9 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="mr-11 hidden lg:list-item">
-                <FavoriteBorderOutlinedIcon />
+                <Link to={!user ? "/wishlist" : "/auth/login"}>
+                  <FavoriteBorderOutlinedIcon />
+                </Link>
               </li>
               <li className="relative" onClick={() => setOpen(true)}>
                 <ShoppingCartOutlinedIcon
@@ -125,7 +120,7 @@ const Navbar = () => {
               animate={{ y: 0 }}
               exit={{ y: 500 }}
               transition={{ ease: "easeInOut", duration: 0.3 }}
-              className={`pt-5 mx-3 mt-3 space-y-3 bg-[#fff] absolute text-[#333333] flex flex-col  items-center lg:hidden rounded`}
+              className={`pt-5 mx-3 mt-3 space-y-3 bg-[#f2f1f1] absolute text-[#333333] flex flex-col  items-center lg:hidden rounded-lg`}
             >
               <ul className="text-xl">
                 <m.li

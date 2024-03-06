@@ -34,9 +34,8 @@ const FooterSection = () => {
   const currentYear = new Date();
   return (
     <>
-      <div className="w-full h-[1px] bg-[#CAC6DA] mt-36 " />
-      <div className="px-14 py-14 lg:px-20">
-        <div className="w-full lg:py-14 grid grid-cols-1 md:grid-cols-2 grid-rows-3 lg:grid-rows-none  lg:grid-cols-[1fr,1fr,1fr,auto] lg:gap-4 ">
+      <div className="px-10 py-12 lg:px-20 mt-36 border-t-borderDark border-[0.5px]">
+        <div className="w-full lg:py-14 grid grid-cols-1 md:grid-cols-2 grid-rows-3 lg:grid-rows-none lg:grid-cols-[1fr,1fr,1fr,auto] lg:gap-4 ">
           <div className="mr-[12px] ">
             <Footer header={"Menu"} items={menu} />
           </div>
@@ -54,13 +53,13 @@ const FooterSection = () => {
                 type="text"
                 placeholder="your@email.com"
               />
-              <button className="text-white bg-[#36254B] px-4 lg:px-8 py-4 w-[126px]">
+              <button className="text-white text-[12px] bg-[#36254B] px-4 lg:px-8 py-4 w-[126px]">
                 Sign up
               </button>
             </div>
           </div>
         </div>
-        <div className="flex flex-col-reverse items-center gap-[30px] lg:space-y-0 lg:flex-row lg:justify-between">
+        <div className="flex flex-col-reverse items-center gap-[30px] lg:space-y-0 lg:flex-row lg:justify-between font-light">
           <div>Copyright {currentYear.getFullYear()} Chapter40 Fashion</div>
           <div className="space-x-6 lg:space-x-4">
             <LinkedInIcon />

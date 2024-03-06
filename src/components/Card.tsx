@@ -1,5 +1,5 @@
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import Star from "./Star";
+// import Star from "./Star";
 import useStore from "../State";
 import { useState } from "react";
 
@@ -12,16 +12,11 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ desc, price, id }) => {
   const { favorites, addToBasket, addToFavorites, removeFromFavorites } =
     useStore();
-  const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
   return (
     <>
-      <div
-        className="w-[205px] md:w-[220px] flex-shrink-0"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
+      <div className="w-[150px] sm:w-[205px] md:w-[220px] flex-shrink-0">
         <div className="relative ">
           <FavoriteIcon
             style={{ color: isClicked ? "red" : "white" }}
@@ -29,10 +24,10 @@ const Card: React.FC<CardProps> = ({ desc, price, id }) => {
             onClick={() => {
               setIsClicked(!isClicked);
               if (!isClicked) {
-                addToFavorites({ desc, price, id });
-                console.log(favorites);
+              addToFavorites({ desc, price, id });
+              console.log(favorites);
               } else {
-                removeFromFavorites(id);
+              removeFromFavorites(id);
               }
             }}
           />
@@ -54,7 +49,6 @@ const Card: React.FC<CardProps> = ({ desc, price, id }) => {
         <div>
           <p className="font-playfair text-xl">{desc}</p>
           <p className="font-montserrat">{"₦" + price}</p>
-          <Star filled />
         </div>
       </div>
     </>

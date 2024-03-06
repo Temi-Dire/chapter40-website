@@ -36,7 +36,7 @@ const Checkout = () => {
             <div className="">
               {store.basket.length !== 0 ? (
                 <div>
-                  {store.basket.map((item, index) => (
+                  {store.basket.map((item) => (
                     <CheckoutProduct
                       desc={item.desc}
                       price={item.price}
@@ -79,7 +79,7 @@ const Checkout = () => {
               <Button
                 text={"Go to Checkout"}
                 width={"w-full"}
-                onClick={() => navigate("/navigation-page/info")}
+                onClick={() => navigate("/cart/info")}
               />
             </div>
           </div>
@@ -99,7 +99,7 @@ const Checkout = () => {
       )}
 
       <Newarrivals header="YOU MIGHT LIKE" />
-      {/* <FooterSection /> */}
+      <FooterSection />
     </>
   );
 };
