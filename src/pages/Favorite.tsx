@@ -5,7 +5,9 @@ const Favorite = () => {
   return (
     <div>
           <Navbar />
-          
+          <div className="">
+              
+          </div>
           <FooterSection/>
     </div>
   );

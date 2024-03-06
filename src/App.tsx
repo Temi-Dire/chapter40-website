@@ -7,7 +7,6 @@ import Checkout from "./pages/checkout";
 import Signup from "./pages/auth/signup";
 import Details from "./pages/account/details";
 import Editaccount from "./pages/account/editaccount";
-import SavedProduct from "./components/SavedProduct";
 import Information from "./pages/Information";
 import Shipping from "./pages/Shipping";
 import CheckoutPage from "./pages/CheckoutPage";
@@ -35,7 +34,7 @@ function App() {
             <Route path="/cart" element={<CheckoutPage />}>
               <Route
                 path="info"
-                element={<Information onSubmit={(data) => console.log(data)} />}
+                element={<Information />}
               />
               <Route path="shipping" element={<Shipping />} />
             </Route>
