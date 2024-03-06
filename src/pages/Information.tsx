@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { KeyboardEventHandler } from "react";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import useStore from "../State";
+import useInformationStore from "../store/shippingInfo";
 
 
 const schema = z.object({
@@ -61,6 +62,7 @@ const Information = () => {
   };
 
   const { user } = useStore();
+  const {setEmail} = useInformationStore()
 
   return (
     <>
@@ -68,6 +70,7 @@ const Information = () => {
         <form
           onSubmit={handleSubmit((data) => {
             console.log(data);
+            setEmail(data.email)
             reset();
           })}
         >
@@ -95,6 +98,7 @@ const Information = () => {
               <input
                 {...register("email")}
                 type="email"
+                
                 placeholder="Email"
                 required
                 className="font-montserrat py-2 px-[16px]  outline-none w-full text-[#606060]"
