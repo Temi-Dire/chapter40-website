@@ -2,16 +2,29 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { motion as m, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
 import useStore from "../State";
 
 const Navbar = () => {
   const navigate = useNavigate();
-
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState("");
+  const navbarRef = useRef(null);
+  
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+        setIsOpen(null);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on cleanup
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [navbarRef]);
 
   if (open) {
     document.body.style.overflow = "hidden";
@@ -39,11 +52,11 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="sticky w-full top-0 z-50">
+      <div className="sticky w-full top-0 z-10">
         <nav
-          className={`w-full flex justify-between justify-items-center items-center px-4 sm:px-10 lg:px-16 py-3 lg:py-6ont-montserrat `}
+          className={`w-full flex justify-between justify-items-center items-center px-4 sm:px-10 lg:px-16 py-3 lg:py-6ont-montserrat`}
           style={{
-            background: "linear-gradient(to right, white 50%, purple 50%)",
+            background: `linear-gradient(to right, white 50%, purple 50%)`,
           }}
         >
           <ul className="text-lg font-normal hidden lg:flex ">
@@ -97,9 +110,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="mr-11 hidden lg:list-item">
-                <Link to={!user ? "/wishlist" : "/auth/login"}>
-                  <FavoriteBorderOutlinedIcon />
-                </Link>
+                <FavoriteBorderOutlinedIcon />
               </li>
               <li className="relative" onClick={() => setOpen(true)}>
                 <ShoppingCartOutlinedIcon
@@ -114,39 +125,53 @@ const Navbar = () => {
           </div>
         </nav>
         <AnimatePresence>
+          {/* <button onClick={() => setIsOpen(!isOpen)}></button> */}
           {isOpen === "1" && (
             <m.div
               initial={{ y: 500 }}
               animate={{ y: 0 }}
-              exit={{ y: 500 }}
+              exit={{ y: 1000 }}
               transition={{ ease: "easeInOut", duration: 0.3 }}
-              className={`pt-5 mx-3 mt-3 space-y-3 bg-[#f2f1f1] absolute text-[#333333] flex flex-col  items-center lg:hidden rounded-lg`}
+              className={`{relative} pt-5 mx-3 mt-3 space-y-3 bg-[#f2f1f1] text-[#333333] flex flex-col justify-between px-4 items-center lg:hidden rounded-lg fixed left-0 bottom-0 h-full w-[300px] top-10`}
             >
-              <ul className="text-xl">
+              <ul className="text-xl " ref={navbarRef}>
                 <m.li
-                  className="cursor-pointer mb-1 py-2 px-5"
+                  className="cursor-pointer mb-1 py-2 px-5 mt-10"
+                  whileHover={{ backgroundColor: "#ccc", color: "white" }}
+                  onClick={() => navigate("")}
+                >
+                  Home
+                </m.li>
+                <m.li
+                  className="cursor-pointer mb-1 py-2 px-5 mt-10"
                   whileHover={{ backgroundColor: "#ccc", color: "white" }}
                 >
                   Shop
                 </m.li>
                 <m.li
-                  className="cursor-pointer mb-1 py-2 px-5"
+                  className="cursor-pointer mb-1 py-2 px-5 mt-10"
                   whileHover={{ backgroundColor: "#ccc", color: "white" }}
                   onClick={() => navigate("/about")}
                 >
                   About Us
                 </m.li>
                 <m.li
-                  className="cursor-pointer mb-1 py-2 px-5"
+                  className="cursor-pointer mb-1 py-2 px-5 mt-10"
                   whileHover={{ backgroundColor: "#ccc", color: "white" }}
                 >
                   Contact us
                 </m.li>
                 <m.li
-                  className="cursor-pointer mb-1 py-2 px-5"
+                  className="cursor-pointer mb-1 py-2 px-5 mt-10"
                   whileHover={{ backgroundColor: "#ccc", color: "white" }}
                 >
                   Categories
+                </m.li>
+                <m.li
+                  className="cursor-pointer mb-1 py-2 px-5 mt-10"
+                  whileHover={{ backgroundColor: "#ccc", color: "white" }}
+                >
+                  Favourites
                 </m.li>
               </ul>
             </m.div>
