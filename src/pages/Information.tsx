@@ -197,6 +197,11 @@ const Information = () => {
                   onKeyDown={allowOnlyNumbers}
                 />
               </div>
+              {errors.postalCode && (
+                <p className="text-red-600 lg:hidden sm:block">
+                  {errors.postalCode.message}
+                </p>
+              )}
               <div
                 className={`${inputContainerStyles.base} ${
                   errors.city ? "border-red-600" : ""
@@ -212,7 +217,9 @@ const Information = () => {
               </div>
             </div>
             {errors.postalCode && (
-              <p className="text-red-600">{errors.postalCode.message}</p>
+              <p className="text-red-600 sm:hidden lg:block">
+                {errors.postalCode.message}
+              </p>
             )}
             <div
               className={`flex justify-between border ${
