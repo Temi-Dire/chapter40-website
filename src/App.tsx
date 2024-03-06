@@ -10,9 +10,10 @@ import Editaccount from "./pages/account/editaccount";
 // import SavedProduct from "./components/SavedProduct";
 import Information from "./pages/Information";
 import Shipping from "./pages/Shipping";
-// import CheckoutPage from "./pages/CheckoutPage";
+import CheckoutPage from "./pages/CheckoutPage";
 import Payment from "./pages/Payment";
 import Login from "./pages/auth/login";
+import Order from "./pages/order";
 
 function App() {
   return (
@@ -29,12 +30,16 @@ function App() {
             <Route path="/account/details" element={<Details />} />
             <Route path="/account/editaddress" element={<Editaccount />} />
             {/* <Route path="/savedproduct" element={<SavedProduct />} /> */}
-            {/* <Route path="/payment" element={<Payment />} /> */}
-            {/* <Route path="navigation-page" element={<NavigationPage />}> */}
-              <Route path="info" element={<Information />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/order" element={<Order />} />
+            <Route path="/cart" element={<CheckoutPage />}>
+              <Route
+                path="info"
+                element={<Information />}
+              />
               <Route path="shipping" element={<Shipping />} />
               <Route path="payment" element={<Payment/>}/>
-            {/* </Route> */}
+            </Route>
 
             {/* <Route
               path="/checkoutproduct"
