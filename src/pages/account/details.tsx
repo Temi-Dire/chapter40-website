@@ -2,7 +2,6 @@ import Navbar from "../../components/Navbar";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// import SavedProduct from "../../components/SavedProduct";
 import Button from "../../components/Button";
 import FooterSection from "../../sections/footer";
 import useStore from "../../State";
