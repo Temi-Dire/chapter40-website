@@ -198,7 +198,7 @@ const Information = () => {
                 />
               </div>
               {errors.postalCode && (
-                <p className="text-red-600 lg:hidden sm:block">
+                <p className="text-red-600 lg:hidden">
                   {errors.postalCode.message}
                 </p>
               )}
