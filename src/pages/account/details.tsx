@@ -2,12 +2,14 @@ import Navbar from "../../components/Navbar";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import SavedProduct from "../../components/SavedProduct";
 import Button from "../../components/Button";
 import FooterSection from "../../sections/footer";
 import useStore from "../../State";
+import { useNavigate } from "react-router-dom";
+import OrderTracking from "../../components/OrderTracking";
 
 const Details = () => {
+  const navigate = useNavigate();
   const [value, setValue] = useState<string>("Account");
   const [section, setSection] = useState(1);
   const price = 500;
@@ -30,12 +32,12 @@ const Details = () => {
     },
   ];
 
-  const { user, removeUser, favorites } = useStore();
+  const { user, removeUser } = useStore();
 
   return (
     <>
       <Navbar />
-      <section className="md:grid grid-cols-[auto,1fr] pt-10 px-4 md:px-6 lg:px-28 gap-x-16 ">
+      <section className="md:grid grid-cols-[auto,1fr] pt-10 px-4 md:px-6 lg:px-20 gap-x-6 lg:gap-x-16 ">
         <div className="md:hidden my-5 border border-[#DFDFDF] px-4 py-2 ">
           <select
             className="w-full text-2xl outline-none"
@@ -51,7 +53,7 @@ const Details = () => {
             <option value="Saved Product">Saved Products</option>
           </select>
         </div>
-        <div className=" p-3 border border-black text-md space-y-12 font-playfair font-light hidden md:block max-h-80">
+        <div className=" px-10 py-6 border border-black text-2xl space-y-12 font-montserrat font-light hidden md:block h-fit">
           {details.map((item) => (
             <div
               className="w-full flex justify-between items-center cursor-pointer"
@@ -64,7 +66,9 @@ const Details = () => {
         </div>
         <div
           className={`${
-            section !== 4 ? " border border-black px-4 py-6" : ""
+            section !== 4 && section !== 3
+              ? " border border-black px-4 py-6"
+              : ""
           } text-[#242424] hidden md:block`}
         >
           {section === 1 && (
@@ -76,7 +80,10 @@ const Details = () => {
               <div className="flex justify-center">
                 <button
                   className="bg-[#634D93] text-white text-xl py-2 px-4 rounded-lg"
-                  onClick={() => removeUser()}
+                  onClick={() => {
+                    removeUser();
+                    navigate("/");
+                  }}
                 >
                   SIGN OUT
                 </button>
@@ -95,8 +102,8 @@ const Details = () => {
               <div className="text-2xl">Password: ******</div>
             </div>
           )}
-          {section === 3 && <div></div>}
-          {section === 4 &&
+          {section === 3 && <OrderTracking />}
+          {/* {section === 4 &&
             favorites.map((prod) => (
               <div className="h-full  container">
                 <SavedProduct
@@ -105,7 +112,7 @@ const Details = () => {
                   id={prod.id}
                 />
               </div>
-            ))}
+            ))} } */}
         </div>
         {section === 4 && (
           <div className="col-start-2 mt-4 mx-auto ">
@@ -118,8 +125,10 @@ const Details = () => {
         )}
         <div
           className={`${
-            value !== "Saved Product" ? " border border-black px-4 py-6" : ""
-          } text-[#242424] px-5 md:hidden`}
+            value !== "Saved Product" && value !== "Order Tracking"
+              ? " border border-black px-4 py-6"
+              : ""
+          } text-[#242424] px-2 md:hidden`}
         >
           {value === "Account" && (
             <div className="space-y-6">
@@ -128,14 +137,18 @@ const Details = () => {
               <div className="flex justify-center">
                 <button
                   className="bg-[#634D93] text-white text-xl py-2 px-4 rounded-lg"
-                  onClick={() => removeUser()}
+                  onClick={() => {
+                    removeUser();
+                    navigate("/");
+                  }}
                 >
                   SIGN OUT
                 </button>
               </div>
             </div>
           )}
-          {value === "Saved Product" &&
+          {value === "Order Tracking" && <OrderTracking />}
+          {/* {value === "Saved Product" &&
             favorites.map((prod) => (
               <div className="h-full  container">
                 <SavedProduct
@@ -144,7 +157,7 @@ const Details = () => {
                   id={prod.id}
                 />
               </div>
-            ))}
+            ))}  */}
         </div>
       </section>
       <FooterSection />
