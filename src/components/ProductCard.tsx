@@ -52,9 +52,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
         />
         <img src={image} alt="" />
         <img className="rounded-sm w-full h-[auto]" src={dress1} alt="" />
-        <div className="absolute left-[3px] bottom-[5px] w-full">
+        <div className="absolute bottom-[2px] w-full">
           <button
-            className="bg-lightPrimary bg-opacity-80 hover:bg-opacity-100 text-white font-montserrat border-none text-[13px] border py-1 px-4 cursor-pointer rounded-sm"
+            className="bg-darkPrimary hover:bg-opacity-100 text-white font-montserrat border-none text-[13px] border py-1 px-4 cursor-pointer"
             onClick={() => {
               addToBasket({ desc, price, id });
             }}
