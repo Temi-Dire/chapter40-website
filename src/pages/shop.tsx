@@ -2,14 +2,13 @@ import { useEffect, useState } from "react";
 
 import Navbar from "../components/Navbar";
 import FooterSection from "../sections/footer";
-// import ProductFilter from "../components/ProductFilter";
+import ProductFilter from "../components/ProductFilter";
 import ProductCard from "../components/ProductCard";
 
 interface Product {
   id: number;
   description: string;
   price: number;
-  rating: number;
   category: string;
 }
 
@@ -39,7 +38,6 @@ const Shop = () => {
   const handleCategoryClick = (category: string) => {
     setCategory(category);
     setDropDownState(false);
-    setDisplayedProducts(6);
   };
 
   const handleDropDownState = () => {
@@ -51,84 +49,72 @@ const Shop = () => {
       id: 2,
       description: "Red ankara shirt sumami crimison",
       price: 30000,
-      rating: 3,
       category: "shirts",
     },
     {
       id: 2,
       description: "Red ankara shirt sumami crimison",
       price: 30000,
-      rating: 4,
       category: "shirts",
     },
     {
       id: 3,
       description: "Red ankara gown sumami crimison",
       price: 30000,
-      rating: 4,
       category: "gowns",
     },
     {
       id: 3,
       description: "Red ankara gown sumami crimison",
       price: 30000,
-      rating: 4,
       category: "gowns",
     },
     {
       id: 4,
       description: "Red ankara skirt sumami crimison",
       price: 30000,
-      rating: 4,
       category: "skirt",
     },
     {
       id: 5,
       description: "Red ankara trousers sumami crimison",
       price: 30000,
-      rating: 4,
       category: "trousers",
     },
     {
       id: 5,
       description: "Red ankara trousers sumami crimison",
       price: 30000,
-      rating: 4,
       category: "trousers",
     },
     {
       id: 5,
       description: "Red ankara trousers sumami crimison",
       price: 30000,
-      rating: 4,
       category: "trousers",
     },
     {
       id: 5,
       description: "Red ankara trousers sumami crimison",
       price: 30000,
-      rating: 4,
       category: "trousers",
     },
     {
       id: 5,
       description: "Red ankara trousers sumami crimison",
       price: 30000,
-      rating: 4,
       category: "trousers",
     },
     {
       id: 5,
       description: "Red ankara trousers sumami crimison",
       price: 30000,
-      rating: 4,
       category: "trousers",
     },
     {
       id: 5,
       description: "Red ankara trousers sumami crimison",
       price: 30000,
-      rating: 4,
       category: "trousers",
     },
   ];
@@ -145,8 +131,7 @@ const Shop = () => {
   return (
     <>
       <Navbar />
-      {/* <div className="">
-        <div className="px-[20px] pt-[40px] min-w-[375px] w-full">
+        <div className="px-[20px] pt-[30px] lg:pt-[20px] min-w-[375px] w-full">
           <div className="flex justify-between items-center lg:flex-col lg:justify-normal">
             <div className="flex flex-col lg:flex-row lg:justify-between w-full lg:items-center">
               <p className="font-playfair text-[20px] md:text-[28px] lg:text-[32px] xl:text-[36px] text-lightPrimary">
@@ -168,7 +153,7 @@ const Shop = () => {
               />
             </div>
           </div>
-        </div> */}
+        </div>
       <div className="py-[45px] px-[18px] w-full grid grid-cols-2 2sm:grid-cols-3 lg:grid-cols-4 gap-[24px] lg:mx-auto lg:w-fit">
         {filteredProducts.slice(0, displayedProducts).map((prod, index) => (
           <ProductCard
@@ -185,7 +170,6 @@ const Shop = () => {
       >
         Load More
       </div>
-      {/* </div> */}
       <FooterSection />
     </>
   );
