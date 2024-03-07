@@ -1,7 +1,8 @@
 import { useState } from "react";
 import useStore from "../State";
 
-import dress1 from "/assets/images/dress1.png";
+// import dress1 from "/assets/images/dress1.png";
+import dress4 from "/assets/images/dress4.png";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 interface ProductCardProps {
@@ -35,15 +36,15 @@ const ProductCard: React.FC<ProductCardProps> = ({
   }
 
   return (
-    <div className="font-outfit text-[12px] capitalize">
+    <div className="font-outfit text-[12px] sm:text-[15px] 2sm:text-[12px] capitalize md:text-[15px] lg:max-w-[280px] w-full">
       <div className="relative">
         <FavoriteIcon
           strokeWidth={0.5}
           stroke="black"
           style={{
             color: isClicked ? "#36254B" : "white",
-            height: "20px",
-            width: "20px",
+            height: "24px",
+            width: "24px",
           }}
           className={`absolute top-[10px] right-[10px] cursor-pointer`}
           onClick={() => {
@@ -57,7 +58,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           }}
         />
         <img src={image} alt="" />
-        <img className="rounded-sm w-full h-[auto]" src={dress1} alt="" />
+        <img className="rounded-sm w-full h-[auto]" src={dress4} alt="" />
         <div className="absolute bottom-[7px] flex justify-center w-full">
           <button
             className="bg-darkPrimary hover:bg-opacity-100 text-white font-montserrat border-none border py-2 px-8 cursor-pointer text-[10px] w-fit font-light"

@@ -169,7 +169,7 @@ const Shop = () => {
             </div>
           </div>
         </div> */}
-      <div className="px-[18px] w-full grid grid-cols-2 2sm:grid-cols-3 md:grid-cols-4 gap-[24px]">
+      <div className="py-[45px] px-[18px] w-full grid grid-cols-2 2sm:grid-cols-3 lg:grid-cols-4 gap-[24px] lg:mx-auto lg:w-fit">
         {filteredProducts.slice(0, displayedProducts).map((prod, index) => (
           <ProductCard
             key={index}
