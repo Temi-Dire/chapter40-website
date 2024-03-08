@@ -1,4 +1,3 @@
-import Card from "../../components/Card";
 import ProductCard from "../../components/ProductCard";
 
 interface NewarrivalsProps {
@@ -15,25 +14,21 @@ const Newarrivals: React.FC<NewarrivalsProps> = ({
       description: "Red ankara gown sumami crimison",
       price: 30000,
       id: 1,
-      rating: 4,
     },
     {
       description: "Pink ankara gown sumami crimison",
       price: 30000,
       id: 2,
-      rating: 3,
     },
     {
       description: "Green ankara gown sumami crimison",
       price: 30000,
       id: 3,
-      rating: 2,
     },
     {
       description: "Yellow ankara gown sumami crimison",
       price: 30000,
       id: 4,
-      rating: 0,
     },
   ];
 
@@ -51,7 +46,6 @@ const Newarrivals: React.FC<NewarrivalsProps> = ({
             key={index}
             id={prod.id}
             desc={prod.description}
-            rating={prod.rating}
             price={prod.price}
           />
         ))}
