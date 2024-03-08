@@ -49,11 +49,11 @@ const FooterSection = () => {
             <p className="font-playfair">Join our mailing list</p>
             <div className="flex mt-4">
               <input
-                className="lg:w-80 outline-none py-4 px-4 bg-[#F9F9F9] font-montserrat"
+                className="lg:w-80 outline-none py-2 px-2 w-11/12 text-sm sm:text-base bg-[#e8e7e7] font-montserrat"
                 type="text"
                 placeholder="your@email.com"
               />
-              <button className="text-white text-[12px] bg-[#36254B] px-4 lg:px-8 py-4 w-[126px]">
+              <button className="text-white text-[12px] bg-[#36254B] lg:px-8  w-[126px]">
                 Sign up
               </button>
             </div>
