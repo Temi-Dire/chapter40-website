@@ -17,6 +17,7 @@ export default {
     extend: {
       colors: {
         black: "#242424",
+        "white-300": "#f9f9f9",
         "black-500": "hsla(0, 0%, 14%, 0.6)",
         borderDark: "#CAC6DA",
         darkPrimary: "#36254B",

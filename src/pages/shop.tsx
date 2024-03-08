@@ -131,29 +131,29 @@ const Shop = () => {
   return (
     <>
       <Navbar />
-        <div className="px-[20px] pt-[30px] lg:pt-[20px] min-w-[375px] w-full">
-          <div className="flex justify-between items-center lg:flex-col lg:justify-normal">
-            <div className="flex flex-col lg:flex-row lg:justify-between w-full lg:items-center">
-              <p className="font-playfair text-[20px] md:text-[28px] lg:text-[32px] xl:text-[36px] text-lightPrimary">
-                Corporate Wear
-              </p>
-              <p className="text-[11px] md:text-[14px] font-light">
-                Home/Shop/Checkout
-              </p>
-            </div>
-            <div className="lg:flex justify-between items-center lg:w-full lg:pt-[20px]">
-              <p className="font-montserrat hidden lg:block text-[20px]">
-                37 Products
-              </p>
-              <ProductFilter
-                handleFilterMenu={handleDropDownState}
-                filterState={dropDownState}
-                category={category}
-                onCategoryChange={handleCategoryClick}
-              />
-            </div>
+      <div className="px-[20px] pt-[30px] lg:pt-[20px] min-w-[375px] w-full max-w-[1230px] mx-auto">
+        <div className="flex justify-between items-center lg:flex-col lg:justify-normal">
+          <div className="flex flex-col lg:flex-row lg:justify-between w-full lg:items-center">
+            <p className="font-playfair text-[20px] md:text-[28px] lg:text-[32px] xl:text-[36px] text-lightPrimary">
+              Corporate Wear
+            </p>
+            <p className="text-[11px] md:text-[14px] font-light">
+              Home/Shop/Checkout
+            </p>
+          </div>
+          <div className="lg:flex justify-between items-center lg:w-full lg:pt-[20px]">
+            <p className="font-montserrat hidden lg:block text-[20px]">
+              37 Products
+            </p>
+            <ProductFilter
+              handleFilterMenu={handleDropDownState}
+              filterState={dropDownState}
+              category={category}
+              onCategoryChange={handleCategoryClick}
+            />
           </div>
         </div>
+      </div>
       <div className="py-[45px] px-[18px] w-full grid grid-cols-2 2sm:grid-cols-3 lg:grid-cols-4 gap-[24px] lg:mx-auto lg:w-fit">
         {filteredProducts.slice(0, displayedProducts).map((prod, index) => (
           <ProductCard
