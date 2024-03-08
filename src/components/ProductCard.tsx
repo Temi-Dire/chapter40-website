@@ -1,8 +1,8 @@
 import { useState } from "react";
 import useStore from "../State";
 
-import Star from "./Star";
-import dress1 from "/assets/images/dress1.png";
+// import dress1 from "/assets/images/dress1.png";
+import dress4 from "/assets/images/dress4.png";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 interface ProductCardProps {
@@ -10,7 +10,6 @@ interface ProductCardProps {
   image?: string;
   desc: string;
   price: number;
-  rating: number;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -18,28 +17,36 @@ const ProductCard: React.FC<ProductCardProps> = ({
   image,
   desc,
   price,
-  rating,
 }) => {
   const [isClicked, setIsClicked] = useState(false);
   const { favorites, addToBasket, addToFavorites, removeFromFavorites } =
     useStore();
 
-  const renderStars = (rating: number): JSX.Element[] => {
-    const stars = [];
-    for (let i = 0; i < 5; i++) {
-      stars.push(<Star key={i} filled={i < rating} />);
+  function formatNumber(price: number) {
+    const numberString = price.toString();
+    const chars = numberString.split("");
+    let formattedNumber = "";
+    for (let i = 0; i < chars.length; i++) {
+      formattedNumber += chars[i];
+      if ((chars.length - i - 1) % 3 === 0 && i !== chars.length - 1) {
+        formattedNumber += ",";
+      }
     }
-    return stars;
-  };
+    return formattedNumber;
+  }
 
   return (
-    <div className="font-playfair text-[16px] w-[156px] 2sm:w-[180px] md:w-[160px] relative lg:w-[180px] xl:w-[200px] 2xl:w-[230px] 3xl:w-[260px] 4xl:w-[275px]">
+    <div className="font-outfit text-[12px] sm:text-[15px] 2sm:text-[12px] capitalize md:text-[15px] lg:max-w-[280px] w-full">
       <div className="relative">
         <FavoriteIcon
           strokeWidth={0.5}
           stroke="black"
-          style={{ color: isClicked ? "red" : "white" }}
-          className={`absolute top-[5px] right-[5px] cursor-pointer`}
+          style={{
+            color: isClicked ? "#36254B" : "white",
+            height: "24px",
+            width: "24px",
+          }}
+          className={`absolute top-[10px] right-[10px] cursor-pointer`}
           onClick={() => {
             setIsClicked(!isClicked);
             if (!isClicked) {
@@ -51,10 +58,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
           }}
         />
         <img src={image} alt="" />
-        <img className="rounded-sm w-full h-[auto]" src={dress1} alt="" />
-        <div className="absolute bottom-[2px] w-full">
+        <img className="rounded-sm w-full h-[auto]" src={dress4} alt="" />
+        <div className="absolute bottom-[7px] flex justify-center w-full">
           <button
-            className="bg-darkPrimary hover:bg-opacity-100 text-white font-montserrat border-none text-[13px] border py-1 px-4 cursor-pointer"
+            className="bg-darkPrimary hover:bg-opacity-100 text-white font-montserrat border-none border py-2 px-8 cursor-pointer text-[10px] w-fit font-light"
             onClick={() => {
               addToBasket({ desc, price, id });
             }}
@@ -63,10 +70,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
           </button>
         </div>
       </div>
-      <div>
-        <p className="leading-tight">{desc}</p>
-        <p className="font-montserrat">#{price}</p>
-        <div className="flex gap-[0.5px]">{renderStars(rating)}</div>
+      <div className="pt-[10px] grid gap-1">
+        <p className="leading-tight font-light">{desc}</p>
+        <p className="font-montserrat font-bold">₦ {formatNumber(price)}</p>
       </div>
     </div>
   );
