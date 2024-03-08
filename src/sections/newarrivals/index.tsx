@@ -38,9 +38,9 @@ const Newarrivals: React.FC<NewarrivalsProps> = ({
   ];
 
   return (
-    <div className=" lg:px-16 mt-5 sm:mt-20">
-      <div className=" px-5 w-full flex flex-col justify-center items-center gap-2 mb-6">
-        <h1 className="sm:text-4xl text-2xl font-playfair">{header}</h1>
+    <div className=" lg:px-16 mt-5 sm:mt-10">
+      <div className=" px-5 w-full text-center">
+        <h1 className="sm:text-4xl text-2xl font-playfair mb-2">{header}</h1>
         <p className="font-montserrat text-[#7C7C7C] text-sm sm:text-base">
           {desc}
         </p>

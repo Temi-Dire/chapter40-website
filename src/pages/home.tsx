@@ -74,7 +74,7 @@ const Home = () => {
         </div>
       </section> */}
       <section
-        className="bg-cover bg-center w-full px-10 lg:px-[74.5px] mt-20 flex justify-center items-center lg:grid grid-cols-2 py-20 lg:h-[905px]"
+        className="bg-cover bg-center w-full px-10 lg:px-[74.5px] mt-10 flex justify-center items-center lg:grid grid-cols-2 py-20 lg:h-[905px]"
         style={{ backgroundImage: `url(${sectionImage})` }}
       >
         <div></div>
