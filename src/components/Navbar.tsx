@@ -24,8 +24,8 @@ const Navbar = () => {
   };
 
   const store = useStore();
-
   const basket = store.basket;
+  const favorites = store.favorites;
 
   const totalItemsInBasket = () => {
     let sum = 0;
@@ -34,6 +34,8 @@ const Navbar = () => {
     }
     return sum;
   };
+
+  
 
   const { user } = useStore();
 
@@ -96,10 +98,13 @@ const Navbar = () => {
                   <PersonOutlineOutlinedIcon style={iconSize} />
                 </Link>
               </li>
-              <li className="mr-11 hidden lg:list-item">
+              <li className="relative mr-11 hidden lg:list-item">
                 <Link to={!user ? "/wishlist" : "/auth/login"}>
-                  <FavoriteBorderOutlinedIcon />
+                  <FavoriteBorderOutlinedIcon className="cursor-pointer" />
                 </Link>
+                <span className="bg-black text-white p-1 px-2 rounded-[50%] absolute bottom-[-8px] text-xs right-[-10px]">
+                  {favorites.length}
+                </span>
               </li>
               <li className="relative" onClick={() => setOpen(true)}>
                 <ShoppingCartOutlinedIcon
