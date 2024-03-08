@@ -16,12 +16,14 @@ const Hero = () => {
         price={30000}
         id={10}
       />
-      <div className="hidden sm:flex justify-center text-lg sm:text-3xl md:text-3xl lg:pt-0 lg:text-7xl font-playfair pt-10 text-black">
+      <div className="flex justify-center text-lg sm:text-3xl md:text-4xl lg:pt-0 lg:text-[65px] xl:text-[80px] font-playfair pt-10 text-black whitespace-nowrap">
         FASHION C
-        <span className="bg-gradient-to-r from-black to-white bg-clip-text text-transparent">
-          O
+        <span>
+          <span className="bg-gradient-to-r from-black to-white bg-clip-text text-transparent">
+            O
+          </span>
+          <span className="text-white">LLECTION</span>
         </span>
-        <span className="text-white">LLECTION</span>
       </div>
       <div className="grid grid-cols-2 sm:flex justify-between">
         <div className="w-full hidden sm:block col-start-2 text-white px-5 sm:pl-0 sm:w-1/2 sm:pr-10 lg:block my-8 sm:text-[#24242499]">
