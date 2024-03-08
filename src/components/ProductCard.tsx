@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import useStore from "../State";
 import { motion } from "framer-motion";
 
-// import dress1 from "/assets/images/dress1.png";
-import dress4 from "/assets/images/dress4.png";
+import dress1 from "/assets/images/dress1.png";
+// import dress1 from "/assets/images/dress4.png";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 interface ProductCardProps {
@@ -77,7 +77,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           }}
         />
         <img src={image} alt="" />
-        <img className="rounded-sm w-full h-[auto]" src={dress4} alt="" />
+        <img className="rounded-sm w-full h-[auto]" src={dress1} alt="" />
         {screenSize ? (
           <motion.div
             initial={{ y: 7, opacity: 0 }}
