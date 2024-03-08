@@ -15,7 +15,7 @@ const FavoriteCard = ({ id, image, desc, price }: Props) => {
       <div className="mr-8">
         <img src={image} alt={`dress ${id}`} />
       </div>
-      <div className="flex flex-col space-y-8">
+      <div className="flex flex-col space-y-8 mr-2">
         <p className="leading-tight">{desc}</p>
         <p className="font-montserrat">{price}</p>
       </div>

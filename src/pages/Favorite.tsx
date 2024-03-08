@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import useStore from "../State";
 import FavoriteCard from "../components/FavoriteCard";
 import Navbar from "../components/Navbar";
@@ -5,6 +6,7 @@ import FooterSection from "../sections/footer";
 
 const Favorite = () => {
   const { favorites } = useStore();
+  const navigate = useNavigate();
 
   // const totalFavorites = () => {
   //   let sum = 0;
@@ -23,8 +25,9 @@ const Favorite = () => {
           <>
             <div className="flex flex-col">
               {" "}
-              {/* Centering wrapper */}
-              <p className="">Saved Items({favorites.length})</p>
+              <p className=" text-lg font-semibold mb-2">
+                Saved Items({favorites.length})
+              </p>
               {favorites.map((favorite) => (
                 <FavoriteCard
                   key={favorite.id}
@@ -36,8 +39,17 @@ const Favorite = () => {
             </div>
           </>
         ) : (
-          <div>
-            <p>No items have been saved</p>
+          <div className="flex items-center flex-col mt-5">
+            <div className=" bg-slate-100 inline  p-6 rounded-full mb-4">
+              <img className="" src="/assets/wishlist.png" />
+            </div>
+            <p className="mb-4 font-medium">You haven't saved any items yet!</p>
+            <button
+              className=" bg-darkPrimary text-white px-4 py-3"
+              onClick={() => navigate("/shop")}
+            >
+              Continue shopping
+            </button>
           </div>
         )}
       </div>
