@@ -37,7 +37,6 @@ function App() {
               <Route path="order" element={<OrderTracking />} />
               <Route path="saved" element={<Saved />} />
             </Route>
-            <Route path="/customer" element={<CustomerOptions />} />
             <Route path="/account/editaddress" element={<Editaccount />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/wishlist" element={<Favorite />} />
