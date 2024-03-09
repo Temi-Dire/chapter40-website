@@ -1,4 +1,3 @@
-import { FaRegTrashAlt } from "react-icons/fa";
 import useStore from "../State";
 import dress1 from "/assets/images/dress1.png";
 
