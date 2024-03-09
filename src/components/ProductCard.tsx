@@ -13,6 +13,19 @@ interface ProductCardProps {
   price: number;
 }
 
+export function formatNumber(price: number) {
+  const numberString = price.toString();
+  const chars = numberString.split("");
+  let formattedNumber = "";
+  for (let i = 0; i < chars.length; i++) {
+    formattedNumber += chars[i];
+    if ((chars.length - i - 1) % 3 === 0 && i !== chars.length - 1) {
+      formattedNumber += ",";
+    }
+  }
+  return formattedNumber;
+}
+
 const ProductCard: React.FC<ProductCardProps> = ({
   id,
   image,
@@ -25,18 +38,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     useStore();
   const [isHovered, setIsHovered] = useState(false);
 
-  function formatNumber(price: number) {
-    const numberString = price.toString();
-    const chars = numberString.split("");
-    let formattedNumber = "";
-    for (let i = 0; i < chars.length; i++) {
-      formattedNumber += chars[i];
-      if ((chars.length - i - 1) % 3 === 0 && i !== chars.length - 1) {
-        formattedNumber += ",";
-      }
-    }
-    return formattedNumber;
-  }
+  
 
   useEffect(() => {
     const handleResize = () => {
