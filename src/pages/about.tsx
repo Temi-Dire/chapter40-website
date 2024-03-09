@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import FooterSection from "../sections/footer";
+import { useNavigate } from "react-router";
 
 const About = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Navbar />
@@ -70,6 +72,7 @@ const About = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               className="bg-darkPrimary hover:bg-opacity-100 text-white font-montserrat border-none border py-3 px-8 cursor-pointer text-[15px] mb-4 lg:mb-0"
+              onClick={() => navigate("/shop")}
             >
               Shop Now!
             </motion.button>
