@@ -1,52 +1,39 @@
-import { useNavigate } from "react-router-dom";
-import Minicard from "../../components/Minicard";
+// import { useNavigate } from "react-router-dom";
+import texture from "/assets/images/texture.png";
+import heroDress from "/assets/images/heroDress.png";
+
+// import Minicard from "../../components/Minicard";
 
 const Hero = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
-    <section
-      className="sm:px-10 pt-10 bg-white hidden sm:block relative"
-      style={{
-        background: "linear-gradient(to right, white 50%, purple 50%)",
-      }}
-    >
-      <Minicard
-        desc="Red ankara gown sumami crimison black"
-        price={30000}
-        id={10}
-      />
-      <div className="flex justify-center text-lg sm:text-3xl md:text-4xl lg:pt-0 lg:text-[65px] xl:text-[80px] font-playfair pt-10 text-black whitespace-nowrap">
-        FASHION C
-        <span>
-          <span className="bg-gradient-to-r from-black to-white bg-clip-text text-transparent">
-            O
-          </span>
-          <span className="text-white">LLECTION</span>
-        </span>
-      </div>
-      <div className="grid grid-cols-2 sm:flex justify-between">
-        <div className="w-full hidden sm:block col-start-2 text-white px-5 sm:pl-0 sm:w-1/2 sm:pr-10 lg:block my-8 sm:text-[#24242499]">
-          We only sell quality items, so click the shop now and get started
+    <>
+      <div className="grid grid-cols-2 max-w-[1440px] mx-auto h-[536.5px] overflow-x-hidden 2sm:h-[600px] 2lg:h-[calc(100vh-68px)] max-h-[1024px]">
+        <div className="bg-white absolute top-0 left-0  w-full h-[590px] 2sm:h-[650px] overflow-hidden 2lg:h-[100vh] max-h-[1024px]">
+          <div className="h-full w-full relative">
+            <img
+              className="absolute z-40 bottom-0 w-[243.75px] 2sm:w-[280px] h-auto left-2/4 -translate-x-2/4 2lg:w-[340px] 2xl:w-[360px]"
+              src={heroDress}
+              alt=""
+            />
+            <h1 className="font-playfair text-[64px] 2sm:text-[80px] 2xl:text-[100px] uppercase absolute top-1/2 -translate-y-[70%] 2xl:-translate-y-[85%] z-30 left-1/2 -translate-x-1/2 flex gap-20 2sm:gap-[100px] lg:gap-[20px]">
+              <span className="lg:hidden">Fas</span>
+              <span className="text-white lg:hidden">hion</span>
+              <span className="hidden lg:block xl:hidden">fashio</span>
+              <span className="text-white hidden lg:block xl:hidden">
+                llection
+              </span>
+              <span className="hidden xl:block">fashion</span>
+              <span className="text-white hidden xl:block">collection</span>
+            </h1>
+          </div>
         </div>
-        <div className="w-full col-start-1 row-start-1 text-xl text-black sm:w-1/2 my-8 flex justify-center items-center sm:pl-10 sm:text-white font-playfair sm:hidden">
-          CHAPTER 40 FASHION
+        <div className="bg-gradient-to-b from-[#A1419C] to-[#812ABE]  absolute top-0 right-0 max-w-[50%] w-full h-[590px] 2sm:h-[650px] 2lg:h-[100vh] max-h-[1024px] overflow-hidden">
+          <img className="opacity-40 w-full h-screen" src={texture} alt="" />
         </div>
       </div>
-      <div className="flex justify-between items-center pl-5 sm:px-0">
-        <button
-          className="font-roboto text-lg border h-14 border-[#4E4D93]  mb-10 bg-[#984288] flex items-center justify-center px-2 sm:px-8 text-white "
-          onClick={() => navigate("/shop")}
-        >
-          Shop Now
-        </button>
-        <Minicard
-          desc="Red ankara gown sumami crimison black"
-          price={30000}
-          id={10}
-        />
-      </div>
-    </section>
+    </>
   );
 };
 export default Hero;

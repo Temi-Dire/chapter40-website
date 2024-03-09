@@ -1,19 +1,22 @@
-import { useNavigate } from "react-router-dom";
-import Button from "../components/Button";
+// import { useNavigate } from "react-router-dom";
+
+
 import Navbar from "../components/Navbar";
-import FooterSection from "../sections/footer";
 import Hero from "../sections/hero";
-import Newarrivals from "../sections/newarrivals";
-import sectionImage from "/assets/images/elegance.png";
+
+// import Newarrivals from "../sections/newarrivals";
+// import sectionImage from "/assets/images/elegance.png";
+// import Button from "../components/Button";
+// import FooterSection from "../sections/footer";
 // import Minicard from "../components/Minicard"
 
 const Home = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   return (
     <>
       <Navbar />
-      {/* <Hero />
-      <Newarrivals /> */}
+      <Hero />
+      {/* <Newarrivals /> */}
       {/* <section className="grid grid-cols-2 px-[74.5px] mb-10 gap-7 mt-[123px]">
         <div className="w-full h-full relative flex justify-center items-center -z-10">
           <img src="/assets/images/dress3.png" alt="" />

@@ -3,7 +3,7 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import cart from "/assets/cart.svg";
 import userIcon from "/assets/user.svg";
 
-import { motion as m, AnimatePresence } from "framer-motion";
+import { motion as m, AnimatePresence, easeInOut } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
@@ -13,6 +13,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [hover, setHover] = useState(-1);
 
   if (isOpen) {
     document.body.style.overflow = "hidden";
@@ -36,6 +37,7 @@ const Navbar = () => {
 
   const store = useStore();
   const basket = store.basket;
+  const favorites = store.favorites;
   const totalItemsInBasket = () => {
     let sum = 0;
     for (let i = 0; i < basket.length; i++) {
@@ -77,11 +79,24 @@ const Navbar = () => {
         <div className="hidden lg:block">
           <ul className="capitalize font-montserrat font-thin text-[15px] flex gap-[30px] 2lg:gap-[50px] 2xl:gap-[70px] 3xl:text-[17px]">
             {pages.map((page, i) => (
-              <li key={i}>
+              <m.li
+                key={i}
+                onMouseEnter={() => setHover(i)}
+                onMouseLeave={() => setHover(-1)}
+                className="overflow-hidden"
+              >
                 <a onClick={() => navigate(`/${page.split(" ")[0]}`)} href="">
                   {page}
                 </a>
-              </li>
+                <m.div
+                  initial={{ x: "-100%" }}
+                  animate={{
+                    x: hover === i ? "0%" : "-100%",
+                    transition: { duration: 0.35, ease: easeInOut },
+                  }}
+                  className="h-[2px] bg-black w-full"
+                ></m.div>
+              </m.li>
             ))}
           </ul>
         </div>
@@ -92,19 +107,35 @@ const Navbar = () => {
           Chapter40
         </Link>
         <div className="lg:flex gap-[50px] 2lg:gap-[80px] 2xl:gap-[120px]">
-          <a
-            className="hidden lg:block capitalize font-montserrat font-thin text-[15px] 3xl:text-[17px]"
+          <m.a
+            onMouseEnter={() => setHover(5)}
+            onMouseLeave={() => setHover(-1)}
+            className="hidden lg:block capitalize font-montserrat font-thin text-[15px] 3xl:text-[17px] overflow-hidden"
             onClick={() => navigate("contact")}
             href=""
           >
             Contact Us
-          </a>
+            <m.div
+              initial={{ x: "-100%" }}
+              animate={{
+                x: hover === 5 ? "0%" : "-100%",
+                transition: { duration: 0.35, ease: easeInOut },
+              }}
+              className="h-[2px] bg-black w-full"
+            ></m.div>
+          </m.a>
           <div className="flex gap-[5px] lg:gap-[20px] xl:gap-[30px] items-center">
             <Link to={user ? "/account/details" : "/auth/login"}>
               <img className="w-6" src={userIcon} alt="" />
             </Link>
-            <Link to={!user ? "/wishlist" : "/auth/login"}>
+            <Link
+              className="lg:block hidden relative"
+              to={!user ? "/wishlist" : "/auth/login"}
+            >
               <FavoriteBorderOutlinedIcon />
+              <span className="bg-black text-white text-[10px] rounded-full p-1 px-2 scale-75 absolute -bottom-[8px] -right-[6px]">
+                {favorites.length}
+              </span>
             </Link>
             <Link className="relative" to={""} onClick={() => setOpen(true)}>
               <img className="w-6" src={cart} alt="" />
@@ -207,6 +238,23 @@ const Navbar = () => {
             }
           >
             Categories
+          </m.div>
+          <m.div
+            onClick={() => {
+              navigate(!user ? "/wishlist" : "/auth/login");
+            }}
+            initial={{ y: 35, opacity: 0 }}
+            animate={
+              isOpen
+                ? {
+                    y: 0,
+                    opacity: 1,
+                    transition: { duration: 0.3, delay: 1 },
+                  }
+                : { y: 35, transition: { duration: 0.45 } }
+            }
+          >
+            Saved Items
           </m.div>
         </m.div>
       </div>
