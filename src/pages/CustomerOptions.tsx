@@ -9,7 +9,6 @@ import { useState } from "react";
 const CustomerOptions = () => {
   const [active, setActive] = useState("account");
   const navigate = useNavigate();
-  const currentUrl = window.location.href;
   return (
     <>
       <Navbar />
