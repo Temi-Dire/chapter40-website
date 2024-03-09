@@ -27,17 +27,16 @@ const Navbar = () => {
         setIsOpen(false); // Close the menu if screen size is above 768px
       }
     };
-
     window.addEventListener("resize", handleResize);
-
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
+  
   const store = useStore();
   const basket = store.basket;
   const favorites = store.favorites;
+
   const totalItemsInBasket = () => {
     let sum = 0;
     for (let i = 0; i < basket.length; i++) {
@@ -116,6 +115,7 @@ const Navbar = () => {
           >
             Contact Us
             <m.div
+
               initial={{ x: "-100%" }}
               animate={{
                 x: hover === 5 ? "0%" : "-100%",
