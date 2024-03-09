@@ -27,6 +27,9 @@ const Account = () => {
             </div>
           </div>
         </div>
+        <button className="bg-[#36254B] py-1 px-6 text-white w-fit xl:text-[15px] mx-4 mb-2">
+          SIGN OUT
+        </button>
       </div>
     </>
   );
