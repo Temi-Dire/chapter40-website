@@ -1,19 +1,22 @@
-import { useNavigate } from "react-router-dom";
-import Button from "../components/Button";
+// import { useNavigate } from "react-router-dom";
+
+
 import Navbar from "../components/Navbar";
-import FooterSection from "../sections/footer";
 import Hero from "../sections/hero";
-import Newarrivals from "../sections/newarrivals";
-import sectionImage from "/assets/images/elegance.png";
+
+// import Newarrivals from "../sections/newarrivals";
+// import sectionImage from "/assets/images/elegance.png";
+// import Button from "../components/Button";
+// import FooterSection from "../sections/footer";
 // import Minicard from "../components/Minicard"
 
 const Home = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   return (
     <>
       <Navbar />
       <Hero />
-      <Newarrivals />
+      {/* <Newarrivals /> */}
       {/* <section className="grid grid-cols-2 px-[74.5px] mb-10 gap-7 mt-[123px]">
         <div className="w-full h-full relative flex justify-center items-center -z-10">
           <img src="/assets/images/dress3.png" alt="" />
@@ -73,12 +76,13 @@ const Home = () => {
           </div>
         </div>
       </section> */}
-      <section
-        className="bg-cover bg-center w-full px-10 lg:px-[74.5px] mt-20 flex justify-center items-center lg:grid grid-cols-2 py-20 lg:h-[905px]"
+      {/* <section
+        className="bg-cover bg-center w-full px-10 lg:px-[74.5px] mt-20 flex justify-center items-center lg:grid grid-cols-2 py-20 lg:h-[905px] relative"
         style={{ backgroundImage: `url(${sectionImage})` }}
       >
         <div></div>
-        <div className="flex flex-col justify-center items-start space-y-5 text-white">
+        <div className="overlay absolute top-0 inset-0 bg-black opacity-40" />
+        <div className="flex flex-col justify-center items-start space-y-5 text-white relative z-20 ">
           <p className="font-playfair text-4xl">
             We are all about <br /> Elegance
           </p>
@@ -98,8 +102,8 @@ const Home = () => {
           />
         </div>
       </section>
-      <Newarrivals />
-      <FooterSection />
+      <Newarrivals /> */}
+      {/* <FooterSection /> */}
     </>
   );
 };

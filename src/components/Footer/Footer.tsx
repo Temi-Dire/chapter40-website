@@ -1,7 +1,7 @@
 import FooterItem from "./FooterItem";
 
 interface FooterProps {
-  header: String;
+  header: string;
   items: string[];
 }
 

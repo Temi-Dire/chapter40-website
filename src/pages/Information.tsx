@@ -7,7 +7,6 @@ import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutl
 import useStore from "../State";
 import useInformationStore from "../store/shippingInfo";
 
-
 const schema = z.object({
   state: z.string().min(3, { message: "State should be a least 3 characters" }),
   email: z
@@ -17,7 +16,7 @@ const schema = z.object({
   firstName: z.string().min(3, "Name should have at least 3 characters"),
   lastName: z.string().min(3, "Name should have at least 3 characters"),
   company: z.string(),
-  address: z.string().min(5, "Address should contain at least 5 characters"),
+  address: z.string().min(5, "The Address field is required"),
   apartment: z.string(),
   postalCode: z.string().min(6, "Postal code should be at least 6 digits"),
   city: z.string().min(3),
@@ -176,6 +175,9 @@ const Information = () => {
                 className="outline-none px-[16px] py-2 w-full"
               />
             </div>
+            {errors.address && (
+              <p className="text-red-600">{errors.address.message}</p>
+            )}
             <div className="flex justify-between border border-[#606060]">
               <input
                 {...register("apartment")}
@@ -199,6 +201,11 @@ const Information = () => {
                   onKeyDown={allowOnlyNumbers}
                 />
               </div>
+              {errors.postalCode && (
+                <p className="text-red-600 lg:hidden">
+                  {errors.postalCode.message}
+                </p>
+              )}
               <div
                 className={`${inputContainerStyles.base} ${
                   errors.city ? "border-red-600" : ""
@@ -213,6 +220,11 @@ const Information = () => {
                 />
               </div>
             </div>
+            {errors.postalCode && (
+              <p className="text-red-600 sm:hidden lg:block">
+                {errors.postalCode.message}
+              </p>
+            )}
             <div
               className={`flex justify-between border ${
                 errors.phone ? "border-red-600" : ""

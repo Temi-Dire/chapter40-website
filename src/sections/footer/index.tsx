@@ -34,39 +34,43 @@ const FooterSection = () => {
   const currentYear = new Date();
   return (
     <>
-      <div className="px-10 py-12 lg:px-20 mt-36 border-t-borderDark border-[0.5px]">
-        <div className="w-full lg:py-14 grid grid-cols-1 md:grid-cols-2 grid-rows-3 lg:grid-rows-none lg:grid-cols-[1fr,1fr,1fr,auto] lg:gap-4 ">
-          <div className="mr-[12px] ">
-            <Footer header={"Menu"} items={menu} />
-          </div>
-          <div>
-            <Footer header={"Categories"} items={categories} />
-          </div>
-          <div>
-            <Footer header={"Our Company"} items={ourCompany} />
-          </div>
-          <div className="row-start-1 row-span-1 col-span-2 lg:row-start-auto lg:row-auto lg:col-auto">
-            <p className="font-playfair">Join our mailing list</p>
-            <div className="flex mt-4">
-              <input
-                className="lg:w-80 outline-none py-4 px-4 bg-[#F9F9F9] font-montserrat"
-                type="text"
-                placeholder="your@email.com"
-              />
-              <button className="text-white text-[12px] bg-[#36254B] px-4 lg:px-8 py-4 w-[126px]">
-                Sign up
-              </button>
+      <div className="px-[24px] py-[40px] mt-[50px] border-t-borderDark border-t-[0.5px]">
+        <div className="max-w-[1280px] w-full mx-auto">
+          <div className="grid gap-[30px] 2lg:grid-cols-2 items-start">
+            <div className="grid gap-[14px] 2lg:col-start-2 2lg:row-start-1">
+              <p className="font-playfair">Join our mailing list</p>
+              <div className="flex font-montserrat ">
+                <input
+                  className="text-[14px] border-none outline-none py-3 px-3 bg-white-300 w-full"
+                  type="text"
+                  placeholder="your@email.com"
+                />
+                <button className="text-white text-[14px] bg-darkPrimary px-2 max-w-[82px] w-full">
+                  Sign up
+                </button>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-[40px]">
+              <div>
+                <Footer header={"Categories"} items={categories} />
+              </div>
+              <div className="ml-auto sm:ml-0">
+                <Footer header={"Our Company"} items={ourCompany} />
+              </div>
+              <div>
+                <Footer header={"Menu"} items={menu} />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="flex flex-col-reverse items-center gap-[30px] lg:space-y-0 lg:flex-row lg:justify-between font-light">
-          <div>Copyright {currentYear.getFullYear()} Chapter40 Fashion</div>
-          <div className="space-x-6 lg:space-x-4">
-            <LinkedInIcon />
-            <TwitterIcon />
-            <InstagramIcon />
-            <FacebookIcon />
-            <PinterestIcon />
+          <div className="flex flex-col-reverse items-center gap-[30px] lg:space-y-0 lg:flex-row lg:justify-between font-thin pt-[30px] lg:pt-[46px]">
+            <div>Copyright {currentYear.getFullYear()} Chapter40</div>
+            <div className="space-x-6 lg:space-x-4">
+              <LinkedInIcon />
+              <TwitterIcon />
+              <InstagramIcon />
+              <FacebookIcon />
+              <PinterestIcon />
+            </div>
           </div>
         </div>
       </div>
