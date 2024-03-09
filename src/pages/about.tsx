@@ -6,8 +6,8 @@ const About = () => {
   return (
     <>
       <Navbar />
-      <div className="px-8 md:px-24 mt- ">
-        <section className="flex gap-x-10 h-[80vh] justify-center items-center">
+      <div className="px-4 sm:px-10 lg:px-16">
+        <section className="grid xl:flex gap-x-10 xl:h-[90vh] justify-center items-center">
           <motion.div
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -69,7 +69,7 @@ const About = () => {
               }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="bg-darkPrimary hover:bg-opacity-100 text-white font-montserrat border-none border py-3 px-8 cursor-pointer text-[15px]"
+              className="bg-darkPrimary hover:bg-opacity-100 text-white font-montserrat border-none border py-3 px-8 cursor-pointer text-[15px] mb-4 lg:mb-0"
             >
               Shop Now!
             </motion.button>
@@ -83,7 +83,7 @@ const About = () => {
               type: "spring",
               bounce: 0.5,
             }}
-            className="w-[400px] h-96 rounded-full"
+            className="w-[400px] h-96 rounded-full row-start-1 my-4 lg:my-0"
             src="/assets/images/aboutus.png"
             alt=""
           />
