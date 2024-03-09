@@ -3,11 +3,12 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import { useState } from "react";
 
 const CustomerOptions = () => {
   const [active, setActive] = useState("account");
+  const navigate = useNavigate();
   const currentUrl = window.location.href;
   return (
     <>
@@ -20,7 +21,10 @@ const CustomerOptions = () => {
                 ? "bg-slate-400"
                 : "bg-white hover:bg-[#CCCCCC]"
             }`}
-            onClick={() => setActive("account")}
+            onClick={() => {
+              setActive("account");
+              navigate("account");
+            }}
           >
             <PersonOutlineOutlinedIcon /> <p className="">Account</p>
           </li>
@@ -30,10 +34,15 @@ const CustomerOptions = () => {
                 ? "bg-slate-400"
                 : "bg-white hover:bg-[#CCCCCC] "
             }`}
-            onClick={() => setActive("order")}
+            onClick={() => {
+              setActive("order");
+              navigate("/customer/order");
+            }}
           >
             <ShoppingBagOutlinedIcon />
-            <p>Order <span className="hidden lg:block">Tracking</span></p>
+            <p>
+              Order <span className="hidden lg:inline">Tracking</span>
+            </p>
           </li>
           <li
             className={`flex gap-2 px-4 py-4 cursor-pointer w-full ${
@@ -41,10 +50,15 @@ const CustomerOptions = () => {
                 ? "bg-slate-400"
                 : "bg-white hover:bg-[#CCCCCC] "
             }`}
-            onClick={() => setActive("saved")}
+            onClick={() => {
+              setActive("saved");
+              navigate("/customer/saved");
+            }}
           >
             <FavoriteBorderOutlinedIcon />
-            <p>Saved <span className="hidden lg:block">Items</span></p>
+            <p>
+              Saved <span className="hidden lg:inline">Items</span>
+            </p>
           </li>
           <li
             className={`flex gap-2 px-4 py-4 md:rounded-b-md cursor-pointer w-full ${
@@ -55,7 +69,9 @@ const CustomerOptions = () => {
             onClick={() => setActive("address")}
           >
             <HomeOutlinedIcon />
-            <p>Address <span className="hidden lg:block">Book</span></p>
+            <p>
+              Address <span className="hidden lg:inline">Book</span>
+            </p>
           </li>
         </ul>
         <Outlet />
