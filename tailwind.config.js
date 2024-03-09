@@ -29,6 +29,7 @@ export default {
       playfair: ["Playfair Display", "sans-serif"],
       roboto: ["Roboto", "sans-serif"],
       outfit: ["Outfit", "sans-serif"],
+      poppins: ["Poppins", "sans-serif"],
     },
   },
   plugins: [],
