@@ -131,6 +131,7 @@ const Navbar = () => {
                 <m.li
                   className="cursor-pointer mb-1 py-2 px-5"
                   whileHover={{ backgroundColor: "#ccc", color: "white" }}
+                  onClick={()=> navigate('/shop')}
                 >
                   Shop
                 </m.li>
@@ -146,6 +147,13 @@ const Navbar = () => {
                   whileHover={{ backgroundColor: "#ccc", color: "white" }}
                 >
                   Contact us
+                </m.li>
+                <m.li
+                  className="cursor-pointer mb-1 py-2 px-5"
+                  whileHover={{ backgroundColor: "#ccc", color: "white" }}
+                  onClick={() => navigate("/wishlist")}
+                >
+                  Saved items
                 </m.li>
                 <m.li
                   className="cursor-pointer mb-1 py-2 px-5"
