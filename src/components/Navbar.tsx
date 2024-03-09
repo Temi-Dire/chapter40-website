@@ -1,11 +1,13 @@
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 
+import cart from "/assets/cart.svg";
 import userIcon from "/assets/user.svg";
 
-import { AnimatePresence, easeInOut, motion as m } from "framer-motion";
+import { motion as m, AnimatePresence, easeInOut } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import useStore from "../State";
 import CheckoutModal from "./CheckoutModal";
+import useStore from "../State";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -30,7 +32,7 @@ const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  
+
   const store = useStore();
   const basket = store.basket;
   const favorites = store.favorites;
@@ -54,17 +56,6 @@ const Navbar = () => {
           initial={{ rotate: 0, opacity: 1 }}
           transition={{ ease: "easeInOut", duration: 0.3 }}
         >
-          <ul className="text-lg font-normal hidden lg:flex ">
-            <li className="mr-11 cursor-pointer">
-              <a onClick={() => navigate("/about")}>About</a>
-            </li>
-            <li className="mr-11 cursor-pointer">
-              <a onClick={() => navigate("/shop")}>Shop</a>
-            </li>
-            <li className="cursor-pointer">
-              <a onClick={() => navigate("/contact-us")} href="#footer">Contact Us</a>
-            </li>
-          </ul>
           <m.div
             className="h-[2.5px]  w-5 bg-black mb-1"
             initial={{ y: 0, rotate: 0 }}
@@ -124,7 +115,6 @@ const Navbar = () => {
           >
             Contact Us
             <m.div
-
               initial={{ x: "-100%" }}
               animate={{
                 x: hover === 5 ? "0%" : "-100%",
@@ -141,37 +131,131 @@ const Navbar = () => {
               className="lg:block hidden relative"
               to={!user ? "/wishlist" : "/auth/login"}
             >
-              <ul className="text-xl">
-                <m.li
-                  className="cursor-pointer mb-1 py-2 px-5"
-                  whileHover={{ backgroundColor: "#ccc", color: "white" }}
-                >
-                  Shop
-                </m.li>
-                <m.li
-                  className="cursor-pointer mb-1 py-2 px-5"
-                  whileHover={{ backgroundColor: "#ccc", color: "white" }}
-                  onClick={() => navigate("/about")}
-                >
-                  About Us
-                </m.li>
-                <m.li
-                  className="cursor-pointer mb-1 py-2 px-5"
-                  whileHover={{ backgroundColor: "#ccc", color: "white" }}
-                  onClick={() => navigate("/contact-us")}
-                >
-                  Contact us
-                </m.li>
-                <m.li
-                  className="cursor-pointer mb-1 py-2 px-5"
-                  whileHover={{ backgroundColor: "#ccc", color: "white" }}
-                >
-                  Categories
-                </m.li>
-              </ul>
-            </m.div>
-          )}
-        </AnimatePresence>
+              <FavoriteBorderOutlinedIcon />
+              <span className="bg-black text-white text-[10px] rounded-full p-1 px-2 scale-75 absolute -bottom-[8px] -right-[6px]">
+                {favorites.length}
+              </span>
+            </Link>
+            <Link className="relative" to={""} onClick={() => setOpen(true)}>
+              <img className="w-6" src={cart} alt="" />
+              <span className="bg-black text-white text-[10px] rounded-full p-1 px-2 scale-75 absolute -bottom-[8px] -right-[6px]">
+                {totalItemsInBasket()}
+              </span>
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div className="">
+        <m.div
+          initial={{ opacity: 0, x: "-100vw" }}
+          animate={
+            isOpen
+              ? {
+                  opacity: 1,
+                  transition: { duration: 0.4 },
+                  height: "100vh",
+                  width: "320px",
+                  borderRadius: 0,
+                  x: 0,
+                }
+              : {
+                  opacity: 0,
+                  transition: { delay: 0.45, duration: 0.6 },
+                  height: 0,
+                  width: 0,
+                  paddingTop: 0,
+                  borderRadius: "0 0 100vh 0",
+                  x: "-100vw",
+                }
+          }
+          className={`absolute top-[53.79px] left-0 bg-grey-100 font-montserrat font-semibold pt-[150px] text-[24px] xs:text-[30px] content-start sm:text-[40px] capitalize px-[24px] *:overflow-hidden *:cursor-pointer bg-white-300 grid gap-[24px]  place-items-start lg:hidden`}
+        >
+          <m.div
+            onClick={() => {
+              navigate(`/shop`);
+            }}
+            initial={{ y: 35, opacity: 0 }}
+            animate={
+              isOpen
+                ? {
+                    y: 0,
+                    opacity: 1,
+                    transition: { duration: 0.3, delay: 0.4 },
+                  }
+                : { y: 35, transition: { duration: 0.45 } }
+            }
+          >
+            Shop
+          </m.div>
+          <m.div
+            onClick={() => {
+              navigate(`/about`);
+            }}
+            initial={{ y: 35, opacity: 0 }}
+            animate={
+              isOpen
+                ? {
+                    y: 0,
+                    opacity: 1,
+                    transition: { duration: 0.3, delay: 0.5 },
+                  }
+                : { y: 35, transition: { duration: 0.45 } }
+            }
+          >
+            About Us
+          </m.div>
+          <m.div
+            onClick={() => {
+              navigate(`/contact`);
+            }}
+            initial={{ y: 35, opacity: 0 }}
+            animate={
+              isOpen
+                ? {
+                    y: 0,
+                    opacity: 1,
+                    transition: { duration: 0.3, delay: 0.65 },
+                  }
+                : { y: 35, transition: { duration: 0.45 } }
+            }
+          >
+            Contact us
+          </m.div>
+          <m.div
+            onClick={() => {
+              navigate(`/categories`);
+            }}
+            initial={{ y: 35, opacity: 0 }}
+            animate={
+              isOpen
+                ? {
+                    y: 0,
+                    opacity: 1,
+                    transition: { duration: 0.3, delay: 0.86 },
+                  }
+                : { y: 35, transition: { duration: 0.45 } }
+            }
+          >
+            Categories
+          </m.div>
+          <m.div
+            onClick={() => {
+              navigate(!user ? "/wishlist" : "/auth/login");
+            }}
+            initial={{ y: 35, opacity: 0 }}
+            animate={
+              isOpen
+                ? {
+                    y: 0,
+                    opacity: 1,
+                    transition: { duration: 0.3, delay: 1 },
+                  }
+                : { y: 35, transition: { duration: 0.45 } }
+            }
+          >
+            Saved Items
+          </m.div>
+        </m.div>
       </div>
       <AnimatePresence>
         {open && <CheckoutModal onClick={() => setOpen(false)} />}
