@@ -8,7 +8,7 @@ interface Props {
   price: number;
 }
 
-const FavoriteCard = ({ id, image, desc, price }: Props) => {
+const FavoriteCard = ({ id, desc, price }: Props) => {
   const { addToBasket, removeFromFavorites } = useStore();
   return (
     <div className="border shadow-md border-borderDark p-4 mb-5 flex flex-col md:flex-row items-center max-w-[800px]">
