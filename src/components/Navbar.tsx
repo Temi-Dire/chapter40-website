@@ -25,7 +25,6 @@ const Navbar = () => {
 
   const store = useStore();
   const basket = store.basket;
-  const favorites = store.favorites;
 
   const totalItemsInBasket = () => {
     let sum = 0;
