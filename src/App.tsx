@@ -14,6 +14,8 @@ import Payment from "./pages/Payment";
 import Login from "./pages/auth/login";
 import Favorite from "./pages/Favorite";
 import Order from "./pages/order";
+import ContactUsPage from "./pages/ContactUsPage";
+import ContactUs from "./pages/ContactUs";
 
 function App() {
   return (
@@ -37,6 +39,9 @@ function App() {
               <Route path="shipping" element={<Shipping />} />
               <Route path="payment" element={<Payment />} />
             </Route>
+            <Route path="/contact-us" element={<ContactUsPage />} />
+
+            <Route path="/contact-us2" element={<ContactUs />} />
 
             {/* <Route
               path="/checkoutproduct"
