@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import dress1 from "/assets/images/dress1.png";
 // import dress1 from "/assets/images/dress4.png";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-
 interface ProductCardProps {
   id: number;
   image?: string;

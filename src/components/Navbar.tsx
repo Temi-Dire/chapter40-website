@@ -35,8 +35,6 @@ const Navbar = () => {
     return sum;
   };
 
-  
-
   const { user } = useStore();
 
   return (
@@ -102,9 +100,6 @@ const Navbar = () => {
                 <Link to={!user ? "/wishlist" : "/auth/login"}>
                   <FavoriteBorderOutlinedIcon className="cursor-pointer" />
                 </Link>
-                <span className="bg-black text-white p-1 px-2 rounded-[50%] absolute bottom-[-8px] text-xs right-[-10px]">
-                  {favorites.length}
-                </span>
               </li>
               <li className="relative" onClick={() => setOpen(true)}>
                 <ShoppingCartOutlinedIcon
@@ -131,7 +126,7 @@ const Navbar = () => {
                 <m.li
                   className="cursor-pointer mb-1 py-2 px-5"
                   whileHover={{ backgroundColor: "#ccc", color: "white" }}
-                  onClick={()=> navigate('/shop')}
+                  onClick={() => navigate("/shop")}
                 >
                   Shop
                 </m.li>
