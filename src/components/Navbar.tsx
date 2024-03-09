@@ -32,7 +32,7 @@ const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  
+
   const store = useStore();
   const basket = store.basket;
   const favorites = store.favorites;
@@ -115,7 +115,6 @@ const Navbar = () => {
           >
             Contact Us
             <m.div
-
               initial={{ x: "-100%" }}
               animate={{
                 x: hover === 5 ? "0%" : "-100%",
