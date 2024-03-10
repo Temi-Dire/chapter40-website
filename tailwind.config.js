@@ -13,6 +13,7 @@ export default {
       "2xl": "1200px",
       "3xl": "1280px",
       "4xl": "1440px",
+      "5xl": "2300px",
     },
     extend: {
       colors: {
@@ -29,6 +30,10 @@ export default {
       playfair: ["Playfair Display", "sans-serif"],
       roboto: ["Roboto", "sans-serif"],
       outfit: ["Outfit", "sans-serif"],
+      poppins: ["Poppins", "sans-serif"],
+    },
+    boxShadow: {
+      xl: "3px 1px 7.1px 5px rgba(152, 66, 136, 0.11)",
     },
   },
   plugins: [],
