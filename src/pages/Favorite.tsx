@@ -25,12 +25,12 @@ const Favorite = () => {
           <>
             <div className="flex flex-col">
               {" "}
-              <p className=" text-lg font-semibold mb-2">
-                Saved Items({favorites.length})
+              <p className=" sm:text-lg lg:text-xl font-semibold mb-4">
+                Your saved Items({favorites.length})
               </p>
+              <div/>
               {favorites.map((favorite) => (
                 <FavoriteCard
-                  key={favorite.id}
                   desc={favorite.desc}
                   price={favorite.price}
                   id={favorite.id}

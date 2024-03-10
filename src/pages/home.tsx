@@ -74,11 +74,12 @@ const Home = () => {
         </div>
       </section> */}
       <section
-        className="bg-cover bg-center w-full px-10 lg:px-[74.5px] mt-20 flex justify-center items-center lg:grid grid-cols-2 py-20 lg:h-[905px]"
+        className="bg-cover bg-center w-full px-10 lg:px-[74.5px] mt-20 flex justify-center items-center lg:grid grid-cols-2 py-20 lg:h-[905px] relative"
         style={{ backgroundImage: `url(${sectionImage})` }}
       >
         <div></div>
-        <div className="flex flex-col justify-center items-start space-y-5 text-white">
+        <div className="overlay absolute top-0 inset-0 bg-black opacity-40" />
+        <div className="flex flex-col justify-center items-start space-y-5 text-white relative z-20 ">
           <p className="font-playfair text-4xl">
             We are all about <br /> Elegance
           </p>

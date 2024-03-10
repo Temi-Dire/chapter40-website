@@ -1,4 +1,15 @@
-const PaymentOptions = () => {
+import { ChangeEvent, useState } from "react";
+import OnlinePayment from "../components/OnlinePayment"; // Import your online payment form component
+
+const Payment = () => {
+  const [selectedPaymentOption, setSelectedPaymentOption] = useState<
+    string | null
+  >("");
+
+  const handlePaymentOptionChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelectedPaymentOption(event.target.value);
+  };
+
   return (
     <>
       <h2 className="mb-4 font-montserrat">Payment Method</h2>
@@ -10,9 +21,10 @@ const PaymentOptions = () => {
             id="onlinePayment"
             value="online"
             className="mr-2"
+            onChange={handlePaymentOptionChange}
           />
           <label htmlFor="onlinePayment" className="text-gray-700">
-            Online Payment (Credit Card, etc.)
+            Online Payment (Credit, Dedit Card, etc.)
           </label>
         </div>
 
@@ -25,14 +37,17 @@ const PaymentOptions = () => {
             id="offlinePayment"
             value="offline"
             className="mr-2"
+            onChange={handlePaymentOptionChange}
           />
           <label htmlFor="offlinePayment" className="text-gray-700">
             Offline Payment
           </label>
         </div>
       </div>
+
+      {selectedPaymentOption === "online" && <OnlinePayment />}
     </>
   );
 };
 
-export default PaymentOptions;
+export default Payment;
