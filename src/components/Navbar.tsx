@@ -48,34 +48,43 @@ const Navbar = () => {
 
   return (
     <nav className="max-w-[1440px] mx-auto w-full sticky top-0 z-50">
+            
       <div className="flex justify-between items-center px-[20px] 2lg:px-[40px] xl:px-[65px] py-[14px] 2lg:pb-[30px] overflow-x-hidden">
+                
         <m.div
           className="cursor-pointer items-center flex flex-col justify-center lg:hidden"
           onClick={() => setIsOpen(!isOpen)}
           initial={{ rotate: 0, opacity: 1 }}
           transition={{ ease: "easeInOut", duration: 0.3 }}
         >
+                    
           <m.div
-            className="h-[2.5px]  w-5 bg-black mb-1"
+            className="h-[2.5px]  w-5 bg-black mb-1"
             initial={{ y: 0, rotate: 0 }}
             animate={isOpen ? { y: 6.5, rotate: 45 } : { y: 0, rotate: 0 }}
             transition={{ ease: "easeInOut", duration: 0.3 }}
           />
+                    
           <m.div
             className="h-[2.5px] w-5 bg-black mb-1"
             initial={{ opacity: 1 }}
             animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
             transition={{ ease: "easeInOut", duration: 0.3 }}
           />
+                    
           <m.div
             className="h-[2.5px] w-5 bg-black"
             initial={{ y: 0, rotate: 0 }}
             animate={isOpen ? { y: -7, rotate: -45 } : { y: 0, rotate: 0 }}
             transition={{ ease: "easeInOut", duration: 0.3 }}
           />
+                  
         </m.div>
+                
         <div className="hidden lg:block">
+                    
           <ul className="capitalize font-montserrat font-thin text-[15px] flex gap-[30px] 2lg:gap-[50px] 2xl:gap-[70px] 3xl:text-[17px]">
+                        
             {pages.map((page, i) => (
               <m.li
                 key={i}
@@ -83,9 +92,12 @@ const Navbar = () => {
                 onMouseLeave={() => setHover(-1)}
                 className="overflow-hidden"
               >
+                                
                 <a onClick={() => navigate(`/${page.split(" ")[0]}`)} href="">
-                  {page}
+                                    {page}
+                                  
                 </a>
+                                
                 <m.div
                   initial={{ x: "-100%" }}
                   animate={{
@@ -94,17 +106,23 @@ const Navbar = () => {
                   }}
                   className="h-[2px] bg-black w-full"
                 ></m.div>
+                              
               </m.li>
             ))}
+                      
           </ul>
+                  
         </div>
+                
         <Link
           to={"/"}
           className="absolute left-[47.5%] lg:left-2/4 -translate-x-2/4 2lg:left-[52%] font-playfair text-[24px] 2lg:text-[30px] 3xl:text-[36px] "
         >
-          Chapter40
+                    Chapter40         
         </Link>
+                
         <div className="lg:flex gap-[50px] 2lg:gap-[80px] 2xl:gap-[120px]">
+                    
           <m.a
             onMouseEnter={() => setHover(5)}
             onMouseLeave={() => setHover(-1)}
@@ -112,104 +130,180 @@ const Navbar = () => {
             onClick={() => navigate("contact")}
             href=""
           >
-            Contact Us
+                        Contact Us             
             <m.div
-              className="h-[3.5px]  w-6 bg-black mb-1"
-              initial={{ y: 0, rotate: 0 }}
-              animate={isOpen ? { y: 8, rotate: 45 } : { y: 0, rotate: 0 }}
-              transition={{ ease: "easeInOut", duration: 0.3 }}
-            />
-            <m.div
-              className="h-[3.5px] w-6 bg-black mb-1"
-              initial={{ opacity: 1 }}
-              animate={isOpen === "1" ? { opacity: 0 } : { opacity: 1 }}
-              transition={{ ease: "easeInOut", duration: 0.3 }}
-            />
-            <m.div
-              className="h-[3.5px] w-6 bg-black"
-              initial={{ y: 0, rotate: 0 }}
-              animate={isOpen ? { y: -7, rotate: -45 } : { y: 0, rotate: 0 }}
-              transition={{ ease: "easeInOut", duration: 0.3 }}
-            />
-          </m.div>
-          <Link to={"/"} className="text-2xl md:text-4xl  font-playfair">
-            Chapter40
-          </Link>
-          <div className="flex justify-between items-center  text-base font-normal">
-            <ul className=" justify-between flex">
-              <li className="mr-11">
-                <Link to={user ? "/account/details" : "/auth/login"}>
-                  <PersonOutlineOutlinedIcon style={iconSize} />
-                </Link>
-              </li>
-              <li className="relative mr-11 hidden lg:list-item">
-                <Link to={!user ? "/wishlist" : "/auth/login"}>
-                  <FavoriteBorderOutlinedIcon className="cursor-pointer" />
-                </Link>
-              </li>
-              <li className="relative" onClick={() => setOpen(true)}>
-                <ShoppingCartOutlinedIcon
-                  className="cursor-pointer"
-                  style={iconSize}
-                />
-                <span className="bg-black text-white p-1 px-2 rounded-[50%] absolute bottom-[-8px] text-xs right-[-10px]">
-                  {totalItemsInBasket()}
-                </span>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <AnimatePresence>
-          {isOpen === "1" && (
-            <m.div
-              initial={{ y: 500 }}
-              animate={{ y: 0 }}
-              exit={{ y: 500 }}
-              transition={{ ease: "easeInOut", duration: 0.3 }}
-              className={`pt-5 mx-3 mt-3 space-y-3 bg-[#f2f1f1] absolute text-[#333333] flex flex-col  items-center lg:hidden rounded-lg`}
+              initial={{ x: "-100%" }}
+              animate={{
+                x: hover === 5 ? "0%" : "-100%",
+                transition: { duration: 0.35, ease: easeInOut },
+              }}
+              className="h-[2px] bg-black w-full"
+            ></m.div>
+                      
+          </m.a>
+                    
+          <div className="flex gap-[5px] lg:gap-[20px] xl:gap-[30px] items-center">
+                        
+            <Link to={user ? "/account/details" : "/auth/login"}>
+                            
+              <img className="w-6" src={userIcon} alt="" />
+                          
+            </Link>
+                        
+            <Link
+              className="lg:block hidden relative"
+              to={!user ? "/wishlist" : "/auth/login"}
             >
-              <ul className="text-xl">
-                <m.li
-                  className="cursor-pointer mb-1 py-2 px-5"
-                  whileHover={{ backgroundColor: "#ccc", color: "white" }}
-                  onClick={() => navigate("/shop")}
-                >
-                  Shop
-                </m.li>
-                <m.li
-                  className="cursor-pointer mb-1 py-2 px-5"
-                  whileHover={{ backgroundColor: "#ccc", color: "white" }}
-                  onClick={() => navigate("/about")}
-                >
-                  About Us
-                </m.li>
-                <m.li
-                  className="cursor-pointer mb-1 py-2 px-5"
-                  whileHover={{ backgroundColor: "#ccc", color: "white" }}
-                >
-                  Contact us
-                </m.li>
-                <m.li
-                  className="cursor-pointer mb-1 py-2 px-5"
-                  whileHover={{ backgroundColor: "#ccc", color: "white" }}
-                  onClick={() => navigate("/wishlist")}
-                >
-                  Saved items
-                </m.li>
-                <m.li
-                  className="cursor-pointer mb-1 py-2 px-5"
-                  whileHover={{ backgroundColor: "#ccc", color: "white" }}
-                >
-                  Categories
-                </m.li>
-              </ul>
-            </m.div>
-          )}
-        </AnimatePresence>
+                            
+              <FavoriteBorderOutlinedIcon />
+                            
+              
+                          
+            </Link>
+                        
+            <Link className="relative" to={""} onClick={() => setOpen(true)}>
+                            
+              <img className="w-6" src={cart} alt="" />
+                            
+              <span className="bg-black text-white text-[10px] rounded-full p-1 px-2 scale-75 absolute -bottom-[8px] -right-[6px]">
+                                {totalItemsInBasket()}
+                              
+              </span>
+                          
+            </Link>
+                      
+          </div>
+                  
+        </div>
+              
       </div>
+            
+      <div className="">
+                
+        <m.div
+          initial={{ opacity: 0, x: "-100vw" }}
+          animate={
+            isOpen
+              ? {
+                  opacity: 1,
+                  transition: { duration: 0.4 },
+                  height: "100vh",
+                  width: "320px",
+                  borderRadius: 0,
+                  x: 0,
+                }
+              : {
+                  opacity: 0,
+                  transition: { delay: 0.45, duration: 0.6 },
+                  height: 0,
+                  width: 0,
+                  paddingTop: 0,
+                  borderRadius: "0 0 100vh 0",
+                  x: "-100vw",
+                }
+          }
+          className={`absolute top-[53.79px] left-0 bg-grey-100 font-montserrat font-semibold pt-[150px] text-[24px] xs:text-[30px] content-start sm:text-[40px] capitalize px-[24px] *:overflow-hidden *:cursor-pointer bg-white-300 grid gap-[24px]  place-items-start lg:hidden`}
+        >
+                    
+          <m.div
+            onClick={() => {
+              navigate(`/shop`);
+            }}
+            initial={{ y: 35, opacity: 0 }}
+            animate={
+              isOpen
+                ? {
+                    y: 0,
+                    opacity: 1,
+                    transition: { duration: 0.3, delay: 0.4 },
+                  }
+                : { y: 35, transition: { duration: 0.45 } }
+            }
+          >
+                        Shop           
+          </m.div>
+                    
+          <m.div
+            onClick={() => {
+              navigate(`/about`);
+            }}
+            initial={{ y: 35, opacity: 0 }}
+            animate={
+              isOpen
+                ? {
+                    y: 0,
+                    opacity: 1,
+                    transition: { duration: 0.3, delay: 0.5 },
+                  }
+                : { y: 35, transition: { duration: 0.45 } }
+            }
+          >
+                        About Us           
+          </m.div>
+                    
+          <m.div
+            onClick={() => {
+              navigate(`/contact`);
+            }}
+            initial={{ y: 35, opacity: 0 }}
+            animate={
+              isOpen
+                ? {
+                    y: 0,
+                    opacity: 1,
+                    transition: { duration: 0.3, delay: 0.65 },
+                  }
+                : { y: 35, transition: { duration: 0.45 } }
+            }
+          >
+                        Contact us           
+          </m.div>
+                    
+          <m.div
+            onClick={() => {
+              navigate(`/categories`);
+            }}
+            initial={{ y: 35, opacity: 0 }}
+            animate={
+              isOpen
+                ? {
+                    y: 0,
+                    opacity: 1,
+                    transition: { duration: 0.3, delay: 0.86 },
+                  }
+                : { y: 35, transition: { duration: 0.45 } }
+            }
+          >
+                        Categories           
+          </m.div>
+                    
+          <m.div
+            onClick={() => {
+              navigate(!user ? "/wishlist" : "/auth/login");
+            }}
+            initial={{ y: 35, opacity: 0 }}
+            animate={
+              isOpen
+                ? {
+                    y: 0,
+                    opacity: 1,
+                    transition: { duration: 0.3, delay: 1 },
+                  }
+                : { y: 35, transition: { duration: 0.45 } }
+            }
+          >
+                        Saved Items           
+          </m.div>
+                  
+        </m.div>
+              
+      </div>
+            
       <AnimatePresence>
-        {open && <CheckoutModal onClick={() => setOpen(false)} />}
+                {open && <CheckoutModal onClick={() => setOpen(false)} />}
+              
       </AnimatePresence>
+          
     </nav>
   );
 };
