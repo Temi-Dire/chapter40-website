@@ -16,6 +16,7 @@ const PaystackPayment = () => {
   };
 
   const onClose = () => {
+    
     console.log("Payment closed");
     // Remember to use toastify here
   };
