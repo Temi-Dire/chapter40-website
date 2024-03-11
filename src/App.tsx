@@ -22,7 +22,7 @@ import Account from "./pages/customer/Account";
 import CustomerOptions from "./pages/CustomerOptions";
 import OrderTracking from "./pages/customer/OrderTracking";
 import Saved from "./pages/customer/Saved";
-
+import AddressBook from "./pages/customer/AddressBook";
 
 function App() {
   return (
@@ -39,8 +39,9 @@ function App() {
             <Route path="/account/details" element={<Details />} />
             <Route path="/customer" element={<CustomerOptions />}>
               <Route path="account" element={<Account />} />
-              <Route path="order" element={<OrderTracking />} />
+              <Route path="orders" element={<OrderTracking />} />
               <Route path="saved" element={<Saved />} />
+              <Route path="address" element={<AddressBook />} />
             </Route>
             <Route path="/account/editaddress" element={<Editaccount />} />
             <Route path="/payment" element={<Payment />} />
