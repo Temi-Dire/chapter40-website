@@ -38,9 +38,9 @@ const NewArrivalCard: React.FC<NewArrivalCardProps> = ({
     <motion.div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`font-outfit text-[12px] sm:text-[15px] 2sm:text-[12px] capitalize md:text-[15px] lg:max-w-[280px] w-full cursor-pointer mx-auto`}
+      className={`font-outfit text-[12px] sm:text-[15px] 2sm:text-[12px] capitalize md:text-[15px] lg:max-w-[280px] w-full cursor-pointer mx-auto relative`}
     >
-      <div className={`relative h-[220px] overflow-hidden lg:h-auto`}>
+      <div className={`h-[220px] overflow-hidden lg:h-auto`}>
         <FavoriteIcon
           strokeWidth={0.5}
           stroke="black"
@@ -60,7 +60,7 @@ const NewArrivalCard: React.FC<NewArrivalCardProps> = ({
             }
           }}
         />
-        <div className="aspect-w-1 aspect-h-1 lg:aspect-w-4 lg:aspect-h-5">
+        <div className="aspect-w-1 aspect-h-1 lg:aspect-w-4 lg:aspect-h-5 relative">
           <img
             className="mx-auto w-full object-cover bg-[center] lg:h-[359px] aspect-auto"
             src={image}
@@ -76,7 +76,7 @@ const NewArrivalCard: React.FC<NewArrivalCardProps> = ({
               opacity: isHovered ? 1 : 0,
             }}
             transition={{ duration: 0.3 }}
-            className="absolute bottom-[7px] flex justify-center w-full"
+            className="absolute bottom-[26%] flex justify-center w-full"
           >
             <button
               className="bg-darkPrimary hover:bg-opacity-100 text-white font-montserrat border-none border py-2 px-8 cursor-pointer text-[10px] w-fit font-light"
@@ -88,7 +88,7 @@ const NewArrivalCard: React.FC<NewArrivalCardProps> = ({
             </button>
           </motion.div>
         ) : (
-          <div className="absolute bottom-[7px] flex justify-center w-full">
+          <div className="absolute bottom-[26%] flex justify-center w-full">
             <button
               className="bg-darkPrimary hover:bg-opacity-100 text-white font-montserrat border-none border py-2 px-8 cursor-pointer text-[10px] w-fit font-light"
               onClick={() => {

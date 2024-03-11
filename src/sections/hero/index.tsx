@@ -19,7 +19,7 @@ const Hero = () => {
               />
             </div>
             <img
-              className="absolute z-40 bottom-0 2xl:-bottom-6 w-[243.75px] 2sm:w-[280px] h-auto left-2/4 -translate-x-2/4 2lg:w-[310px] 2xl:w-[350px]"
+              className="absolute z-40 bottom-0 2xl:-bottom-6 w-[243.75px] 2sm:w-[280px] left-2/4 -translate-x-2/4 2lg:w-[310px] 2xl:w-[350px]"
               src={heroDress}
               alt=""
             />
