@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useStore from "../State";
+import useStore from "../store/State";
 import { motion } from "framer-motion";
 
 import dress1 from "/assets/images/dress1.png";
@@ -37,8 +37,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const { favorites, addToBasket, addToFavorites, removeFromFavorites } =
     useStore();
   const [isHovered, setIsHovered] = useState(false);
-
-  
 
   useEffect(() => {
     const handleResize = () => {
