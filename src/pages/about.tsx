@@ -2,13 +2,14 @@ import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import FooterSection from "../sections/footer";
 import { useNavigate } from "react-router";
+import Container from "../components/Container";
 
 const About = () => {
   const navigate = useNavigate();
   return (
     <>
       <Navbar />
-      <div className="px-4 sm:px-10 lg:px-16">
+      <Container>
         <section className="grid xl:flex gap-x-10 xl:h-[90vh] justify-center items-center">
           <motion.div
             initial={{ opacity: 0, y: -50 }}
@@ -25,7 +26,7 @@ const About = () => {
                 type: "spring",
                 bounce: 0.5,
               }}
-              className="mb-2 text-[#848586] font-outfit"
+              className="mb-2 text-[#848586]"
             >
               About Us
             </motion.h1>
@@ -38,7 +39,7 @@ const About = () => {
                 type: "spring",
                 bounce: 0.5,
               }}
-              className="text-4xl font-medium font-poppins mb-6"
+              className="text-4xl font-medium font- mb-6 font-poppins"
             >
               We believe that fashion is more than just what you wear – it's a
               reflection of who you are and what you love.
@@ -52,7 +53,7 @@ const About = () => {
                 type: "spring",
                 bounce: 0.5,
               }}
-              className="mb-6"
+              className="mb-6 font-outfit"
             >
               What sets us apart is our dedication to offering a diverse range
               of styles, from classic and elegant to bold and edgy. We carefully
@@ -71,7 +72,7 @@ const About = () => {
               }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="bg-darkPrimary hover:bg-opacity-100 text-white font-montserrat border-none border py-3 px-8 cursor-pointer text-[15px] mb-4 lg:mb-0"
+              className="bg-darkPrimary hover:bg-opacity-100 text-white border-none border py-3 px-8 cursor-pointer text-[15px] mb-4 lg:mb-0"
               onClick={() => navigate("/shop")}
             >
               Shop Now!
@@ -91,7 +92,7 @@ const About = () => {
             alt=""
           />
         </section>
-      </div>
+      </Container>
       <FooterSection />
     </>
   );
