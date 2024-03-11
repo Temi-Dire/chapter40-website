@@ -127,7 +127,7 @@ const Navbar = () => {
             onMouseEnter={() => setHover(5)}
             onMouseLeave={() => setHover(-1)}
             className="hidden lg:block capitalize font-montserrat font-thin text-[15px] 3xl:text-[17px] overflow-hidden"
-            onClick={() => navigate("contact")}
+            onClick={() => navigate("contact-us")}
             href=""
           >
                         Contact Us             
@@ -156,9 +156,7 @@ const Navbar = () => {
             >
                             
               <FavoriteBorderOutlinedIcon />
-                            
-              
-                          
+                                         
             </Link>
                         
             <Link className="relative" to={""} onClick={() => setOpen(true)}>
@@ -243,7 +241,7 @@ const Navbar = () => {
                     
           <m.div
             onClick={() => {
-              navigate(`/contact`);
+              navigate(`/contact-us`);
             }}
             initial={{ y: 35, opacity: 0 }}
             animate={
