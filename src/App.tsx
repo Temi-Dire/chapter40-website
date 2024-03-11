@@ -22,6 +22,7 @@ import Account from "./pages/customer/Account";
 import CustomerOptions from "./pages/CustomerOptions";
 import OrderTracking from "./pages/customer/OrderTracking";
 import Saved from "./pages/customer/Saved";
+import Categories from "./pages/Categories";
 
 
 function App() {
@@ -54,6 +55,8 @@ function App() {
             <Route path="/contact-us" element={<ContactUsPage />} />
 
             <Route path="/contact-us2" element={<ContactUs />} />
+            <Route path="/categories" element={<Categories />} />
+            
 
             {/* <Route
               path="/checkoutproduct"
