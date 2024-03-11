@@ -127,7 +127,7 @@ const Navbar = () => {
             onMouseEnter={() => setHover(5)}
             onMouseLeave={() => setHover(-1)}
             className="hidden lg:block capitalize font-montserrat font-thin text-[15px] 3xl:text-[17px] overflow-hidden"
-            onClick={() => navigate("contact-us")}
+            onClick={() => navigate("/contact-us")}
             href=""
           >
                         Contact Us             
