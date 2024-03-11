@@ -31,7 +31,7 @@ const AddressBook = () => {
     register,
     handleSubmit,
     //   reset,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema), mode: "onBlur" });
 
   return (
