@@ -12,7 +12,7 @@ const FavoriteCard = ({ id, desc, price }: Props) => {
   const { addToBasket, removeFromFavorites } = useStore();
   return (
     <div className="border shadow-md border-borderDark p-4 mb-5 flex flex-col md:flex-row items-center max-w-[800px]">
-      <div className="flex mb-3 w-full md:w-auto lg:w-auto ">
+      <div className="grid grid-cols-[auto,1fr] mb-3 w-full md:w-auto lg:w-auto ">
         <div className=" m-auto mr-4 md:mr-8 flex-auto">
           <img
             className=" object-cover"
