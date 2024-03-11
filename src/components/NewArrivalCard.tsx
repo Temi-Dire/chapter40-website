@@ -1,44 +1,26 @@
 import { useEffect, useState } from "react";
 import useStore from "../State";
 import { motion } from "framer-motion";
-
-import dress1 from "/assets/images/dress1.png";
-// import dress1 from "/assets/images/dress4.png";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-interface ProductCardProps {
+interface NewArrivalCardProps {
   id: number;
   image?: string;
   desc: string;
   price: number;
-  height?: string;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({
+const NewArrivalCard: React.FC<NewArrivalCardProps> = ({
   id,
   image,
   desc,
   price,
-  height,
 }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [screenSize, setScreenSize] = useState(false);
   const { favorites, addToBasket, addToFavorites, removeFromFavorites } =
     useStore();
   const [isHovered, setIsHovered] = useState(false);
-
-  function formatNumber(price: number) {
-    const numberString = price.toString();
-    const chars = numberString.split("");
-    let formattedNumber = "";
-    for (let i = 0; i < chars.length; i++) {
-      formattedNumber += chars[i];
-      if ((chars.length - i - 1) % 3 === 0 && i !== chars.length - 1) {
-        formattedNumber += ",";
-      }
-    }
-    return formattedNumber;
-  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -56,9 +38,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
     <motion.div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`font-outfit text-[12px] sm:text-[15px] 2sm:text-[12px] capitalize md:text-[15px] lg:max-w-[280px] w-full cursor-pointer `}
+      className={`font-outfit text-[12px] sm:text-[15px] 2sm:text-[12px] capitalize md:text-[15px] lg:max-w-[280px] w-full cursor-pointer mx-auto`}
     >
-      <div className={`relative h-[${height}px]`}>
+      <div className={`relative h-[220px] overflow-hidden lg:h-auto`}>
         <FavoriteIcon
           strokeWidth={0.5}
           stroke="black"
@@ -78,8 +60,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
             }
           }}
         />
-        <img src={image} alt="" />
-        <img className="rounded-sm w-full h-[auto]" src={dress1} alt="" />
+        <div className="aspect-w-1 aspect-h-1 lg:aspect-w-4 lg:aspect-h-5">
+          <img
+            className="mx-auto w-full object-cover bg-[center] lg:h-[359px] aspect-auto"
+            src={image}
+            alt=""
+          />
+        </div>
+
         {screenSize ? (
           <motion.div
             initial={{ y: 7, opacity: 0 }}
@@ -114,10 +102,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </div>
       <div className="pt-[10px] grid gap-1">
         <p className="leading-tight font-light">{desc}</p>
-        <p className="font-montserrat font-bold">₦ {formatNumber(price)}</p>
+        <p className="font-montserrat font-bold">₦{price.toLocaleString()}</p>
       </div>
     </motion.div>
   );
 };
 
-export default ProductCard;
+export default NewArrivalCard;
