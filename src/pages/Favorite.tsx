@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import useStore from "../State";
+import useStore from "../store/State";
 import FavoriteCard from "../components/FavoriteCard";
 import Navbar from "../components/Navbar";
 import FooterSection from "../sections/footer";
