@@ -10,7 +10,7 @@ const contactUsFooter = () => {
         />
         <div>
           <p>PHONE</p>
-          <p>0803 323 1939</p>
+          <p className="text-[#36254B]">0803 323 1939</p>
         </div>
       </div>
       <div className="flex items-center">
@@ -21,7 +21,7 @@ const contactUsFooter = () => {
         />
         <div>
           <p>EMAIL</p>
-          <p>chapter40fashion@gmail.com</p>
+          <p className="text-[#36254B]">chapter40fashion@gmail.com</p>
         </div>
       </div>
     </div>

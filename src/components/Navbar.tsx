@@ -206,7 +206,7 @@ const Navbar = () => {
           </m.div>
           <m.div
             onClick={() => {
-              navigate(`/contact`);
+              navigate(`contact-us`);
             }}
             initial={{ y: 35, opacity: 0 }}
             animate={
