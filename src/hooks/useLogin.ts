@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { toast } from "react-toastify";
-import useStore from "../State";
+import useStore from "../store/State";
 import { useNavigate } from "react-router-dom";
 
 interface Details {

@@ -1,5 +1,5 @@
 import { PaystackButton } from "react-paystack";
-import useStore from "../State";
+import useStore from "../store/State";
 import useInformationStore from "../store/shippingInfo";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import { Link, useNavigate } from "react-router-dom";

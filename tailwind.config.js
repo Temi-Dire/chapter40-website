@@ -31,6 +31,9 @@ export default {
       roboto: ["Roboto", "sans-serif"],
       outfit: ["Outfit", "sans-serif"],
       poppins: ["Poppins", "sans-serif"],
+      barlow: ["Barlow", "sans-serif"],
+      josefin: ["Josefin Sans", "sans-serif"],
+      baskerville: ["Baskerville", "sans-serif"],
     },
     boxShadow: {
       xl: "3px 1px 7.1px 5px rgba(152, 66, 136, 0.11)",
