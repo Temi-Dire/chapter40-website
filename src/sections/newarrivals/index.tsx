@@ -1,3 +1,4 @@
+import Container from "../../components/Container";
 import ProductCard from "../../components/ProductCard";
 
 interface NewarrivalsProps {
@@ -33,7 +34,7 @@ const Newarrivals: React.FC<NewarrivalsProps> = ({
   ];
 
   return (
-    <div className=" lg:px-16 mt-5 sm:mt-10">
+    <Container className="mt-5 sm:mt-10">
       <div className=" px-5 w-full text-center">
         <h1 className="sm:text-4xl text-2xl font-playfair mb-2">{header}</h1>
         <p className="font-montserrat text-[#7C7C7C] text-sm sm:text-base">
@@ -50,7 +51,7 @@ const Newarrivals: React.FC<NewarrivalsProps> = ({
           />
         ))}
       </div>
-    </div>
+    </Container>
   );
 };
 

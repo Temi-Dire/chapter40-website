@@ -1,6 +1,6 @@
 import add from "/assets/addIcon.svg";
 import dress from "/assets/images/dress2.png";
-import useStore from "../State";
+import useStore from "../store/State";
 
 interface CardProps {
   desc: string;

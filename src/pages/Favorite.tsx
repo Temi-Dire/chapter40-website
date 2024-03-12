@@ -1,20 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import useStore from "../State";
 import FavoriteCard from "../components/FavoriteCard";
 import Navbar from "../components/Navbar";
 import FooterSection from "../sections/footer";
+import useFavoritesStore from "../store/favorites";
 
 const Favorite = () => {
-  const { favorites } = useStore();
+  const { favorites } = useFavoritesStore();
   const navigate = useNavigate();
-
-  // const totalFavorites = () => {
-  //   let sum = 0;
-  //   for (let i = 0; i < favorites.length; i++) {
-  //     sum += favorites[i].quantity;
-  //   }
-  //   return sum;
-  // };
 
   return (
     <>

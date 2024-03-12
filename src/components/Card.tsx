@@ -1,6 +1,6 @@
 import FavoriteIcon from "@mui/icons-material/Favorite";
 // import Star from "./Star";
-import useStore from "../State";
+import useStore from "../store/State";
 import { useState } from "react";
 
 interface CardProps {
@@ -24,10 +24,10 @@ const Card: React.FC<CardProps> = ({ desc, price, id }) => {
             onClick={() => {
               setIsClicked(!isClicked);
               if (!isClicked) {
-              addToFavorites({ desc, price, id });
-              console.log(favorites);
+                addToFavorites({ desc, price, id });
+                console.log(favorites);
               } else {
-              removeFromFavorites(id);
+                removeFromFavorites(id);
               }
             }}
           />
