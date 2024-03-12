@@ -16,7 +16,6 @@ import Favorite from "./pages/Favorite";
 import Order from "./pages/order";
 
 import ContactUsPage from "./pages/ContactUsPage";
-import ContactUs from "./pages/ContactUs";
 
 import Account from "./pages/customer/Account";
 import CustomerOptions from "./pages/CustomerOptions";
@@ -53,8 +52,6 @@ function App() {
               <Route path="payment" element={<Payment />} />
             </Route>
             <Route path="/contact-us" element={<ContactUsPage />} />
-
-            <Route path="/contact-us2" element={<ContactUs />} />
 
             {/* <Route
               path="/checkoutproduct"
