@@ -27,9 +27,11 @@ const FavoriteCard = ({ id, image, desc, price }: Props) => {
           Add to Cart
         </button>
         <button
+          type="button"
           onClick={() => removeFromFavorites(id)}
           className=" flex uppercase justify-center"
         >
+          <span className="sr-only">Trash</span>
           <FaRegTrashAlt />
         </button>
       </div>
