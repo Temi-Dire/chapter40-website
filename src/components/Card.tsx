@@ -56,4 +56,3 @@ const Card: React.FC<CardProps> = ({ desc, price, id }) => {
 };
 
 export default Card;
-

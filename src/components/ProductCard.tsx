@@ -12,7 +12,6 @@ interface ProductCardProps {
   image?: string;
   desc: string;
   price: number;
-  height?: string;
 }
 
 export function formatNumber(price: number) {
@@ -33,7 +32,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
   image,
   desc,
   price,
-  height,
 }) => {
   const [isClicked, setIsClicked] = useState(false);
 
@@ -65,9 +63,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
     <motion.div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`font-outfit text-[12px] sm:text-[15px] 2sm:text-[12px] capitalize md:text-[15px] lg:max-w-[280px] w-full cursor-pointer `}
+      className="font-outfit text-[12px] sm:text-[15px] 2sm:text-[12px] capitalize md:text-[15px] lg:max-w-[280px] w-full cursor-pointer"
     >
-      <div className={`relative h-[${height}px]`}>
+      <div className="relative">
         <FavoriteIcon
           strokeWidth={0.5}
           stroke="black"

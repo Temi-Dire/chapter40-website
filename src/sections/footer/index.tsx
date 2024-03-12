@@ -34,8 +34,8 @@ const FooterSection = () => {
   const currentYear = new Date();
   return (
     <>
-      <div className="px-[24px] py-[40px] mt-[50px] border-t-borderDark border-t-[0.5px] xl:px-[40px] 3xl:px-[56px] max-w-[1440px] w-full mx-auto">
-        <div className="max-w-[1440px] w-full mx-auto">
+      <div className="px-[24px] py-[40px] mt-[50px] border-t-borderDark border-t-[0.5px]">
+        <div className="max-w-[1280px] w-full mx-auto">
           <div className="grid gap-[30px] 2lg:grid-cols-2 items-start">
             <div className="grid gap-[14px] 2lg:col-start-2 2lg:row-start-1">
               <p className="font-playfair">Join our mailing list</p>
