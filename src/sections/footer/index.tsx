@@ -43,7 +43,7 @@ const FooterSection = () => {
                 <input
                   className="text-[14px] border-none outline-none py-3 px-3 bg-white-300 w-full"
                   type="text"
-                  placeholder="your@email.com"
+                  placeholder="your@gmail.com"
                 />
                 <button className="text-white text-[14px] bg-darkPrimary px-2 max-w-[82px] w-full">
                   Sign up

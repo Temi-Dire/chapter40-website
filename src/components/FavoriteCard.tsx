@@ -1,5 +1,5 @@
 import { FaRegTrashAlt } from "react-icons/fa";
-import useStore from "../State";
+import useStore from "../store/State";
 
 interface Props {
   id: number;

@@ -47,7 +47,7 @@ const Newarrivals: React.FC<NewarrivalsProps> = ({
       <div className="grid grid-cols-2 px-[20px] xl:px-[40px] gap-[20px] lg:grid-cols-4 max-w-[1440px] mx-auto w-full">
         {prods.map((prod, index) => (
           <NewArrivalCard
-          key={index}
+            key={index}
             id={prod.id}
             image={prod.image}
             desc={prod.description}

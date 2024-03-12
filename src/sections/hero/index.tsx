@@ -1,6 +1,6 @@
 // import { useNavigate } from "react-router-dom";
 import texture from "/assets/images/texture.png";
-import heroDress from "/assets/images/heroDress.png";
+import heroDress from "/assets/images/heroDress.svg";
 import Minicard from "../../components/Minicard";
 
 const Hero = () => {

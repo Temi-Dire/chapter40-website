@@ -41,3 +41,12 @@
 .read-the-docs {
   color: #888;
 } */
+
+
+@font-face {
+  font-family: playfair;
+  src: url(../assets/PlayfairDisplay-VariableFont_wght.ttf);
+}
+.playfair{
+  font-family: playfair;
+}

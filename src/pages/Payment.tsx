@@ -1,53 +1,67 @@
-import { ChangeEvent, useState } from "react";
-import OnlinePayment from "../components/OnlinePayment"; // Import your online payment form component
+import { PaystackButton } from "react-paystack";
+import useStore from "../store/State";
+import useInformationStore from "../store/shippingInfo";
+import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
+import { Link, useNavigate } from "react-router-dom";
 
-const Payment = () => {
-  const [selectedPaymentOption, setSelectedPaymentOption] = useState<
-    string | null
-  >("");
 
-  const handlePaymentOptionChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSelectedPaymentOption(event.target.value);
+const PaystackPayment = () => {
+  const publicKey = import.meta.env.VITE_PUBLIC_KEY;
+  const navigate = useNavigate()
+
+  const onSuccess = (reference: string) => {
+    navigate('/customer/orders')
+    console.log("Payment successful", reference);
+    // also remember to use toastify here
+  };
+
+  const onClose = () => {
+    
+    console.log("Payment closed");
+    // Remember to use toastify here
+  };
+
+  const { email } = useInformationStore();
+  const store = useStore();
+  const basket = store.basket;
+
+  const getTotal = () => {
+    let sum: number = 0;
+    for (let i = 0; i < basket.length; i++) {
+      sum += basket[i].price * basket[i].quantity;
+    }
+    return sum;
+  };
+
+  const config = {
+    email,
+    amount: getTotal() * 100,
+    publicKey,
+    text: "Pay Now",
+    onSuccess,
+    onClose,
   };
 
   return (
     <>
-      <h2 className="mb-4 font-montserrat">Payment Method</h2>
-      <div className="max-w-md p-4 border rounded-md font-montserrat">
-        <div className="payment-option mb-4">
-          <input
-            type="radio"
-            name="paymentMethod"
-            id="onlinePayment"
-            value="online"
-            className="mr-2"
-            onChange={handlePaymentOptionChange}
-          />
-          <label htmlFor="onlinePayment" className="text-gray-700">
-            Online Payment (Credit, Dedit Card, etc.)
-          </label>
-        </div>
-
-        <hr className="my-4 border-t border-gray-300" />
-
-        <div className="payment-option">
-          <input
-            type="radio"
-            name="paymentMethod"
-            id="offlinePayment"
-            value="offline"
-            className="mr-2"
-            onChange={handlePaymentOptionChange}
-          />
-          <label htmlFor="offlinePayment" className="text-gray-700">
-            Offline Payment
-          </label>
+      <div className="max-w-md my-8 text-sm md:text-lg lg:text-xl bg-white shadow-md font-poppins rounded-md">
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="text-2xl font-semibold">Pay with Paystack</h1>
         </div>
       </div>
+      <div className="flex justify-between items-center font-poppins">
+        <PaystackButton
+          {...config}
+          className="bg-[#36254B] text-gray-200 p-4"
+        />
 
-      {selectedPaymentOption === "online" && <OnlinePayment />}
+        <Link  to={'/cart/shipping'} className=" flex-nowrap">
+          <ArrowBackIosNewOutlinedIcon />
+          return to shipping
+        </Link>
+      </div>
     </>
   );
 };
 
-export default Payment;
+export default PaystackPayment;

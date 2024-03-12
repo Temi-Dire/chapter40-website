@@ -1,5 +1,6 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import MyCart from "../components/MyCart";
+
 
 const CheckoutPage = () => {
   return (
@@ -7,7 +8,7 @@ const CheckoutPage = () => {
       <div className="lg:flex min-h-screen">
         <div className="px-5 md:px-20 lg:px-10 py-[40px]   lg:w-1/2 font-playfair">
           <header className="text-[24px] lg:text-4xl mb-[12px] lg:mb-[29px] text-black">
-            Chapter40
+            <Link to={"/"}>Chapter40</Link>
           </header>
           <Outlet />
         </div>
