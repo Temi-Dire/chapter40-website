@@ -35,7 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   const [isClicked, setIsClicked] = useState(false);
 
-  const [add, setAdd] = useState(false);
+  // const [add, setAdd] = useState(false);
 
   const [screenSize, setScreenSize] = useState(false);
 
