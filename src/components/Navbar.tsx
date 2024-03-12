@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
 import useStore from "../store/State";
+import useFavoritesStore from "../store/favorites";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -33,9 +34,8 @@ const Navbar = () => {
     };
   }, []);
 
-  const store = useStore();
-  const basket = store.basket;
-  const favorites = store.favorites;
+  const { basket } = useStore();
+  const { favorites } = useFavoritesStore();
 
   const totalItemsInBasket = () => {
     let sum = 0;
