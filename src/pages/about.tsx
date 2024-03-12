@@ -26,7 +26,7 @@ const About = () => {
                 type: "spring",
                 bounce: 0.5,
               }}
-              className="mb-2 text-[#848586]"
+              className="mb-2 text-[#848586] font-playfair"
             >
               About Us
             </motion.h1>
@@ -39,7 +39,7 @@ const About = () => {
                 type: "spring",
                 bounce: 0.5,
               }}
-              className="text-4xl font-medium font- mb-6 font-poppins"
+              className="text-4xl font-medium font- mb-6 font-montserrat"
             >
               We believe that fashion is more than just what you wear – it's a
               reflection of who you are and what you love.
@@ -53,7 +53,7 @@ const About = () => {
                 type: "spring",
                 bounce: 0.5,
               }}
-              className="mb-6 font-outfit"
+              className="mb-6 font-poppins"
             >
               What sets us apart is our dedication to offering a diverse range
               of styles, from classic and elegant to bold and edgy. We carefully
