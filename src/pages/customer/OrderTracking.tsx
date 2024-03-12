@@ -1,3 +1,5 @@
+import { formatNumber } from "../../components/ProductCard";
+
 const OrderTracking = () => {
   return (
     <>
@@ -18,7 +20,7 @@ const OrderTracking = () => {
                   <p>Privé Contrast Collar cooperate Dress</p>
                   <div>
                     <p>Available</p>
-                    <p>$30000</p>
+                    <p>₦{formatNumber(30000)}</p>
                   </div>
                   <button className="bg-[#36254B] py-1 px-6 text-white w-fit xl:text-[15px]">
                     Track Order
@@ -34,15 +36,13 @@ const OrderTracking = () => {
                   <p>Privé Contrast Collar cooperate Dress</p>
                   <div>
                     <p>Available</p>
-                    <p>$30000</p>
+                    <p>₦{formatNumber(30000)}</p>
                   </div>
                   <button className="bg-[#36254B] py-1 px-6 text-white w-fit xl:text-[15px]">
                     Track Order
                   </button>
                 </div>
               </div>
-            
-              {/* <p className="justify-self-end items-end w-fit">Track Order</p> */}
             </div>
           </div>
         </div>
