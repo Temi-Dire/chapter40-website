@@ -47,19 +47,19 @@ const Shop = () => {
 
   const products: Product[] = [
     {
-      id: 2,
+      id: 1,
+      description: "Red ankara shirt sumami crimison",
+      price: 30000,
+      category: "shirts",
+    },
+    {
+      id: 1,
       description: "Red ankara shirt sumami crimison",
       price: 30000,
       category: "shirts",
     },
     {
       id: 2,
-      description: "Red ankara shirt sumami crimison",
-      price: 30000,
-      category: "shirts",
-    },
-    {
-      id: 3,
       description: "Red ankara gown sumami crimison",
       price: 30000,
       category: "gowns",
@@ -83,37 +83,37 @@ const Shop = () => {
       category: "trousers",
     },
     {
-      id: 5,
+      id: 6,
       description: "Red ankara trousers sumami crimison",
       price: 30000,
       category: "trousers",
     },
     {
-      id: 5,
+      id: 7,
       description: "Red ankara trousers sumami crimison",
       price: 30000,
       category: "trousers",
     },
     {
-      id: 5,
+      id: 8,
       description: "Red ankara trousers sumami crimison",
       price: 30000,
       category: "trousers",
     },
     {
-      id: 5,
+      id: 9,
       description: "Red ankara trousers sumami crimison",
       price: 30000,
       category: "trousers",
     },
     {
-      id: 5,
+      id: 10,
       description: "Red ankara trousers sumami crimison",
       price: 30000,
       category: "trousers",
     },
     {
-      id: 5,
+      id: 11,
       description: "Red ankara trousers sumami crimison",
       price: 30000,
       category: "trousers",
