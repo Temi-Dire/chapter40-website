@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import useFavoritesStore from "../store/favorites";
 import useStore from "../store/State";
 import { motion } from "framer-motion";
 
@@ -33,10 +34,18 @@ const ProductCard: React.FC<ProductCardProps> = ({
   price,
 }) => {
   const [isClicked, setIsClicked] = useState(false);
+
+  const [add, setAdd] = useState(false);
+
   const [screenSize, setScreenSize] = useState(false);
-  const { favorites, addToBasket, addToFavorites, removeFromFavorites } =
-    useStore();
+
   const [isHovered, setIsHovered] = useState(false);
+
+  const { favorites, addToFavorites, removeFromFavorites } =
+    useFavoritesStore();
+
+  const { addToBasket } = useStore();
+
 
   useEffect(() => {
     const handleResize = () => {
