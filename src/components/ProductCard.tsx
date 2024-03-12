@@ -77,7 +77,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
           }}
         />
         <img src={image} alt="" />
-        <img className="rounded-sm w-full h-[auto]" src={dress1} alt="" />
+        <img
+          className="rounded-sm w-full h-[auto] min-h-fit"
+          src={dress1}
+          alt=""
+        />
         {screenSize ? (
           <motion.div
             initial={{ y: 7, opacity: 0 }}
