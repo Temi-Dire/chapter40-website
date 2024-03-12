@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useStore from "../State";
+import useStore from "../store/State";
 import { motion } from "framer-motion";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
