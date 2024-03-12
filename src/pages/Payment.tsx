@@ -10,7 +10,7 @@ const PaystackPayment = () => {
   const navigate = useNavigate()
 
   const onSuccess = (reference: string) => {
-    navigate('/customer/order')
+    navigate('/customer/orders')
     console.log("Payment successful", reference);
     // also remember to use toastify here
   };

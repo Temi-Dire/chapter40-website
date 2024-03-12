@@ -9,16 +9,9 @@ const ContactUs = () => {
   return (
     <>
       <Navbar />
-      <Container className="self-stretch">
-        <div className="flex justify-center items-center flex-col mb-9">
-          <h1 className="text-4xl font-bold mb-2 mt-3">Trying to reach us?</h1>
-          <p className="text-gray-600 mb-3">
-            We're more than open to hear from you. Whether you have questions,
-            feedback, or thoughts, we'd love to connect with you.
-          </p>
-        </div>
-        <div className="flex border border-slate-200 flex-col-reverse lg:flex-row gap-12 justify-between lg:mb-20 items-center relative sm:px-16 lg:px-32 sm:py-[50px] py-8 lg:py-[100px]">
-          <div className="flex-1 h-full max-w-[545px] px-4 sm:px-0">
+      <Container className="self-stretch xl:mt-9">
+        <div className="flex  flex-col-reverse xl:flex-row gap-12 justify-between lg:mb-20 items-center relative sm:px-16 xl:pl-0 sm:py-[50px] py-8 xl:py-[100px]">
+          <div className="flex-1 h-full max-w-[545px] ">
             <ContactForm />
           </div>
           <div className="lg:flex-1 z-20 max-w-[545px] lg:self-stretch h-[300px] mx-auto items-center  lg:h-auto w-full ">
