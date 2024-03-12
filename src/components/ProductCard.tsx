@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import useStore from "../State";
+import useFavoritesStore from "../store/favorites";
+import useStore from "../store/State";
 import { motion } from "framer-motion";
 
 import dress1 from "/assets/images/dress1.png";
@@ -14,6 +15,19 @@ interface ProductCardProps {
   height?: string;
 }
 
+export function formatNumber(price: number) {
+  const numberString = price.toString();
+  const chars = numberString.split("");
+  let formattedNumber = "";
+  for (let i = 0; i < chars.length; i++) {
+    formattedNumber += chars[i];
+    if ((chars.length - i - 1) % 3 === 0 && i !== chars.length - 1) {
+      formattedNumber += ",";
+    }
+  }
+  return formattedNumber;
+}
+
 const ProductCard: React.FC<ProductCardProps> = ({
   id,
   image,
@@ -22,23 +36,18 @@ const ProductCard: React.FC<ProductCardProps> = ({
   height,
 }) => {
   const [isClicked, setIsClicked] = useState(false);
+
+  // const [add, setAdd] = useState(false);
+
   const [screenSize, setScreenSize] = useState(false);
-  const { favorites, addToBasket, addToFavorites, removeFromFavorites } =
-    useStore();
+
   const [isHovered, setIsHovered] = useState(false);
 
-  function formatNumber(price: number) {
-    const numberString = price.toString();
-    const chars = numberString.split("");
-    let formattedNumber = "";
-    for (let i = 0; i < chars.length; i++) {
-      formattedNumber += chars[i];
-      if ((chars.length - i - 1) % 3 === 0 && i !== chars.length - 1) {
-        formattedNumber += ",";
-      }
-    }
-    return formattedNumber;
-  }
+  const { favorites, addToFavorites, removeFromFavorites } =
+    useFavoritesStore();
+
+  const { addToBasket } = useStore();
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -79,7 +88,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
           }}
         />
         <img src={image} alt="" />
-        <img className="rounded-sm w-full h-[auto]" src={dress1} alt="" />
+        <img
+          className="rounded-sm w-full h-[auto] min-h-fit"
+          src={dress1}
+          alt=""
+        />
         {screenSize ? (
           <motion.div
             initial={{ y: 7, opacity: 0 }}

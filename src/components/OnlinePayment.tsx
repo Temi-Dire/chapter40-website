@@ -1,23 +1,21 @@
 import { PaystackButton } from "react-paystack";
+import useStore from "../store/State";
 import useInformationStore from "../store/shippingInfo";
-import useStore from "../State";
 
 const PaystackPayment = () => {
-  
-
-  const publicKey = import.meta.env.VITE_PUBLIC_KEY; 
+  const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
   const onSuccess = (reference: string) => {
     console.log("Payment successful", reference);
-    // and here too as well
+    // also remember to use toastify here
   };
 
   const onClose = () => {
     console.log("Payment closed");
-
-    // remember to use toastify here
+    // Remember to use toastify here
   };
-  const {email} = useInformationStore();
+
+  const { email } = useInformationStore();
   const store = useStore();
   const basket = store.basket;
 
@@ -29,20 +27,21 @@ const PaystackPayment = () => {
     return sum;
   };
 
-
   const config = {
     email,
     amount: getTotal() * 100,
     publicKey,
-    text: "Click here to pay now",
+    text: "Pay Now",
     onSuccess,
     onClose,
   };
 
   return (
-    <div className="max-w-md my-8 p-4 bg-white shadow-md  font-montserrat rounded-md">
-      <h1 className="text-2xl font-semibold mb-4">Pay with Paystack</h1>
-      <PaystackButton {...config} />
+    <div className="max-w-md my-8 p-4 bg-white shadow-md font-montserrat rounded-md">
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-2xl font-semibold">Pay with Paystack</h1>
+      </div>
+      <PaystackButton {...config} className="bg-[#36254B] text-gray-200 p-4" />
     </div>
   );
 };

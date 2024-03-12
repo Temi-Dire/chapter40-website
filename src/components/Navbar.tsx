@@ -7,7 +7,8 @@ import { motion as m, AnimatePresence, easeInOut } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
-import useStore from "../State";
+import useStore from "../store/State";
+import useFavoritesStore from "../store/favorites";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -42,7 +43,8 @@ const Navbar = () => {
 
   const store = useStore();
   const basket = store.basket;
-  const favorites = store.favorites;
+  const { favorites } = useFavoritesStore();
+
 
   const totalItemsInBasket = () => {
     let sum = 0;
@@ -127,7 +129,7 @@ const Navbar = () => {
             onMouseEnter={() => setHover(5)}
             onMouseLeave={() => setHover(-1)}
             className="hidden lg:block capitalize font-montserrat font-thin text-[15px] 3xl:text-[17px] overflow-hidden"
-            onClick={() => navigate("contact")}
+            onClick={() => navigate("/contact-us")}
             href=""
           >
             Contact Us
@@ -141,7 +143,7 @@ const Navbar = () => {
             ></m.div>
           </m.a>
           <div className="flex gap-[5px] lg:gap-[20px] xl:gap-[30px] items-center">
-            <Link to={user ? "/account/details" : "/auth/login"}>
+            <Link to={user ? "/customer/account" : "/auth/login"}>
               <img className="w-6" src={userIcon} alt="" />
             </Link>
             <Link
@@ -153,12 +155,15 @@ const Navbar = () => {
                 {favorites.length}
               </span>
             </Link>
-            <Link className="relative" to={""} onClick={() => setOpen(true)}>
+            <div
+              className="relative cursor-pointer"
+              onClick={() => setOpen(true)}
+            >
               <img className="w-6" src={cart} alt="" />
               <span className="bg-black text-white text-[10px] rounded-full p-1 px-2 scale-75 absolute -bottom-[8px] -right-[6px]">
                 {totalItemsInBasket()}
               </span>
-            </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -226,7 +231,7 @@ const Navbar = () => {
           <m.div
             className="cursor-pointer"
             onClick={() => {
-              navigate(`/contact`);
+              navigate(`contact-us`);
             }}
             initial={{ y: 35, opacity: 0 }}
             animate={

@@ -4,7 +4,9 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { KeyboardEventHandler } from "react";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
-import useStore from "../State";
+import useStore from "../store/State";
+import useInformationStore from "../store/shippingInfo";
+import useUserInfoStore from "../store/userInfo";
 
 const schema = z.object({
   state: z.string().min(3, { message: "State should be a least 3 characters" }),
@@ -60,6 +62,18 @@ const Information = () => {
   };
 
   const { user } = useStore();
+  const { setEmail } = useInformationStore();
+  const {
+    setEmailA,
+    setCountryState,
+    setFullName,
+    setCompany,
+    setAddress,
+    setApartment,
+    setPhoneNumber,
+    setPostalCode,
+    setCity,
+  } = useUserInfoStore();
 
   return (
     <>
@@ -67,6 +81,16 @@ const Information = () => {
         <form
           onSubmit={handleSubmit((data) => {
             console.log(data);
+            setEmail(data.email);
+            setEmailA(data.email);
+            setCountryState(data.state);
+            setFullName({ firstname: data.firstName, lastname: data.lastName });
+            setCompany(data.company);
+            setAddress(data.address);
+            setApartment(data.apartment);
+            setPhoneNumber(data.phone);
+            setPostalCode(data.postalCode);
+            setCity(data.city);
             reset();
           })}
         >
