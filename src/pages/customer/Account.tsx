@@ -23,7 +23,10 @@ const Account = () => {
           <div className="border border-slate-400 rounded-md w-full">
             <div className="p-4 font-medium flex justify-between">
               <p>ADDRESS</p>
-              <EditIcon className="cursor-pointer" />
+              <EditIcon
+                className="cursor-pointer"
+                onClick={() => navigate("/customer/address")}
+              />
             </div>
             <hr />
             <div className="p-4">
