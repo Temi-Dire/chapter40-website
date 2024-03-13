@@ -56,13 +56,9 @@ const Navbar = () => {
 
   return (
     <nav
-      // animate={{
-      //   backgroundColor: navbar ? "hsl(255,100%, 100%, 0.9)" : "",
-      //   transition: {ease: easeInOut, duration: 0.5}
-      // }}
       className={`max-w-[1440px] mx-auto w-full sticky top-0 z-[100] ${
         navbar
-          ? "bg-white bg-opacity-90 transition-all ease-in-out duration-500"
+          ? "bg-white bg-opacity-[90] transition-all ease-in-out duration-500"
           : ""
       } `}
     >
