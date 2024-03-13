@@ -43,6 +43,10 @@ const Navbar = () => {
 
   const { basket } = useStore();
   const { favorites } = useFavoritesStore();
+  const changeBackground = () => {
+    window.scrollY > 35 ? setNavbar(true) : setNavbar(false);
+  };
+  window.addEventListener("scroll", changeBackground);
 
   const totalItemsInBasket = () => {
     let sum = 0;
