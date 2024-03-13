@@ -16,6 +16,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hover, setHover] = useState(-1);
 
+  const [navbar, setNavbar] = useState(false);
+
   if (isOpen) {
     document.body.style.overflow = "hidden";
   } else {
@@ -36,6 +38,10 @@ const Navbar = () => {
 
   const { basket } = useStore();
   const { favorites } = useFavoritesStore();
+  const changeBackground = () => {
+    window.scrollY > 35 ? setNavbar(true) : setNavbar(false);
+  };
+  window.addEventListener("scroll", changeBackground);
 
   const totalItemsInBasket = () => {
     let sum = 0;
@@ -48,8 +54,18 @@ const Navbar = () => {
   const pages = ["about us", "shop", "categories"];
 
   return (
-    <nav className="max-w-[1440px] mx-auto w-full sticky top-0 z-50">
-      <div className="flex justify-between items-center px-[20px] 2lg:px-[40px] xl:px-[65px] py-[14px] 2lg:pb-[30px] overflow-x-hidden">
+    <nav
+      // animate={{
+      //   backgroundColor: navbar ? "hsl(255,100%, 100%, 0.9)" : "",
+      //   transition: {ease: easeInOut, duration: 0.5}
+      // }}
+      className={`max-w-[1440px] mx-auto w-full sticky top-0 z-[100] ${
+        navbar
+          ? "bg-white bg-opacity-90 transition-all ease-in-out duration-500"
+          : ""
+      } `}
+    >
+      <div className="flex justify-between items-center px-[20px] 2lg:px-[40px] xl:px-[65px] py-[14px] 2lg:pb-[20px] overflow-x-hidden">
         <m.div
           className="cursor-pointer items-center flex flex-col justify-center lg:hidden"
           onClick={() => setIsOpen(!isOpen)}
@@ -76,7 +92,7 @@ const Navbar = () => {
           />
         </m.div>
         <div className="hidden lg:block">
-          <ul className="capitalize font-montserrat font-thin text-[15px] flex gap-[30px] 2lg:gap-[50px] 2xl:gap-[70px] 3xl:text-[17px]">
+          <m.ul className="capitalize font-montserrat font-thin text-[15px] flex gap-[30px] 2lg:gap-[50px] 2xl:gap-[70px] 3xl:text-[17px]">
             {pages.map((page, i) => (
               <m.li
                 key={i}
@@ -97,7 +113,7 @@ const Navbar = () => {
                 ></m.div>
               </m.li>
             ))}
-          </ul>
+          </m.ul>
         </div>
         <Link
           to={"/"}
@@ -171,9 +187,10 @@ const Navbar = () => {
                   x: "-100vw",
                 }
           }
-          className={`absolute top-[53.79px] left-0 bg-grey-100 font-montserrat font-semibold pt-[150px] text-[24px] xs:text-[30px] content-start sm:text-[40px] capitalize px-[24px] *:overflow-hidden *:cursor-pointer bg-white-300 grid gap-[24px]  place-items-start lg:hidden`}
+          className={`absolute top-[53.79px] left-0 bg-grey-100 font-montserrat font-semibold pt-[80px] text-[24px] xs:text-[30px] content-start sm:text-[40px] capitalize px-[24px] *:overflow-hidden bg-white-300 grid gap-[32px] place-items-start lg:hidden`}
         >
           <m.div
+            className="cursor-pointer"
             onClick={() => {
               navigate(`/shop`);
             }}
@@ -191,6 +208,7 @@ const Navbar = () => {
             Shop
           </m.div>
           <m.div
+            className="cursor-pointer"
             onClick={() => {
               navigate(`/about`);
             }}
@@ -208,6 +226,7 @@ const Navbar = () => {
             About Us
           </m.div>
           <m.div
+            className="cursor-pointer"
             onClick={() => {
               navigate(`contact-us`);
             }}
@@ -225,6 +244,7 @@ const Navbar = () => {
             Contact us
           </m.div>
           <m.div
+            className="cursor-pointer"
             onClick={() => {
               navigate(`/categories`);
             }}
@@ -242,6 +262,7 @@ const Navbar = () => {
             Categories
           </m.div>
           <m.div
+            className="cursor-pointer"
             onClick={() => {
               navigate(!user ? "/wishlist" : "/auth/login");
             }}
