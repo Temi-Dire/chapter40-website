@@ -36,6 +36,7 @@ const Navbar = () => {
     };
   }, []);
 
+
   const changeBackground = () => {
     window.scrollY > 35 ? setNavbar(true) : setNavbar(false);
   };
@@ -43,6 +44,7 @@ const Navbar = () => {
 
   const { basket } = useStore();
   const { favorites } = useFavoritesStore();
+
 
   const totalItemsInBasket = () => {
     let sum = 0;
@@ -55,6 +57,7 @@ const Navbar = () => {
   const pages = ["about us", "shop", "categories"];
 
   return (
+
     <nav
       // animate={{
       //   backgroundColor: navbar ? "hsl(255,100%, 100%, 0.9)" : "",
@@ -73,27 +76,34 @@ const Navbar = () => {
           initial={{ rotate: 0, opacity: 1 }}
           transition={{ ease: "easeInOut", duration: 0.3 }}
         >
+                    
           <m.div
-            className="h-[2.5px]  w-5 bg-black mb-1"
+            className="h-[2.5px]  w-5 bg-black mb-1"
             initial={{ y: 0, rotate: 0 }}
             animate={isOpen ? { y: 6.5, rotate: 45 } : { y: 0, rotate: 0 }}
             transition={{ ease: "easeInOut", duration: 0.3 }}
           />
+                    
           <m.div
             className="h-[2.5px] w-5 bg-black mb-1"
             initial={{ opacity: 1 }}
             animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
             transition={{ ease: "easeInOut", duration: 0.3 }}
           />
+                    
           <m.div
             className="h-[2.5px] w-5 bg-black"
             initial={{ y: 0, rotate: 0 }}
             animate={isOpen ? { y: -7, rotate: -45 } : { y: 0, rotate: 0 }}
             transition={{ ease: "easeInOut", duration: 0.3 }}
           />
+                  
         </m.div>
+                
         <div className="hidden lg:block">
+
           <m.ul className="capitalize font-montserrat font-thin text-[15px] flex gap-[30px] 2lg:gap-[50px] 2xl:gap-[70px] 3xl:text-[17px]">
+
             {pages.map((page, i) => (
               <m.li
                 key={i}
@@ -101,9 +111,12 @@ const Navbar = () => {
                 onMouseLeave={() => setHover(-1)}
                 className="overflow-hidden"
               >
+                                
                 <a onClick={() => navigate(`/${page.split(" ")[0]}`)} href="">
-                  {page}
+                                    {page}
+                                  
                 </a>
+                                
                 <m.div
                   initial={{ x: "-100%" }}
                   animate={{
@@ -112,17 +125,21 @@ const Navbar = () => {
                   }}
                   className="h-[2px] bg-black w-full"
                 ></m.div>
+                              
               </m.li>
             ))}
           </m.ul>
         </div>
+                
         <Link
           to={"/"}
           className="absolute left-[47.5%] lg:left-2/4 -translate-x-2/4 2lg:left-[52%] font-playfair text-[24px] 2lg:text-[30px] 3xl:text-[36px] "
         >
-          Chapter40
+                    Chapter40         
         </Link>
+                
         <div className="lg:flex gap-[50px] 2lg:gap-[80px] 2xl:gap-[120px]">
+                    
           <m.a
             onMouseEnter={() => setHover(5)}
             onMouseLeave={() => setHover(-1)}
@@ -130,7 +147,7 @@ const Navbar = () => {
             onClick={() => navigate("/contact-us")}
             href=""
           >
-            Contact Us
+                        Contact Us             
             <m.div
               initial={{ x: "-100%" }}
               animate={{
@@ -139,33 +156,44 @@ const Navbar = () => {
               }}
               className="h-[2px] bg-black w-full"
             ></m.div>
+                      
           </m.a>
+                    
           <div className="flex gap-[5px] lg:gap-[20px] xl:gap-[30px] items-center">
+
             <Link to={user ? "/customer/account" : "/auth/login"}>
               <img className="w-6" src={userIcon} alt="" />
+                          
             </Link>
+                        
             <Link
               className="lg:block hidden relative"
-              to={!user ? "/wishlist" : "/auth/login"}
+              to={user ? "/wishlist" : "/auth/login"}
             >
+                            
               <FavoriteBorderOutlinedIcon />
-              <span className="bg-black text-white text-[10px] rounded-full p-1 px-2 scale-75 absolute -bottom-[8px] -right-[6px]">
-                {favorites.length}
-              </span>
+                                         
             </Link>
+
             <div
               className="relative cursor-pointer"
               onClick={() => setOpen(true)}
             >
               <img className="w-6" src={cart} alt="" />
+                            
               <span className="bg-black text-white text-[10px] rounded-full p-1 px-2 scale-75 absolute -bottom-[8px] -right-[6px]">
-                {totalItemsInBasket()}
+                                {totalItemsInBasket()}
+                              
               </span>
             </div>
           </div>
+                  
         </div>
+              
       </div>
+            
       <div className="">
+                
         <m.div
           initial={{ opacity: 0, x: "-100vw" }}
           animate={
@@ -190,6 +218,7 @@ const Navbar = () => {
           }
           className={`absolute top-[53.79px] left-0 bg-grey-100 font-montserrat font-semibold pt-[80px] text-[24px] xs:text-[30px] content-start sm:text-[40px] capitalize px-[24px] *:overflow-hidden bg-white-300 grid gap-[32px] place-items-start lg:hidden`}
         >
+                    
           <m.div
             className="cursor-pointer"
             onClick={() => {
@@ -206,8 +235,9 @@ const Navbar = () => {
                 : { y: 35, transition: { duration: 0.45 } }
             }
           >
-            Shop
+                        Shop           
           </m.div>
+                    
           <m.div
             className="cursor-pointer"
             onClick={() => {
@@ -224,12 +254,13 @@ const Navbar = () => {
                 : { y: 35, transition: { duration: 0.45 } }
             }
           >
-            About Us
+                        About Us           
           </m.div>
+                    
           <m.div
             className="cursor-pointer"
             onClick={() => {
-              navigate(`contact-us`);
+              navigate('/contact-us');
             }}
             initial={{ y: 35, opacity: 0 }}
             animate={
@@ -242,8 +273,9 @@ const Navbar = () => {
                 : { y: 35, transition: { duration: 0.45 } }
             }
           >
-            Contact us
+                        Contact us           
           </m.div>
+                    
           <m.div
             className="cursor-pointer"
             onClick={() => {
@@ -260,8 +292,9 @@ const Navbar = () => {
                 : { y: 35, transition: { duration: 0.45 } }
             }
           >
-            Categories
+                        Categories           
           </m.div>
+                    
           <m.div
             className="cursor-pointer"
             onClick={() => {
@@ -278,13 +311,18 @@ const Navbar = () => {
                 : { y: 35, transition: { duration: 0.45 } }
             }
           >
-            Saved Items
+                        Saved Items           
           </m.div>
+                  
         </m.div>
+              
       </div>
+            
       <AnimatePresence>
-        {open && <CheckoutModal onClick={() => setOpen(false)} />}
+                {open && <CheckoutModal onClick={() => setOpen(false)} />}
+              
       </AnimatePresence>
+          
     </nav>
   );
 };
