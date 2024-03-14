@@ -16,13 +16,13 @@ import Favorite from "./pages/Favorite";
 import Order from "./pages/order";
 
 import ContactUsPage from "./pages/ContactUsPage";
-import ContactUs from "./pages/ContactUs";
 
 import Account from "./pages/customer/Account";
 import CustomerOptions from "./pages/CustomerOptions";
 import OrderTracking from "./pages/customer/OrderTracking";
 import Saved from "./pages/customer/Saved";
-import Categories from "./pages/Categories";
+
+import AddressBook from "./pages/customer/AddressBook";
 
 
 function App() {
@@ -40,8 +40,9 @@ function App() {
             <Route path="/account/details" element={<Details />} />
             <Route path="/customer" element={<CustomerOptions />}>
               <Route path="account" element={<Account />} />
-              <Route path="order" element={<OrderTracking />} />
+              <Route path="orders" element={<OrderTracking />} />
               <Route path="saved" element={<Saved />} />
+              <Route path="address" element={<AddressBook />} />
             </Route>
             <Route path="/account/editaddress" element={<Editaccount />} />
             <Route path="/payment" element={<Payment />} />
@@ -53,10 +54,6 @@ function App() {
               <Route path="payment" element={<Payment />} />
             </Route>
             <Route path="/contact-us" element={<ContactUsPage />} />
-
-            <Route path="/contact-us2" element={<ContactUs />} />
-            <Route path="/categories" element={<Categories />} />
-            
 
             {/* <Route
               path="/checkoutproduct"

@@ -4,69 +4,20 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.textfield {
-  position: relative;
-  box-sizing: border-box;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-
-.textfield__label {
-  position: absolute;
-  top: 12px;
-  left: 15px;
-  display: block;
-  font-size: 16px;
-  line-height: 24px;
-  color: rgba(77, 77, 77, 0.5);
-  user-select: none;
-  cursor: text;
-}
-
-.textfield__label::after {
-  position: relative;
-  top: -3px;
-  left: 1px;
-  display: inline-block;
-  content: "*";
-  color: #d0011b;
-}
-
-.textfield__input {
-  display: block;
-  box-sizing: border-box;
-  height: 48px;
-  width: 100%;
-  background: #ffffff;
-  outline: none;
-  transition: all 0.25s linear;
-}
-
-.textfield__input:focus {
-  border-color: #3a82c6;
-}
-
-.textfield__input:disabled {
-  border-color: #e6e6e6;
-  background: #f9fafb;
-}
-
-.textfield__input::placeholder {
-  color: transparent;
-}
-
-.textfield__input:focus + .textfield__label,
-.textfield__input:valid + .textfield__label,
-.textfield__input:disabled + .textfield__label {
-  display: none;
-}
-
 .card__container::-webkit-scrollbar {
   display: none;
+  width: 0;
+  height: 0;
 }

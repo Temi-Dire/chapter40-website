@@ -1,5 +1,7 @@
 import useStore from "../State";
 import dress1 from "/assets/images/dress1.png";
+import useStore from "../store/State";
+
 
 interface Props {
   id: number;
@@ -34,10 +36,13 @@ const FavoriteCard = ({ id, desc, price }: Props) => {
           Add to Cart
         </button>
         <button
+          type="button"
           onClick={() => removeFromFavorites(id)}
           className=" flex justify-center hover:underline "
         >
+
           <p>Remove</p>
+
         </button>
       </div>
     </div>

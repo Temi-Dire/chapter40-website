@@ -1,12 +1,8 @@
-
-
-
 import { PaystackButton } from "react-paystack";
-import useStore from "../State";
+import useStore from "../store/State";
 import useInformationStore from "../store/shippingInfo";
 
 const PaystackPayment = () => {
-
   const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
   const onSuccess = (reference: string) => {
@@ -31,8 +27,6 @@ const PaystackPayment = () => {
     return sum;
   };
 
-
-
   const config = {
     email,
     amount: getTotal() * 100,
@@ -46,7 +40,6 @@ const PaystackPayment = () => {
     <div className="max-w-md my-8 p-4 bg-white shadow-md font-montserrat rounded-md">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-semibold">Pay with Paystack</h1>
-
       </div>
       <PaystackButton {...config} className="bg-[#36254B] text-gray-200 p-4" />
     </div>
@@ -54,4 +47,3 @@ const PaystackPayment = () => {
 };
 
 export default PaystackPayment;
-
