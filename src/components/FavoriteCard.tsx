@@ -1,6 +1,5 @@
-import useStore from "../State";
-import dress1 from "/assets/images/dress1.png";
 import useStore from "../store/State";
+import dress1 from "/assets/images/dress1.png";
 
 
 interface Props {
