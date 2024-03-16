@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
 import useStore from "../store/State";
-import useFavoritesStore from "../store/favorites";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -42,7 +41,10 @@ const Navbar = () => {
   window.addEventListener("scroll", changeBackground);
 
   const { basket } = useStore();
+<<<<<<< HEAD
   const { favorites } = useFavoritesStore();
+=======
+>>>>>>> a74bc5b6dc810daf042166fe9fb0d6cd9bd881c5
 
   const totalItemsInBasket = () => {
     let sum = 0;
@@ -73,30 +75,25 @@ const Navbar = () => {
           initial={{ rotate: 0, opacity: 1 }}
           transition={{ ease: "easeInOut", duration: 0.3 }}
         >
-          
           <m.div
             className="h-[2.5px]  w-5 bg-black mb-1"
             initial={{ y: 0, rotate: 0 }}
             animate={isOpen ? { y: 6.5, rotate: 45 } : { y: 0, rotate: 0 }}
             transition={{ ease: "easeInOut", duration: 0.3 }}
           />
-          
           <m.div
             className="h-[2.5px] w-5 bg-black mb-1"
             initial={{ opacity: 1 }}
             animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
             transition={{ ease: "easeInOut", duration: 0.3 }}
           />
-          
           <m.div
             className="h-[2.5px] w-5 bg-black"
             initial={{ y: 0, rotate: 0 }}
             animate={isOpen ? { y: -7, rotate: -45 } : { y: 0, rotate: 0 }}
             transition={{ ease: "easeInOut", duration: 0.3 }}
           />
-          
         </m.div>
-        
         <div className="hidden lg:block">
           <m.ul className="capitalize font-montserrat font-thin text-[15px] flex gap-[30px] 2lg:gap-[50px] 2xl:gap-[70px] 3xl:text-[17px]">
             {pages.map((page, i) => (
@@ -106,12 +103,10 @@ const Navbar = () => {
                 onMouseLeave={() => setHover(-1)}
                 className="overflow-hidden"
               >
-                
                 <a onClick={() => navigate(`/${page.split(" ")[0]}`)} href="">
                   {page}
-                  
                 </a>
-                
+
                 <m.div
                   initial={{ x: "-100%" }}
                   animate={{
@@ -120,21 +115,18 @@ const Navbar = () => {
                   }}
                   className="h-[2px] bg-black w-full"
                 ></m.div>
-                
               </m.li>
             ))}
           </m.ul>
         </div>
-        
         <Link
           to={"/"}
           className="absolute left-[47.5%] lg:left-2/4 -translate-x-2/4 2lg:left-[52%] font-playfair text-[24px] 2lg:text-[30px] 3xl:text-[36px] "
         >
-        Chapter40 
+          Chapter40
         </Link>
-        
+
         <div className="lg:flex gap-[50px] 2lg:gap-[80px] 2xl:gap-[120px]">
-          
           <m.a
             onMouseEnter={() => setHover(5)}
             onMouseLeave={() => setHover(-1)}
@@ -156,34 +148,27 @@ const Navbar = () => {
             <Link to={user ? "/customer/account" : "/auth/login"}>
               <img className="w-6" src={userIcon} alt="" />
             </Link>
-            
             <Link
               className="lg:block hidden relative"
               to={user ? "/wishlist" : "/auth/login"}
             >
-              
               <FavoriteBorderOutlinedIcon />
-              
             </Link>
             <div
               className="relative cursor-pointer"
               onClick={() => setOpen(true)}
             >
               <img className="w-6" src={cart} alt="" />
-              
+
               <span className="bg-black text-white text-[10px] rounded-full p-1 px-2 scale-75 absolute -bottom-[8px] -right-[6px]">
                 {totalItemsInBasket()}
-                
               </span>
             </div>
           </div>
-          
         </div>
-        
       </div>
-      
+
       <div className="">
-      
         <m.div
           initial={{ opacity: 0, x: "-100vw" }}
           animate={
@@ -280,7 +265,6 @@ const Navbar = () => {
           >
             Categories
           </m.div>
-        
           <m.div
             className="cursor-pointer"
             onClick={() => {
@@ -299,16 +283,12 @@ const Navbar = () => {
           >
             Saved Items
           </m.div>
-        
         </m.div>
-      
       </div>
-    
+
       <AnimatePresence>
-      {open && <CheckoutModal onClick={() => setOpen(false)} />}
-      
+        {open && <CheckoutModal onClick={() => setOpen(false)} />}
       </AnimatePresence>
-    
     </nav>
   );
 };

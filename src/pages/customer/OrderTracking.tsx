@@ -1,48 +1,38 @@
-import { formatNumber } from "../../components/ProductCard";
-
 const OrderTracking = () => {
   return (
     <>
       <div className="bg-white h-fit w-full rounded-md">
-        <p className="p-4">Orders</p>
+        <p className="p-4">Order Tracking</p>
         <hr />
         <div className="p-4">
-          <div className="border border-slate-400 rounded-md">
-            <p className="p-4 font-medium">ORDERS(4)</p>
-            <hr />
-            <div className="p-4 flex justify-between flex-col gap-y-4">
-              <div className="flex border border-slate-400 rounded-md p-4 w-full">
-                <img
-                  className="w-28 h-28 object-cover mr-2 lg:mr-4"
-                  src="/assets/images/dress1.png"
-                />
-                <div className="w-44 lg:w-full flex flex-col justify-between font-montserrat text-[10px] xl:text-base">
-                  <p>Privé Contrast Collar cooperate Dress</p>
-                  <div>
-                    <p>Available</p>
-                    <p>₦{formatNumber(30000)}</p>
-                  </div>
-                  <button className="bg-[#36254B] py-1 px-6 text-white w-fit xl:text-[15px]">
-                    Track Order
-                  </button>
-                </div>
+          <div className="flex justify-between my-6 text-xs text-center h-24 font-montserrat">
+            <div className="flex flex-col items-center ">
+              <div className="flex items-center mb-4">
+                <p className="w-20 text-[#12B76A]">Order Confirmed</p>
+                <div className="bg-[#12B76A] w-5 h-5 rounded-full" />
               </div>
-              <div className="flex border border-slate-400 rounded-md p-4 w-full">
-                <img
-                  className="w-28 h-28 object-cover mr-2 lg:mr-4"
-                  src="/assets/images/dress1.png"
-                />
-                <div className="w-44 lg:w-full flex flex-col justify-between font-montserrat text-[10px] xl:text-base">
-                  <p>Privé Contrast Collar cooperate Dress</p>
-                  <div>
-                    <p>Available</p>
-                    <p>₦{formatNumber(30000)}</p>
-                  </div>
-                  <button className="bg-[#36254B] py-1 px-6 text-white w-fit xl:text-[15px]">
-                    Track Order
-                  </button>
-                </div>
+              <p>Wed, 11 Jan</p>
+            </div>
+            <div className="flex flex-col items-center ">
+              <div className="flex items-center mb-4">
+                <p className="w-20 text-[#7C7C7C]">Already Shipped</p>
+                <div className="bg-[#7C7C7C] w-5 h-5 rounded-full" />
               </div>
+              <p>Wed, 11 Jan</p>
+            </div>
+            <div className="flex flex-col items-center ">
+              <div className="flex items-center mb-4">
+                <p className="w-20 text-[#7C7C7C]">Out for Delivery</p>
+                <div className="bg-[#7C7C7C] w-5 h-5 rounded-full" />
+              </div>
+              <p>Wed, 11 Jan</p>
+            </div>
+            <div className="flex flex-col items-center ">
+              <div className="flex items-center mb-4">
+                <p className="w-20 text-[#7C7C7C]">Delivered, thanks!</p>
+                <div className="bg-[#7C7C7C] w-5 h-5 rounded-full" />
+              </div>
+              <p>Wed, 11 Jan</p>
             </div>
           </div>
         </div>

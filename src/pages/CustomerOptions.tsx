@@ -53,7 +53,7 @@ const CustomerOptions = () => {
             }`}
             onClick={() => {
               setActive("order");
-              navigate("/customer/order");
+              navigate("/customer/tracking");
             }}
           >
             <LocalShippingOutlinedIcon />
