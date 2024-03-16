@@ -33,7 +33,7 @@ const Newarrivals: React.FC<NewarrivalsProps> = ({
           />
         ))}
       </div>
-      </div>
+    </div>
   );
 };
 
