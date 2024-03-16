@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import useStore from "../store/State";
 import { motion } from "framer-motion";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import useFavoritesStore from "../store/favorites";
+import useStore from "../store/State";
 
 interface NewArrivalCardProps {
   id: number;
@@ -16,12 +17,6 @@ const NewArrivalCard: React.FC<NewArrivalCardProps> = ({
   desc,
   price,
 }) => {
-  const [isClicked, setIsClicked] = useState(false);
-  const [screenSize, setScreenSize] = useState(false);
-  const { favorites, addToBasket, addToFavorites, removeFromFavorites } =
-    useStore();
-  const [isHovered, setIsHovered] = useState(false);
-
   useEffect(() => {
     const handleResize = () => {
       setScreenSize(window.innerWidth >= 768);
@@ -33,6 +28,13 @@ const NewArrivalCard: React.FC<NewArrivalCardProps> = ({
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const [isClicked, setIsClicked] = useState(false);
+  const [screenSize, setScreenSize] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const { addToFavorites, removeFromFavorites } = useFavoritesStore();
+  const { addToBasket } = useStore();
 
   return (
     <motion.div
@@ -54,7 +56,6 @@ const NewArrivalCard: React.FC<NewArrivalCardProps> = ({
             setIsClicked(!isClicked);
             if (!isClicked) {
               addToFavorites({ desc, price, id });
-              console.log(favorites);
             } else {
               removeFromFavorites(id);
             }
