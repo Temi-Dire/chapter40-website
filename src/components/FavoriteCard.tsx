@@ -1,5 +1,6 @@
 import { FaRegTrashAlt } from "react-icons/fa";
 import useStore from "../store/State";
+import useFavoritesStore from "../store/favorites";
 
 interface Props {
   id: number;
@@ -9,7 +10,8 @@ interface Props {
 }
 
 const FavoriteCard = ({ id, image, desc, price }: Props) => {
-  const { addToBasket, removeFromFavorites } = useStore();
+  const { addToBasket } = useStore();
+  const {removeFromFavorites} = useFavoritesStore()
   return (
     <div className="border shadow-md border-borderDark p-4 mb-5 flex items-center">
       <div className="mr-8">
