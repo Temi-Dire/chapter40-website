@@ -41,10 +41,6 @@ const Navbar = () => {
   window.addEventListener("scroll", changeBackground);
 
   const { basket } = useStore();
-<<<<<<< HEAD
-  const { favorites } = useFavoritesStore();
-=======
->>>>>>> a74bc5b6dc810daf042166fe9fb0d6cd9bd881c5
 
   const totalItemsInBasket = () => {
     let sum = 0;
