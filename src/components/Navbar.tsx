@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
 import useStore from "../store/State";
-import useFavoritesStore from "../store/favorites";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -43,7 +42,6 @@ const Navbar = () => {
   window.addEventListener("scroll", changeBackground);
 
   const { basket } = useStore();
-  const { favorites } = useFavoritesStore();
 
 
   const totalItemsInBasket = () => {
