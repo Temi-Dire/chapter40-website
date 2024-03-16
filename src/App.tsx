@@ -19,6 +19,7 @@ import ContactUsPage from "./pages/ContactUsPage";
 
 import Account from "./pages/customer/Account";
 import CustomerOptions from "./pages/CustomerOptions";
+import Orders from "./pages/customer/Orders";
 import OrderTracking from "./pages/customer/OrderTracking";
 import Saved from "./pages/customer/Saved";
 import AddressBook from "./pages/customer/AddressBook";
@@ -38,7 +39,8 @@ function App() {
             <Route path="/account/details" element={<Details />} />
             <Route path="/customer" element={<CustomerOptions />}>
               <Route path="account" element={<Account />} />
-              <Route path="orders" element={<OrderTracking />} />
+              <Route path="orders" element={<Orders />} />
+              <Route path="tracking" element={<OrderTracking />} />
               <Route path="saved" element={<Saved />} />
               <Route path="address" element={<AddressBook />} />
             </Route>
