@@ -21,25 +21,16 @@ interface User {
 
 //add a property, (a boolean value), that stores either
 
-interface FavoritesDataType {
-  desc: string;
-  price: number;
-  id: number;
-}
-
 interface BasketStore {
   user: User | null;
   addUser: (user: User) => void;
   removeUser: () => void;
   basket: BasketDataType[];
-  favorites: FavoritesDataType[];
   init: () => void;
   addToBasket: (data: AddToBasketDataType) => void;
   decrement: (id: number) => void;
   increment: (id: number) => void;
   removeFromBasket: (id: number) => void;
-  addToFavorites: (data: FavoritesDataType) => void;
-  removeFromFavorites: (id: number) => void;
 }
 
 const useStore = create<BasketStore>()((set, get) => ({
@@ -61,7 +52,6 @@ const useStore = create<BasketStore>()((set, get) => ({
     }
   },
   basket: [],
-  favorites: [],
     init: () => {
     const storedBasket = localStorage.getItem("basket");
     const storedUser = localStorage.getItem("user");
@@ -129,19 +119,6 @@ const useStore = create<BasketStore>()((set, get) => ({
 
     localStorage.setItem("basket", JSON.stringify(get().basket));
   },
-  addToFavorites: (data) =>
-    set((state: any) => {
-      return { favorites: [...state.favorites, { ...data }] };
-    }),
-  removeFromFavorites: (id) =>
-    set((state: any) => {
-      const existedProductIndex = state.basket.findIndex(
-        (item: { id: number }) => item.id === id
-      );
-      const updatedBasket = [...state.favorites];
-      updatedBasket.splice(existedProductIndex, 1);
-      return { favorites: [...updatedBasket] };
-    }),
 }));
 
 useStore.getState().init();
