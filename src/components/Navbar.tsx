@@ -261,7 +261,7 @@ const Navbar = () => {
           <m.div
             className="cursor-pointer"
             onClick={() => {
-              navigate(!user ? "/wishlist" : "/auth/login");
+              navigate(user ? "/wishlist" : "/auth/login");
             }}
             initial={{ y: 35, opacity: 0 }}
             animate={
