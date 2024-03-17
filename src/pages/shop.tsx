@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Navbar from "../components/Navbar";
 import FooterSection from "../sections/footer";
@@ -10,6 +10,11 @@ import getProduct from "../hooks/getProduct";
 import { ThreeDots } from "react-loader-spinner";
 
 const Shop = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const categories = [
     "all",
     "jewelries",
