@@ -5,7 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { KeyboardEventHandler } from "react";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import useStore from "../store/State";
-import useInformationStore from "../store/shippingInfo";
 import useUserInfoStore from "../store/userInfo";
 
 const schema = z.object({
