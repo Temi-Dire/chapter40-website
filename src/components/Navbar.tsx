@@ -69,7 +69,7 @@ const Navbar = () => {
           transition={{ ease: "easeInOut", duration: 0.3 }}
         >
           <m.div
-            className="h-[2.5px]  w-5 bg-black mb-1"
+            className="h-[2.5px] w-5 bg-black mb-1"
             initial={{ y: 0, rotate: 0 }}
             animate={isOpen ? { y: 6.5, rotate: 45 } : { y: 0, rotate: 0 }}
             transition={{ ease: "easeInOut", duration: 0.3 }}
