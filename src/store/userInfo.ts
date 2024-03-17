@@ -16,7 +16,7 @@ interface BearState {
   city: string;
   phoneNumber: string;
   // init: () => void;
-  setEmailA: (email: string) => void;
+  setEmail: (email: string) => void;
   setCountryState: (state: string) => void;
   setFullName: (fullName: FullName) => void;
   setCompany: (company: string) => void;
@@ -37,9 +37,11 @@ const storedFirstName = localStorage.getItem("firstName");
 const initialFirstName = storedFirstName ? JSON.parse(storedFirstName) : "";
 const storedLastName = localStorage.getItem("lastName");
 const initialLastName = storedLastName ? JSON.parse(storedLastName) : "";
+const storedEmail = localStorage.getItem("email");
+const initialEmail = storedEmail ? JSON.parse(storedEmail) : "";
 
 const useUserInfoStore = create<BearState>()((set, get) => ({
-  email: "",
+  email: initialEmail,
   countryState: "",
   fullName: { firstname: initialFirstName, lastname: initialLastName },
   company: "",
@@ -48,10 +50,14 @@ const useUserInfoStore = create<BearState>()((set, get) => ({
   postalCode: "",
   city: "",
   phoneNumber: initialPhoneNumber,
-  setEmailA: (email) =>
-    set(() => {
-      return { email };
-    }),
+  setEmail: (email) => {
+    {
+      set(() => {
+        return { email };
+      });
+    }
+    localStorage.setItem("email", JSON.stringify(get().email));
+  },
   setCountryState: (state) =>
     set(() => {
       return { countryState: state };
@@ -62,7 +68,10 @@ const useUserInfoStore = create<BearState>()((set, get) => ({
         return { fullName: fullName };
       });
     }
-    localStorage.setItem("firstName", JSON.stringify(get().fullName?.firstname));
+    localStorage.setItem(
+      "firstName",
+      JSON.stringify(get().fullName?.firstname)
+    );
     localStorage.setItem("lastName", JSON.stringify(get().fullName?.lastname));
   },
   setCompany: (company) =>
