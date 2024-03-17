@@ -9,8 +9,8 @@ const PaystackPayment = () => {
   const navigate = useNavigate();
 
   const onSuccess = (reference: string) => {
-    navigate("/customer/orders");
-    console.log("Payment successful", reference);
+    navigate('/customer/orders')
+    alert(`Payment successful ${reference}`);
     // also remember to use toastify here
   };
 
@@ -53,9 +53,9 @@ const PaystackPayment = () => {
           className="bg-[#36254B] text-gray-200 p-4"
         />
 
-        <Link to={"/checkout/shipping"} className=" flex-nowrap">
-          <ArrowBackIosNewOutlinedIcon />
-          return to shipping
+        <Link to={"/cart/shipping"} className="flex items-center group">
+          <ArrowBackIosNewOutlinedIcon className="w-6 h-6 mr-1 transition-transform transform translate-x-0 group-hover:-translate-x-[4px] duration-300 ease-in-out" />
+          <span>Return to Shipping</span>
         </Link>
       </div>
     </>

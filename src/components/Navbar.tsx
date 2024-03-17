@@ -112,7 +112,6 @@ const Navbar = () => {
             ))}
           </m.ul>
         </div>
-
         <Link
           to={"/"}
           className="absolute left-[47.5%] lg:left-2/4 -translate-x-2/4 2lg:left-[52%] font-playfair text-[24px] 2lg:text-[30px] 3xl:text-[36px] "
@@ -138,19 +137,16 @@ const Navbar = () => {
               className="h-[2px] bg-black w-full"
             ></m.div>
           </m.a>
-
           <div className="flex gap-[5px] lg:gap-[20px] xl:gap-[30px] items-center">
             <Link to={user ? "/customer/account" : "/auth/login"}>
               <img className="w-6" src={userIcon} alt="" />
             </Link>
-
             <Link
               className="lg:block hidden relative"
               to={user ? "/wishlist" : "/auth/login"}
             >
               <FavoriteBorderOutlinedIcon />
             </Link>
-
             <div
               className="relative cursor-pointer"
               onClick={() => setOpen(true)}
@@ -208,7 +204,6 @@ const Navbar = () => {
           >
             Shop
           </m.div>
-
           <m.div
             className="cursor-pointer"
             onClick={() => {
@@ -227,7 +222,6 @@ const Navbar = () => {
           >
             About Us
           </m.div>
-
           <m.div
             className="cursor-pointer"
             onClick={() => {
@@ -246,7 +240,6 @@ const Navbar = () => {
           >
             Contact us
           </m.div>
-
           <m.div
             className="cursor-pointer"
             onClick={() => {
@@ -265,11 +258,10 @@ const Navbar = () => {
           >
             Categories
           </m.div>
-
           <m.div
             className="cursor-pointer"
             onClick={() => {
-              navigate(!user ? "/wishlist" : "/auth/login");
+              navigate(user ? "/wishlist" : "/auth/login");
             }}
             initial={{ y: 35, opacity: 0 }}
             animate={
