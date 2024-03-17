@@ -62,9 +62,8 @@ const Information = () => {
   };
 
   const { user } = useStore();
-  const { setEmail } = useInformationStore();
   const {
-    setEmailA,
+    setEmail,
     setCountryState,
     setFullName,
     setCompany,
@@ -82,7 +81,6 @@ const Information = () => {
           onSubmit={handleSubmit((data) => {
             console.log(data);
             setEmail(data.email);
-            setEmailA(data.email);
             setCountryState(data.state);
             setFullName({ firstname: data.firstName, lastname: data.lastName });
             setCompany(data.company);
@@ -127,13 +125,13 @@ const Information = () => {
           {errors.email && (
             <p className="text-red-600">{errors.email.message}</p>
           )}
-          <div className="flex space-x-1 mt-1 mb-[28px]">
+          {/* <div className="flex space-x-1 mt-1 mb-[28px]">
             <input type="checkbox" className="rounded-none" />
             <p className="font-montserrat text-[#0C0C0C] text-[14px]">
               email me with news and offers
             </p>
-          </div>
-          <header className=" font-montserrat lg:font-playfair text-[20px] font-normal mb-[20px]">
+          </div> */}
+          <header className=" font-montserrat lg:font-playfair text-[20px] font-normal mt-5 mb-3">
             Shipping Address
           </header>
           <div className="space-y-[8px] font-montserrat">
@@ -277,7 +275,7 @@ const Information = () => {
               type="submit"
               onClick={() =>
                 setTimeout(() => {
-                  navigate("/cart/shipping"), 3000;
+                  navigate("/checkout/shipping"), 3000;
                 })
               }
               className={`bg-${
@@ -291,7 +289,7 @@ const Information = () => {
               <button onClick={() => navigate("/cart")}>
                 <ArrowBackIosNewOutlinedIcon />
               </button>
-              <Link to="/checkout" className="hover:text-darkPrimary">
+              <Link to="/cart" className="hover:text-darkPrimary">
                 return to Cart
               </Link>
             </div>
