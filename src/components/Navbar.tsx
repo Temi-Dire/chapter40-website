@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
 import useStore from "../store/State";
-import Container from "./Container";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -282,7 +281,7 @@ const Navbar = () => {
       <AnimatePresence>
         {open && <CheckoutModal onClick={() => setOpen(false)} />}
       </AnimatePresence>
-    </Container>
+    </nav>
   );
 };
 
