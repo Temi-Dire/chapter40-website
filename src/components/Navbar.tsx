@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
 import useStore from "../store/State";
-import useFavoritesStore from "../store/favorites";
+import Container from "./Container";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -42,7 +42,6 @@ const Navbar = () => {
   window.addEventListener("scroll", changeBackground);
 
   const { basket } = useStore();
-  const { favorites } = useFavoritesStore();
 
   const totalItemsInBasket = () => {
     let sum = 0;
@@ -62,7 +61,7 @@ const Navbar = () => {
           : ""
       } `}
     >
-      <div className="flex justify-between items-center px-[20px] 2lg:px-[40px] xl:px-[65px] py-[14px] 2lg:pb-[20px] overflow-x-hidden">
+      <div className="flex justify-between items-center py-[14px] 2lg:pb-[20px]">
         <m.div
           className="cursor-pointer items-center flex flex-col justify-center lg:hidden"
           onClick={() => setIsOpen(!isOpen)}
@@ -70,7 +69,7 @@ const Navbar = () => {
           transition={{ ease: "easeInOut", duration: 0.3 }}
         >
           <m.div
-            className="h-[2.5px]  w-5 bg-black mb-1"
+            className="h-[2.5px] w-5 bg-black mb-1"
             initial={{ y: 0, rotate: 0 }}
             animate={isOpen ? { y: 6.5, rotate: 45 } : { y: 0, rotate: 0 }}
             transition={{ ease: "easeInOut", duration: 0.3 }}
@@ -100,6 +99,7 @@ const Navbar = () => {
                 <a onClick={() => navigate(`/${page.split(" ")[0]}`)} href="">
                   {page}
                 </a>
+
                 <m.div
                   initial={{ x: "-100%" }}
                   animate={{
@@ -118,6 +118,7 @@ const Navbar = () => {
         >
           Chapter40
         </Link>
+
         <div className="lg:flex gap-[50px] 2lg:gap-[80px] 2xl:gap-[120px]">
           <m.a
             onMouseEnter={() => setHover(5)}
@@ -142,18 +143,16 @@ const Navbar = () => {
             </Link>
             <Link
               className="lg:block hidden relative"
-              to={!user ? "/wishlist" : "/auth/login"}
+              to={user ? "/wishlist" : "/auth/login"}
             >
               <FavoriteBorderOutlinedIcon />
-              <span className="bg-black text-white text-[10px] rounded-full p-1 px-2 scale-75 absolute -bottom-[8px] -right-[6px]">
-                {favorites.length}
-              </span>
             </Link>
             <div
               className="relative cursor-pointer"
               onClick={() => setOpen(true)}
             >
               <img className="w-6" src={cart} alt="" />
+
               <span className="bg-black text-white text-[10px] rounded-full p-1 px-2 scale-75 absolute -bottom-[8px] -right-[6px]">
                 {totalItemsInBasket()}
               </span>
@@ -161,6 +160,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
       <div className="">
         <m.div
           initial={{ opacity: 0, x: "-100vw" }}
@@ -225,7 +225,7 @@ const Navbar = () => {
           <m.div
             className="cursor-pointer"
             onClick={() => {
-              navigate(`contact-us`);
+              navigate("/contact-us");
             }}
             initial={{ y: 35, opacity: 0 }}
             animate={
@@ -261,7 +261,7 @@ const Navbar = () => {
           <m.div
             className="cursor-pointer"
             onClick={() => {
-              navigate(!user ? "/wishlist" : "/auth/login");
+              navigate(user ? "/wishlist" : "/auth/login");
             }}
             initial={{ y: 35, opacity: 0 }}
             animate={
@@ -278,10 +278,11 @@ const Navbar = () => {
           </m.div>
         </m.div>
       </div>
+
       <AnimatePresence>
         {open && <CheckoutModal onClick={() => setOpen(false)} />}
       </AnimatePresence>
-    </nav>
+    </Container>
   );
 };
 

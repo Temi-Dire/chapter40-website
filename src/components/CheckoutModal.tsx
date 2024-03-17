@@ -4,6 +4,7 @@ import Button from "./Button";
 import { motion as m } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import useStore from "../store/State";
+import { formatNumber } from "./ProductCard";
 
 interface CheckoutModalProps {
   onClick: () => void;
@@ -20,7 +21,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ onClick }) => {
     for (let i = 0; i < basket.length; i++) {
       sum += basket[i].price * basket[i].quantity;
     }
-    return sum;
+    return formatNumber(sum);
   };
   return (
     <div className="w-full flex justify-end">
@@ -36,7 +37,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ onClick }) => {
           <CloseIcon onClick={onClick} className="cursor-pointer" />
         </div>
         {basket.length !== 0 ? (
-          <div>
+          <div className="w-full px-4">
             {basket.map((item) => (
               <CheckoutProduct
                 desc={item.desc}
@@ -47,9 +48,9 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ onClick }) => {
             ))}
             <div
               className="sticky bottom-0 bg-white w-full flex justify-center py-4 border-t border-[#F1F1F1]"
-              onClick={() => navigate("/checkout")}
+              onClick={() => navigate("/cart")}
             >
-              <Button text={`CHECKOUT: ₦${getTotal()}`} />
+              <Button text={`CART: ₦${getTotal()}`} />
             </div>
           </div>
         ) : (

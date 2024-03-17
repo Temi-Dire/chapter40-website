@@ -1,11 +1,14 @@
+import { useEffect } from "react";
 import ContactForm from "../components/ContactUsForm";
 import Container from "../components/Container";
 import Navbar from "../components/Navbar";
 import FooterSection from "../sections/footer";
 // import FooterSection from "../sections/footer";
 
-
 const ContactUs = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Navbar />
@@ -27,8 +30,6 @@ const ContactUs = () => {
       <FooterSection />
     </>
   );
-
 };
 
 export default ContactUs;
-
