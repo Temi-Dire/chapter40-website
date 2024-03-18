@@ -1,13 +1,12 @@
 import { PaystackButton } from "react-paystack";
 import useStore from "../store/State";
-import useInformationStore from "../store/shippingInfo";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import { Link, useNavigate } from "react-router-dom";
-
+import useUserInfoStore from "../store/userInfo";
 
 const PaystackPayment = () => {
   const publicKey = import.meta.env.VITE_PUBLIC_KEY;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onSuccess = (reference: string) => {
     navigate('/customer/orders')
@@ -16,12 +15,11 @@ const PaystackPayment = () => {
   };
 
   const onClose = () => {
-    
     console.log("Payment closed");
     // Remember to use toastify here
   };
 
-  const { email } = useInformationStore();
+  const { email } = useUserInfoStore();
   const store = useStore();
   const basket = store.basket;
 

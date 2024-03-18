@@ -25,7 +25,6 @@ import Saved from "./pages/customer/Saved";
 
 import AddressBook from "./pages/customer/AddressBook";
 
-
 function App() {
   return (
     <>
@@ -35,7 +34,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/shop" element={<Shop />} />
-            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/cart" element={<Checkout />} />
             <Route path="/auth/signup" element={<Signup />} />
             <Route path="/auth/login" element={<Login />} />
             <Route path="/account/details" element={<Details />} />
@@ -50,7 +49,7 @@ function App() {
             <Route path="/payment" element={<Payment />} />
             <Route path="/wishlist" element={<Favorite />} />
             <Route path="/order" element={<Order />} />
-            <Route path="/cart" element={<CheckoutPage />}>
+            <Route path="/checkout" element={<CheckoutPage />}>
               <Route path="info" element={<Information />} />
               <Route path="shipping" element={<Shipping />} />
               <Route path="payment" element={<Payment />} />

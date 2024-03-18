@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
 import useStore from "../store/State";
-import Container from "./Container";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -54,10 +53,10 @@ const Navbar = () => {
   const pages = ["about us", "shop", "categories"];
 
   return (
-    <Container
-      className={` sticky top-0 z-[100] ${
+    <nav
+      className={`max-w-[1440px] mx-auto w-full sticky top-0 z-[100] ${
         navbar
-          ? "bg-white bg-opacity-90 transition-all ease-in-out duration-500"
+          ? "bg-white bg-opacity-[90] transition-all ease-in-out duration-500"
           : ""
       } `}
     >
@@ -69,7 +68,7 @@ const Navbar = () => {
           transition={{ ease: "easeInOut", duration: 0.3 }}
         >
           <m.div
-            className="h-[2.5px]  w-5 bg-black mb-1"
+            className="h-[2.5px] w-5 bg-black mb-1"
             initial={{ y: 0, rotate: 0 }}
             animate={isOpen ? { y: 6.5, rotate: 45 } : { y: 0, rotate: 0 }}
             transition={{ ease: "easeInOut", duration: 0.3 }}
@@ -282,7 +281,7 @@ const Navbar = () => {
       <AnimatePresence>
         {open && <CheckoutModal onClick={() => setOpen(false)} />}
       </AnimatePresence>
-    </Container>
+    </nav>
   );
 };
 
