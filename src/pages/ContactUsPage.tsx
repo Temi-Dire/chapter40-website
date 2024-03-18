@@ -8,7 +8,8 @@ import FooterSection from "../sections/footer";
 const ContactUs = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, []);    
+
   return (
     <>
       <Navbar />
@@ -16,6 +17,7 @@ const ContactUs = () => {
         <div className="flex  flex-col-reverse xl:flex-row gap-12 justify-between lg:mb-20 items-center relative sm:px-16 xl:pl-0 sm:py-[50px] py-8 xl:py-[100px]">
           <div className="flex-1 h-full max-w-[545px] ">
             <ContactForm />
+    
           </div>
           <div className="lg:flex-1 z-20 max-w-[545px] lg:self-stretch h-[300px] mx-auto items-center  lg:h-auto w-full ">
             <img
