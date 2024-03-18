@@ -16,7 +16,7 @@ const ContactUs = () => {
           </div>
           <div className="lg:flex-1 z-20 max-w-[545px] lg:self-stretch h-[300px] mx-auto items-center  lg:h-auto w-full ">
             <img
-              src="/assets/images/contactUsImg.jpeg"
+              src="/assets/images/contactUs.jpg"
               className="h-full object-cover  self-stretch"
               alt=""
             />

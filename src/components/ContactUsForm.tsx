@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import FormFooter from "./contactUsFooter";
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { KeyboardEventHandler } from "react";
 
 const schema = z.object({
   name: z
@@ -34,10 +35,30 @@ const ContactForm = () => {
       reset();
     }
   };
+    const allowOnlyNumbers: KeyboardEventHandler<HTMLInputElement> = (evt) => {
+      const keysAllowed: string[] = [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "Backspace",
+      ];
+      const keyPressed: string = evt.key;
+
+      if (!keysAllowed.includes(keyPressed)) {
+        evt.preventDefault();
+      }
+    };
 
   return (
     <div className="xl:mr-8">
-      <h1 className="lg:text-5xl sm:text-4xl text-3xl font-bold mb-7 font-playfair">
+      <h1 className="lg:text-5xl sm:text-4xl text-3xl font-bold mb-7 font-montserrat">
         Trying to <span>reach</span> us?
       </h1>
       <p className="mb-5 font-poppins text-sm">
@@ -83,6 +104,7 @@ const ContactForm = () => {
             name="phoneNo"
             placeholder="Phone number"
             className="w-full p-2 border "
+            onKeyDown={allowOnlyNumbers}
             required
           />
           {errors.phoneNo && (

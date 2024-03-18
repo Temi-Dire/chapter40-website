@@ -21,7 +21,12 @@ const contactUsFooter = () => {
         />
         <div>
           <p>EMAIL</p>
-          <p className="text-[#36254B]">chapter40fashion@gmail.com</p>
+          <address className="text-[#36254B]">
+            <a href="mailto:chapter40fashion@gmail.com">
+              chapter40fashion@gmail.com
+            </a>
+          </address>
+          <p className=""></p>
         </div>
       </div>
     </div>
