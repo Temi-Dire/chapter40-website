@@ -1,5 +1,5 @@
-import useStore from "../State";
-import dress1 from "/assets/images/dress1.png";
+import useStore from "../store/State";
+import useFavoritesStore from "../store/favorites";
 
 interface Props {
   id: number;
@@ -8,8 +8,9 @@ interface Props {
   price: number;
 }
 
-const FavoriteCard = ({ id, desc, price }: Props) => {
-  const { addToBasket, removeFromFavorites } = useStore();
+const FavoriteCard = ({ id, image, desc, price }: Props) => {
+  const { addToBasket } = useStore();
+  const {removeFromFavorites} = useFavoritesStore()
   return (
     <div className="border shadow-md border-borderDark p-4 mb-5 flex flex-col md:flex-row items-center max-w-[800px]">
       <div className="grid grid-cols-[auto,1fr] mb-3 w-full md:w-auto lg:w-auto ">
@@ -17,7 +18,7 @@ const FavoriteCard = ({ id, desc, price }: Props) => {
           <img
             className=" object-cover"
             width={"40px"}
-            src={dress1}
+            src={image}
             alt={`dress ${id}`}
           />
         </div>
@@ -34,10 +35,13 @@ const FavoriteCard = ({ id, desc, price }: Props) => {
           Add to Cart
         </button>
         <button
+          type="button"
           onClick={() => removeFromFavorites(id)}
           className=" flex justify-center hover:underline "
         >
+
           <p>Remove</p>
+
         </button>
       </div>
     </div>

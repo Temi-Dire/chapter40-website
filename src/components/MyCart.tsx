@@ -1,4 +1,4 @@
-import useStore from "../State";
+import useStore from "../store/State";
 import CheckoutProduct from "./CheckoutProduct";
 
 const MyCart = () => {

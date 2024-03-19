@@ -7,13 +7,15 @@ import { motion as m, AnimatePresence, easeInOut } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
-import useStore from "../State";
+import useStore from "../store/State";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [hover, setHover] = useState(-1);
+
+  const [navbar, setNavbar] = useState(false);
 
   if (isOpen) {
     document.body.style.overflow = "hidden";
@@ -33,8 +35,12 @@ const Navbar = () => {
     };
   }, []);
 
-  const store = useStore();
-  const basket = store.basket;
+  const changeBackground = () => {
+    window.scrollY > 35 ? setNavbar(true) : setNavbar(false);
+  };
+  window.addEventListener("scroll", changeBackground);
+
+  const { basket } = useStore();
 
   const totalItemsInBasket = () => {
     let sum = 0;
@@ -47,44 +53,41 @@ const Navbar = () => {
   const pages = ["about us", "shop", "categories"];
 
   return (
-    <nav className="max-w-[1440px] mx-auto w-full sticky top-0 z-50">
-            
-      <div className="flex justify-between items-center px-[20px] 2lg:px-[40px] xl:px-[65px] py-[14px] 2lg:pb-[30px] overflow-x-hidden">
-                
+    <nav
+      className={`max-w-[1440px] mx-auto w-full sticky top-0 z-[100] ${
+        navbar
+          ? "bg-white bg-opacity-[90] transition-all ease-in-out duration-500"
+          : ""
+      } `}
+    >
+      <div className="flex justify-between items-center py-[14px] 2lg:pb-[20px]">
         <m.div
           className="cursor-pointer items-center flex flex-col justify-center lg:hidden"
           onClick={() => setIsOpen(!isOpen)}
           initial={{ rotate: 0, opacity: 1 }}
           transition={{ ease: "easeInOut", duration: 0.3 }}
         >
-                    
           <m.div
-            className="h-[2.5px]  w-5 bg-black mb-1"
+            className="h-[2.5px] w-5 bg-black mb-1"
             initial={{ y: 0, rotate: 0 }}
             animate={isOpen ? { y: 6.5, rotate: 45 } : { y: 0, rotate: 0 }}
             transition={{ ease: "easeInOut", duration: 0.3 }}
           />
-                    
           <m.div
             className="h-[2.5px] w-5 bg-black mb-1"
             initial={{ opacity: 1 }}
             animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
             transition={{ ease: "easeInOut", duration: 0.3 }}
           />
-                    
           <m.div
             className="h-[2.5px] w-5 bg-black"
             initial={{ y: 0, rotate: 0 }}
             animate={isOpen ? { y: -7, rotate: -45 } : { y: 0, rotate: 0 }}
             transition={{ ease: "easeInOut", duration: 0.3 }}
           />
-                  
         </m.div>
-                
         <div className="hidden lg:block">
-                    
-          <ul className="capitalize font-montserrat font-thin text-[15px] flex gap-[30px] 2lg:gap-[50px] 2xl:gap-[70px] 3xl:text-[17px]">
-                        
+          <m.ul className="capitalize font-montserrat font-thin text-[15px] flex gap-[30px] 2lg:gap-[50px] 2xl:gap-[70px] 3xl:text-[17px]">
             {pages.map((page, i) => (
               <m.li
                 key={i}
@@ -92,12 +95,10 @@ const Navbar = () => {
                 onMouseLeave={() => setHover(-1)}
                 className="overflow-hidden"
               >
-                                
                 <a onClick={() => navigate(`/${page.split(" ")[0]}`)} href="">
-                                    {page}
-                                  
+                  {page}
                 </a>
-                                
+
                 <m.div
                   initial={{ x: "-100%" }}
                   animate={{
@@ -106,23 +107,18 @@ const Navbar = () => {
                   }}
                   className="h-[2px] bg-black w-full"
                 ></m.div>
-                              
               </m.li>
             ))}
-                      
-          </ul>
-                  
+          </m.ul>
         </div>
-                
         <Link
           to={"/"}
           className="absolute left-[47.5%] lg:left-2/4 -translate-x-2/4 2lg:left-[52%] font-playfair text-[24px] 2lg:text-[30px] 3xl:text-[36px] "
         >
-                    Chapter40         
+          Chapter40
         </Link>
-                
+
         <div className="lg:flex gap-[50px] 2lg:gap-[80px] 2xl:gap-[120px]">
-                    
           <m.a
             onMouseEnter={() => setHover(5)}
             onMouseLeave={() => setHover(-1)}
@@ -130,7 +126,7 @@ const Navbar = () => {
             onClick={() => navigate("/contact-us")}
             href=""
           >
-                        Contact Us             
+            Contact Us
             <m.div
               initial={{ x: "-100%" }}
               animate={{
@@ -139,41 +135,27 @@ const Navbar = () => {
               }}
               className="h-[2px] bg-black w-full"
             ></m.div>
-                      
           </m.a>
-                    
           <div className="flex gap-[5px] lg:gap-[20px] xl:gap-[30px] items-center">
-                        
-            <Link to={user ? "/account/details" : "/auth/login"}>
-                            
+            <Link to={user ? "/customer/account" : "/auth/login"}>
               <img className="w-6" src={userIcon} alt="" />
-                          
             </Link>
-                        
             <Link
               className="lg:block hidden relative"
               to={user ? "/wishlist" : "/auth/login"}
             >
-              
               <FavoriteBorderOutlinedIcon />
-              
             </Link>
-            
+
             <Link className="relative" to={""} onClick={() => setOpen(true)}>
-              
               <img className="w-6" src={cart} alt="" />
-              
+
               <span className="bg-black text-white text-[10px] rounded-full p-1 px-2 scale-75 absolute -bottom-[8px] -right-[6px]">
                 {totalItemsInBasket()}
-
               </span>
-
             </Link>
-
           </div>
-
         </div>
-
       </div>
       <div className="">
         <m.div
@@ -198,9 +180,10 @@ const Navbar = () => {
                   x: "-100vw",
                 }
           }
-          className={`absolute top-[53.79px] left-0 bg-grey-100 font-montserrat font-semibold pt-[150px] text-[24px] xs:text-[30px] content-start sm:text-[40px] capitalize px-[24px] *:overflow-hidden *:cursor-pointer bg-white-300 grid gap-[24px]  place-items-start lg:hidden`}
+          className={`absolute top-[53.79px] left-0 bg-grey-100 font-montserrat font-semibold pt-[80px] text-[24px] xs:text-[30px] content-start sm:text-[40px] capitalize px-[24px] *:overflow-hidden bg-white-300 grid gap-[32px] place-items-start lg:hidden`}
         >
           <m.div
+            className="cursor-pointer"
             onClick={() => {
               navigate(`/shop`);
             }}
@@ -218,6 +201,7 @@ const Navbar = () => {
             Shop
           </m.div>
           <m.div
+            className="cursor-pointer"
             onClick={() => {
               navigate(`/about`);
             }}
@@ -232,10 +216,10 @@ const Navbar = () => {
                 : { y: 35, transition: { duration: 0.45 } }
             }
           >
-                        About Us           
+            About Us
           </m.div>
-                    
           <m.div
+            className="cursor-pointer"
             onClick={() => {
               navigate(`/contact-us`);
             }}
@@ -250,10 +234,10 @@ const Navbar = () => {
                 : { y: 35, transition: { duration: 0.45 } }
             }
           >
-                        Contact us           
+            Contact us
           </m.div>
-                    
           <m.div
+            className="cursor-pointer"
             onClick={() => {
               navigate(`/categories`);
             }}
@@ -268,12 +252,12 @@ const Navbar = () => {
                 : { y: 35, transition: { duration: 0.45 } }
             }
           >
-                        Categories           
+            Categories
           </m.div>
-                    
           <m.div
+            className="cursor-pointer"
             onClick={() => {
-              navigate(!user ? "/wishlist" : "/auth/login");
+              navigate(user ? "/wishlist" : "/auth/login");
             }}
             initial={{ y: 35, opacity: 0 }}
             animate={
@@ -286,18 +270,14 @@ const Navbar = () => {
                 : { y: 35, transition: { duration: 0.45 } }
             }
           >
-                        Saved Items           
+            Saved Items
           </m.div>
-                  
         </m.div>
-              
       </div>
-            
+
       <AnimatePresence>
-                {open && <CheckoutModal onClick={() => setOpen(false)} />}
-              
+        {open && <CheckoutModal onClick={() => setOpen(false)} />}
       </AnimatePresence>
-          
     </nav>
   );
 };

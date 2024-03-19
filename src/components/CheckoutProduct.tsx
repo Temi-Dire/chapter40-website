@@ -1,4 +1,4 @@
-import useStore from "../State";
+import useStore from "../store/State";
 
 interface CheckoutProductProps {
   desc: string;

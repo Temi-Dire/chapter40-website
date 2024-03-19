@@ -4,8 +4,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { KeyboardEventHandler } from "react";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
-import useStore from "../State";
-import useInformationStore from "../store/shippingInfo";
+import useStore from "../store/State";
+import useUserInfoStore from "../store/userInfo";
 
 const schema = z.object({
   state: z.string().min(3, { message: "State should be a least 3 characters" }),
@@ -61,7 +61,17 @@ const Information = () => {
   };
 
   const { user } = useStore();
-  const {setEmail} = useInformationStore()
+  const {
+    setEmail,
+    setCountryState,
+    setFullName,
+    setCompany,
+    setAddress,
+    setApartment,
+    setPhoneNumber,
+    setPostalCode,
+    setCity,
+  } = useUserInfoStore();
 
   return (
     <>
@@ -69,7 +79,15 @@ const Information = () => {
         <form
           onSubmit={handleSubmit((data) => {
             console.log(data);
-            setEmail(data.email)
+            setEmail(data.email);
+            setCountryState(data.state);
+            setFullName({ firstname: data.firstName, lastname: data.lastName });
+            setCompany(data.company);
+            setAddress(data.address);
+            setApartment(data.apartment);
+            setPhoneNumber(data.phone);
+            setPostalCode(data.postalCode);
+            setCity(data.city);
             reset();
           })}
         >
@@ -97,7 +115,6 @@ const Information = () => {
               <input
                 {...register("email")}
                 type="email"
-                
                 placeholder="Email"
                 required
                 className="font-montserrat py-2 px-[16px]  outline-none w-full text-[#606060]"
@@ -107,13 +124,13 @@ const Information = () => {
           {errors.email && (
             <p className="text-red-600">{errors.email.message}</p>
           )}
-          <div className="flex space-x-1 mt-1 mb-[28px]">
+          {/* <div className="flex space-x-1 mt-1 mb-[28px]">
             <input type="checkbox" className="rounded-none" />
             <p className="font-montserrat text-[#0C0C0C] text-[14px]">
               email me with news and offers
             </p>
-          </div>
-          <header className=" font-montserrat lg:font-playfair text-[20px] font-normal mb-[20px]">
+          </div> */}
+          <header className=" font-montserrat lg:font-playfair text-[20px] font-normal mt-5 mb-3">
             Shipping Address
           </header>
           <div className="space-y-[8px] font-montserrat">
@@ -257,7 +274,7 @@ const Information = () => {
               type="submit"
               onClick={() =>
                 setTimeout(() => {
-                  navigate("/cart/shipping"), 3000;
+                  navigate("/checkout/shipping"), 3000;
                 })
               }
               className={`bg-${
@@ -271,7 +288,7 @@ const Information = () => {
               <button onClick={() => navigate("/cart")}>
                 <ArrowBackIosNewOutlinedIcon />
               </button>
-              <Link to="/checkout" className="hover:text-darkPrimary">
+              <Link to="/cart" className="hover:text-darkPrimary">
                 return to Cart
               </Link>
             </div>
