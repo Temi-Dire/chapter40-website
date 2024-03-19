@@ -152,32 +152,30 @@ const Navbar = () => {
                         
             <Link
               className="lg:block hidden relative"
-              to={!user ? "/wishlist" : "/auth/login"}
+              to={user ? "/wishlist" : "/auth/login"}
             >
-                            
+              
               <FavoriteBorderOutlinedIcon />
-                                         
+              
             </Link>
-                        
+            
             <Link className="relative" to={""} onClick={() => setOpen(true)}>
-                            
+              
               <img className="w-6" src={cart} alt="" />
-                            
+              
               <span className="bg-black text-white text-[10px] rounded-full p-1 px-2 scale-75 absolute -bottom-[8px] -right-[6px]">
-                                {totalItemsInBasket()}
-                              
+                {totalItemsInBasket()}
+
               </span>
-                          
+
             </Link>
-                      
+
           </div>
-                  
+
         </div>
-              
+
       </div>
-            
       <div className="">
-                
         <m.div
           initial={{ opacity: 0, x: "-100vw" }}
           animate={
@@ -202,7 +200,6 @@ const Navbar = () => {
           }
           className={`absolute top-[53.79px] left-0 bg-grey-100 font-montserrat font-semibold pt-[150px] text-[24px] xs:text-[30px] content-start sm:text-[40px] capitalize px-[24px] *:overflow-hidden *:cursor-pointer bg-white-300 grid gap-[24px]  place-items-start lg:hidden`}
         >
-                    
           <m.div
             onClick={() => {
               navigate(`/shop`);
@@ -218,9 +215,8 @@ const Navbar = () => {
                 : { y: 35, transition: { duration: 0.45 } }
             }
           >
-                        Shop           
+            Shop
           </m.div>
-                    
           <m.div
             onClick={() => {
               navigate(`/about`);
