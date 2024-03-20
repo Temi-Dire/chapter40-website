@@ -146,20 +146,17 @@ const Navbar = () => {
             >
               <FavoriteBorderOutlinedIcon />
             </Link>
-            <div
-              className="relative cursor-pointer"
-              onClick={() => setOpen(true)}
-            >
+
+            <Link className="relative" to={""} onClick={() => setOpen(true)}>
               <img className="w-6" src={cart} alt="" />
 
               <span className="bg-black text-white text-[10px] rounded-full p-1 px-2 scale-75 absolute -bottom-[8px] -right-[6px]">
                 {totalItemsInBasket()}
               </span>
-            </div>
+            </Link>
           </div>
         </div>
       </div>
-
       <div className="">
         <m.div
           initial={{ opacity: 0, x: "-100vw" }}
@@ -224,7 +221,7 @@ const Navbar = () => {
           <m.div
             className="cursor-pointer"
             onClick={() => {
-              navigate("/contact-us");
+              navigate(`/contact-us`);
             }}
             initial={{ y: 35, opacity: 0 }}
             animate={
