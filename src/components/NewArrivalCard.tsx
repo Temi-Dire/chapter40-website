@@ -1,53 +1,22 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import useFavoritesStore from "../store/favorites";
 import useStore from "../store/State";
-import { motion } from "framer-motion";
 
-import dress1 from "/assets/images/dress1.png";
-// import dress1 from "/assets/images/dress4.png";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-interface ProductCardProps {
+interface NewArrivalCardProps {
   id: number;
   image?: string;
   desc: string;
   price: number;
-  height?: string;
 }
 
-export function formatNumber(price: number) {
-  const numberString = price.toString();
-  const chars = numberString.split("");
-  let formattedNumber = "";
-  for (let i = 0; i < chars.length; i++) {
-    formattedNumber += chars[i];
-    if ((chars.length - i - 1) % 3 === 0 && i !== chars.length - 1) {
-      formattedNumber += ",";
-    }
-  }
-  return formattedNumber;
-}
-
-const ProductCard: React.FC<ProductCardProps> = ({
+const NewArrivalCard: React.FC<NewArrivalCardProps> = ({
   id,
   image,
   desc,
   price,
-  height,
 }) => {
-  const [isClicked, setIsClicked] = useState(false);
-
-  // const [add, setAdd] = useState(false);
-
-  const [screenSize, setScreenSize] = useState(false);
-
-  const [isHovered, setIsHovered] = useState(false);
-
-  const { favorites, addToFavorites, removeFromFavorites } =
-    useFavoritesStore();
-
-  const { addToBasket } = useStore();
-
-
   useEffect(() => {
     const handleResize = () => {
       setScreenSize(window.innerWidth >= 768);
@@ -60,13 +29,20 @@ const ProductCard: React.FC<ProductCardProps> = ({
     };
   }, []);
 
+  const [isClicked, setIsClicked] = useState(false);
+  const [screenSize, setScreenSize] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const { addToFavorites, removeFromFavorites } = useFavoritesStore();
+  const { addToBasket } = useStore();
+
   return (
     <motion.div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`font-outfit text-[12px] sm:text-[15px] 2sm:text-[12px] capitalize md:text-[15px] lg:max-w-[280px] w-full cursor-pointer `}
+      className={`font-outfit text-[12px] sm:text-[15px] 2sm:text-[12px] capitalize md:text-[15px] lg:max-w-[280px] w-full cursor-pointer mx-auto relative`}
     >
-      <div className={`relative h-[${height}px]`}>
+      <div className={`h-[220px] overflow-hidden lg:h-auto`}>
         <FavoriteIcon
           strokeWidth={0.5}
           stroke="black"
@@ -80,18 +56,19 @@ const ProductCard: React.FC<ProductCardProps> = ({
             setIsClicked(!isClicked);
             if (!isClicked) {
               addToFavorites({ desc, price, id });
-              console.log(favorites);
             } else {
               removeFromFavorites(id);
             }
           }}
         />
-        <img src={image} alt="" />
-        <img
-          className="rounded-sm w-full h-[auto] min-h-fit"
-          src={dress1}
-          alt=""
-        />
+        <div className="aspect-w-1 aspect-h-1 lg:aspect-w-4 lg:aspect-h-5 relative">
+          <img
+            className="mx-auto w-full object-cover bg-[center] lg:h-[359px] aspect-auto"
+            src={image}
+            alt=""
+          />
+        </div>
+
         {screenSize ? (
           <motion.div
             initial={{ y: 7, opacity: 0 }}
@@ -100,7 +77,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
               opacity: isHovered ? 1 : 0,
             }}
             transition={{ duration: 0.3 }}
-            className="absolute bottom-[7px] flex justify-center w-full"
+            className="absolute bottom-[26%] flex justify-center w-full"
           >
             <button
               className="bg-darkPrimary hover:bg-opacity-100 text-white font-montserrat border-none border py-2 px-8 cursor-pointer text-[10px] w-fit font-light"
@@ -112,7 +89,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             </button>
           </motion.div>
         ) : (
-          <div className="absolute bottom-[7px] flex justify-center w-full">
+          <div className="absolute bottom-[26%] flex justify-center w-full">
             <button
               className="bg-darkPrimary hover:bg-opacity-100 text-white font-montserrat border-none border py-2 px-8 cursor-pointer text-[10px] w-fit font-light"
               onClick={() => {
@@ -126,10 +103,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </div>
       <div className="pt-[10px] grid gap-1">
         <p className="leading-tight font-light">{desc}</p>
-        <p className="font-montserrat font-bold">₦ {formatNumber(price)}</p>
+        <p className="font-montserrat font-bold">₦{price.toLocaleString()}</p>
       </div>
     </motion.div>
   );
 };
 
-export default ProductCard;
+export default NewArrivalCard;

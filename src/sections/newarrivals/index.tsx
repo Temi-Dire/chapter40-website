@@ -1,5 +1,7 @@
 import Container from "../../components/Container";
-import ProductCard from "../../components/ProductCard";
+import NewArrivalCard from "../../components/NewArrivalCard";
+import getProduct from "../../hooks/getProduct";
+import line from "/assets/line.svg";
 
 interface NewarrivalsProps {
   header?: string;
@@ -10,46 +12,46 @@ const Newarrivals: React.FC<NewarrivalsProps> = ({
   header = "New Arrivals",
   desc = "Looking for the latest trends in clothing, shoes and accessories? Browse our new arrivals.",
 }) => {
-  const prods = [
-    {
-      description: "Red ankara gown sumami crimison",
-      price: 30000,
-      id: 1,
-    },
-    {
-      description: "Pink ankara gown sumami crimison",
-      price: 30000,
-      id: 2,
-    },
-    {
-      description: "Green ankara gown sumami crimison",
-      price: 30000,
-      id: 3,
-    },
-    {
-      description: "Yellow ankara gown sumami crimison",
-      price: 30000,
-      id: 4,
-    },
-  ];
+  const { data: products } = getProduct(undefined);
 
   return (
-    <Container className="mt-5 sm:mt-10">
-      <div className=" px-5 w-full text-center">
+    <Container className="grid gap-[40px] lg:gap-[50px] py-[50px] ">
+      <div className=" w-full text-center text-sm grid place-content-center gap-2 sm:text-base">
         <h1 className="sm:text-4xl text-2xl font-playfair mb-2">{header}</h1>
-        <p className="font-montserrat text-[#7C7C7C] text-sm sm:text-base">
-          {desc}
-        </p>
+        <img className="w-fit mx-auto" src={line} alt="" />
+        <p className="font-montserrat text-[#7C7C7C]">{desc}</p>
       </div>
-      <div className=" pt-[40px] lg:pt-[50px] grid grid-cols-2 gap-y-[40px] gap-x-[20px] pb-14 mx-auto w-fit sm:gap-x-[40px] sm:gap-y-[50px] 2sm:gap-x-[60px] md:grid-cols-3 md:gap-x-[30px] 2lg:gap-y-[80px] 2lg:grid-cols-4 2xl:gap-x-[50px]">
-        {prods.map((prod, index) => (
-          <ProductCard
+      <div className="grid grid-cols-2 gap-[20px] lg:grid-cols-4 mx-auto w-full">
+        {products?.data.slice(0, 4).map((product, index) => (
+          <NewArrivalCard
             key={index}
-            id={prod.id}
-            desc={prod.description}
-            price={prod.price}
+            id={product.id}
+            image={"/assets/images/dress1.png"}
+            desc={product.attributes.productName}
+            price={product.attributes.price}
           />
         ))}
+        <NewArrivalCard
+          key={1}
+          id={2}
+          image={"/assets/images/dress1.png"}
+          desc={"dire"}
+          price={3}
+        />
+        <NewArrivalCard
+          key={1}
+          id={3}
+          image={"/assets/images/dress1.png"}
+          desc={"dire"}
+          price={3}
+        />
+        <NewArrivalCard
+          key={1}
+          id={4}
+          image={"/assets/images/dress1.png"}
+          desc={"dire"}
+          price={3}
+        />
       </div>
     </Container>
   );
