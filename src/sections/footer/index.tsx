@@ -58,8 +58,8 @@ const FooterSection = () => {
             </div>
           </div>
           <div className="flex flex-col-reverse items-center gap-[30px] lg:space-y-0 lg:flex-row lg:justify-between font-thin pt-[30px] lg:pt-[46px]">
-            <div className="font-bold">
-              Copyright {currentYear.getFullYear()} Chapter40
+            <div className="font-semibold">
+              {currentYear.getFullYear()}&copy; Chapter40
             </div>
             {/* <div className="space-x-6 lg:space-x-4">
               <LinkedInIcon />
